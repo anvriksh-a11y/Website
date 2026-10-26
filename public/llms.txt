@@ -1,0 +1,19 @@
+# ANVRiksh Tech Solutions LLP
+
+> Enterprise-grade Agentic AI Orchestration and Software Solutions.
+
+ANVRiksh is an India-based AI company specializing in Agentic AI, Generative AI, Custom Voice Assistants, and Enterprise Software Solutions.
+
+## Key Offerings
+- Agentic AI workflows
+- Generative AI & LLM integration
+- Custom Enterprise Software Development
+- Yugma Platform: Design, deploy, and scale complex AI agent workflows visually.
+
+## Important Links
+- [Platform](https://anvriksh.com/platform): AI Orchestration platform.
+- [Generative AI](https://anvriksh.com/gen-ai): Custom RAG systems and autonomous agents.
+- [Software Solutions](https://anvriksh.com/software-solutions): Custom software and web development.
+- [Case Studies](https://anvriksh.com/resources/case-studies): Explore how our AI solutions have transformed businesses.
+- [Whitepaper](https://anvriksh.com/resources/whitepaper): Learn how Agentic AI reduces enterprise overhead by 40%.
+- [Contact Us](https://anvriksh.com/company/contact-us): Ready to transform your business? Contact ANVRiksh today.
