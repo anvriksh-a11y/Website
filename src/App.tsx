@@ -12,6 +12,9 @@ import ContactUs from './pages/company/ContactUs';
 import Platform from './pages/Platform';
 import Article from './pages/Article';
 import Whitepaper from './pages/resources/Whitepaper';
+import PrivacyPolicy from './pages/legal/PrivacyPolicy';
+import TermsAndConditions from './pages/legal/TermsAndConditions';
+import DigitalMarketing from './pages/DigitalMarketing';
 import WhatsAppBot from './components/WhatsAppBot';
 import AnalyticsTracker from './components/AnalyticsTracker';
 import ScrollToTop from './components/ScrollToTop';
@@ -31,14 +34,22 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/gen-ai" element={<GenAI />} />
             <Route path="/software-solutions" element={<SoftwareSolutions />} />
+            <Route path="/digital-marketing" element={<DigitalMarketing />} />
+            <Route path="/services/digital-marketing" element={<Navigate to="/digital-marketing" replace />} />
             <Route path="/resources/case-studies" element={<CaseStudies />} />
             <Route path="/resources/blogs" element={<Blogs />} />
+            <Route path="/blogs" element={<Navigate to="/resources/blogs" replace />} />
+            <Route path="/blog" element={<Navigate to="/resources/blogs" replace />} />
             <Route path="/resources/ebooks" element={<Ebooks />} />
             <Route path="/resources/whitepaper" element={<Whitepaper />} />
             <Route path="/company/who-we-are" element={<WhoWeAre />} />
             <Route path="/company/contact-us" element={<ContactUs />} />
             <Route path="/company/technical-partners" element={<Navigate to="/company/who-we-are" replace />} />
             <Route path="/platform" element={<Platform />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="/terms" element={<Navigate to="/terms-and-conditions" replace />} />
             <Route path="/:slug" element={<Article />} />
           </Routes>
         </main>

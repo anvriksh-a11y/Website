@@ -10,6 +10,7 @@ interface ServiceDropdownItem {
 const serviceItems: ServiceDropdownItem[] = [
   { label: 'Calling Agent', to: '/gen-ai', icon: 'fas fa-phone-alt' },
   { label: 'Website Development', to: '/software-solutions', icon: 'fas fa-laptop-code' },
+  { label: 'Digital Marketing', to: '/digital-marketing', icon: 'fas fa-bullhorn' },
   { label: 'Gen AI', to: '/gen-ai', icon: 'fas fa-brain' },
   { label: 'Agentic AI', to: '/#services-section', icon: 'fas fa-network-wired' },
   { label: 'Data Security', to: '/platform', icon: 'fas fa-shield-alt' },
@@ -98,7 +99,7 @@ const Navbar: React.FC = () => {
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
                 className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13px] font-semibold transition-all duration-200 ${
-                  isServicesOpen || location.pathname === '/gen-ai' || location.pathname === '/software-solutions'
+                  isServicesOpen || location.pathname === '/gen-ai' || location.pathname === '/software-solutions' || location.pathname === '/digital-marketing'
                     ? 'text-[#003D2B] bg-white shadow-xs'
                     : 'text-[#4E5B49] hover:text-[#141912] hover:bg-white/60'
                 }`}

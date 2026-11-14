@@ -8,7 +8,6 @@ interface ServiceItem {
     title: string;
     description: string;
     renderIcon: () => React.ReactNode;
-    tags?: string[];
     link: string;
 }
 
@@ -17,7 +16,6 @@ const services: ServiceItem[] = [
         id: 'ai-calling-agents',
         title: 'AI Calling Agents',
         description: 'Automate customer outreach, support and sales with AI voice agents.',
-        tags: ['One-way Message', 'DTMF Inputs', 'Full Conversation'],
         link: '/gen-ai',
         renderIcon: () => (
             <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none">
@@ -47,7 +45,6 @@ const services: ServiceItem[] = [
         id: 'website-development',
         title: 'Website Development',
         description: 'High-performance, engaging websites for your brand.',
-        tags: ['Static Website', 'Video Website', '3D Website'],
         link: '/software-solutions',
         renderIcon: () => (
             <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none">
@@ -77,31 +74,27 @@ const services: ServiceItem[] = [
         ),
     },
     {
-        id: 'mobile-application',
-        title: 'Mobile Application',
-        description: 'Custom mobile apps for customers, teams and operations.',
-        link: '/software-solutions',
+        id: 'digital-marketing',
+        title: 'Digital Marketing',
+        description: 'AI video creation & Instagram posting, SEO, Google & Meta ads, and lead conversion.',
+        link: '/digital-marketing',
         renderIcon: () => (
             <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none">
                 <defs>
-                    <linearGradient id="mobGrad" x1="12" y1="8" x2="36" y2="40" gradientUnits="userSpaceOnUse">
+                    <linearGradient id="dmGrad" x1="8" y1="8" x2="40" y2="40" gradientUnits="userSpaceOnUse">
                         <stop stopColor="#FFA043" />
                         <stop offset="1" stopColor="#E05206" />
                     </linearGradient>
                 </defs>
-                {/* Phone Body */}
-                <rect x="13" y="8" width="22" height="32" rx="4.5" fill="url(#mobGrad)" />
-                {/* Screen */}
-                <rect x="15.5" y="12" width="17" height="23" rx="2" fill="#FFF" fillOpacity="0.85" />
-                {/* Speaker */}
-                <rect x="20" y="9.5" width="8" height="1.5" rx="0.75" fill="#C93B00" />
-                {/* App Elements on Screen */}
-                <rect x="18" y="15" width="12" height="5" rx="1.5" fill="#FF7A00" />
-                <rect x="18" y="22" width="5.5" height="5.5" rx="1.5" fill="#FFA043" />
-                <rect x="24.5" y="22" width="5.5" height="5.5" rx="1.5" fill="#FFA043" />
-                <rect x="18" y="29" width="12" height="3" rx="1" fill="#FFD0A8" />
-                {/* Home Indicator */}
-                <rect x="20" y="36.5" width="8" height="1.5" rx="0.75" fill="#FFF" />
+                {/* Bullhorn Megaphone Body */}
+                <path d="M10 20H15L27 12V36L15 28H10C8.89543 28 8 27.1046 8 26V22C8 20.8954 8.89543 20 10 20Z" fill="url(#dmGrad)" />
+                {/* Sound Wave Beams */}
+                <path d="M32 18C34.5 20 36 22 36 24C36 26 34.5 28 32 30" stroke="#E05206" strokeWidth="2.5" strokeLinecap="round" />
+                <path d="M36 14C40 17 42 20.5 42 24C42 27.5 40 31 36 34" stroke="#FF7A00" strokeWidth="2.5" strokeLinecap="round" />
+                {/* Handle */}
+                <path d="M15 28V35C15 36.1046 14.1046 37 13 37H12" stroke="#C93B00" strokeWidth="2.5" strokeLinecap="round" />
+                {/* Star Glow */}
+                <circle cx="21" cy="24" r="2" fill="#FFF" />
             </svg>
         ),
     },
@@ -324,19 +317,6 @@ const OurServices: React.FC = () => {
                                             {service.description}
                                         </p>
                                     </div>
-
-                                    {service.tags && (
-                                        <div className="relative flex flex-wrap gap-1.5 mt-5 pt-4 border-t border-[#EAEFE5]">
-                                            {service.tags.map((tag) => (
-                                                <span
-                                                    key={tag}
-                                                    className="inline-block px-2.5 py-1 rounded-full text-[11px] font-semibold bg-[#F4F7EE] border border-[#D5E1CE] text-[#2D452C]"
-                                                >
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    )}
                                 </Link>
                             </TiltCard>
                         </Reveal>

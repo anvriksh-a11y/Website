@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <defs>
+    <linearGradient id="lovGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF4B72"/>
+      <stop offset="100%" stop-color="#FF7E40"/>
+    </linearGradient>
+  </defs>
+  <path d="M20 32 C12 24, 7 19, 7 14 C7 9.5, 10.5 6, 15 6 C17.5 6, 19.5 7.5, 20 9 C20.5 7.5, 22.5 6, 25 6 C29.5 6, 33 9.5, 33 14 C33 19, 28 24, 20 32 Z" fill="url(#lovGrad)"/>
+</svg>

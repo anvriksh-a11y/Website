@@ -4,31 +4,38 @@ const UseCases: React.FC = () => {
     const useCases = [
         {
             title: "Knowledge Management Agent",
-            description: "Centralizes and retrieves relevant information instantly, empowering agents to resolve issues quickly."
+            description: "Centralizes and retrieves relevant information instantly, empowering agents to resolve issues quickly.",
+            icon: "fa-book-open"
         },
         {
             title: "Campaign Performance Agent",
-            description: "Consolidates data and delivers actionable insights instantly, optimizing campaign ROI."
+            description: "Consolidates data and delivers actionable insights instantly, optimizing campaign ROI.",
+            icon: "fa-chart-line"
         },
         {
             title: "Contract Management Agent",
-            description: "Automates contract tracking, renewal reminders, and approval workflows, reducing administrative workload and preventing missed deadlines."
+            description: "Automates contract tracking, renewal reminders, and approval workflows, reducing administrative workload and preventing missed deadlines.",
+            icon: "fa-file-contract"
         },
         {
             title: "Customer Feedback Analysis Agent",
-            description: "Automatically categorizes and analyzes customer feedback, providing actionable insights for improving products and services."
+            description: "Automatically categorizes and analyzes customer feedback, providing actionable insights for improving products and services.",
+            icon: "fa-comment-dots"
         },
         {
             title: "Response Time Optimization Agent",
-            description: "Handles initial inquiries and escalates complex issues to human agents, ensuring faster response times and improved customer satisfaction."
+            description: "Handles initial inquiries and escalates complex issues to human agents, ensuring faster response times and improved customer satisfaction.",
+            icon: "fa-clock"
         },
         {
             title: "Policy Management Agent",
-            description: "Monitors changes, updates policies, and generates compliance reports automatically."
+            description: "Monitors changes, updates policies, and generates compliance reports automatically.",
+            icon: "fa-shield-alt"
         },
         {
             title: "AI Sales Assistance",
-            description: "Analyze customer interactions, suggest the best outreach strategies, and provide data-driven recommendations to close more deals efficiently."
+            description: "Analyze customer interactions, suggest the best outreach strategies, and provide data-driven recommendations to close more deals efficiently.",
+            icon: "fa-handshake"
         }
     ];
 
@@ -72,7 +79,7 @@ const UseCases: React.FC = () => {
                             className="inline-block w-[360px] bg-white border border-[#D5E1CE] shadow-[0_4px_16px_rgba(21,24,17,0.04)] rounded-[22px] p-7 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(0,61,43,0.12)] transition-all duration-300 whitespace-normal flex-shrink-0"
                         >
                             <div className="w-9 h-9 rounded-xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center mb-4">
-                                <i className="fas fa-sparkles text-[#003D2B] text-xs" />
+                                <i className={`fas ${item.icon} text-[#003D2B] text-xs`} />
                             </div>
                             <h3 className="text-base font-[800] text-[#141912] mb-2 tracking-tight">{item.title}</h3>
                             <p className="text-[#4E5B49] leading-relaxed text-sm">{item.description}</p>
@@ -88,7 +95,7 @@ const UseCases: React.FC = () => {
                             className="inline-block w-[360px] bg-white border border-[#D5E1CE] shadow-[0_4px_16px_rgba(21,24,17,0.04)] rounded-[22px] p-7 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(0,61,43,0.12)] transition-all duration-300 whitespace-normal flex-shrink-0"
                         >
                             <div className="w-9 h-9 rounded-xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center mb-4">
-                                <i className="fas fa-bolt text-[#003D2B] text-xs" />
+                                <i className={`fas ${item.icon} text-[#003D2B] text-xs`} />
                             </div>
                             <h3 className="text-base font-[800] text-[#141912] mb-2 tracking-tight">{item.title}</h3>
                             <p className="text-[#4E5B49] leading-relaxed text-sm">{item.description}</p>

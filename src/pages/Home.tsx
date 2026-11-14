@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
 import React from 'react';
 import Hero from '../components/Hero';
 import GTMPlatformPreview from '../components/GTMPlatformPreview';
+import VoiceAgentShowcase from '../components/VoiceAgentShowcase';
+import AIInAction from '../components/AIInAction';
 import ClientWorkShowcase from '../components/ClientWorkShowcase';
 import OurServices from '../components/OurServices';
-import DashboardPreview from '../components/DashboardPreview';
 import Features from '../components/Features';
 import FeatureSplit from '../components/FeatureSplit';
 import DeepDive from '../components/DeepDive';
@@ -12,8 +12,6 @@ import Integrations from '../components/Integrations';
 import Pricing from '../components/Pricing';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
-import CTA from '../components/CTA';
-import PlatformHighlight from '../components/PlatformHighlight';
 import KeyTakeaways from '../components/KeyTakeaways';
 import SEO from '../components/SEO';
 
@@ -100,97 +98,54 @@ const Home: React.FC = () => {
             />
             <Hero />
             <GTMPlatformPreview />
+            <VoiceAgentShowcase />
+            <AIInAction />
+
+            <FeatureSplit
+                title="Cognitive Processing & Memory"
+                description="Beyond simple automation. Our agents maintain long-term context, learn from past interactions, and adapt their strategies to optimize outcomes across your entire enterprise ecosystem."
+                imageSrc="https://images.unsplash.com/photo-1655720828018-edd2daec9349?q=80&w=1000&auto=format&fit=crop"
+                reversed={true}
+            >
+                <div className="relative mt-4">
+                    {/* Vertical Connecting Line */}
+                    <div className="absolute left-6 top-2 bottom-2 w-px bg-gradient-to-b from-transparent via-[#2D452C]/30 to-transparent"></div>
+
+                    <div className="space-y-4 relative z-10">
+                        {/* Feature 1 */}
+                        <div className="flex gap-4 bg-white border border-[#D5E1CE] shadow-xs rounded-2xl p-5 hover:-translate-y-0.5 hover:shadow-md transition-all group">
+                            <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
+                                <i className="fas fa-brain text-[#003D2B] text-base"></i>
+                            </div>
+                            <div>
+                                <h3 className="text-base font-[800] text-[#141912] mb-1.5">Adaptive Learning Engine</h3>
+                                <p className="text-[#4E5B49] leading-relaxed text-sm">
+                                    Agents continuously learn from interactions, refining their decision-making models to improve accuracy and efficiency over time.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Feature 2 */}
+                        <div className="flex gap-4 bg-white border border-[#D5E1CE] shadow-xs rounded-2xl p-5 hover:-translate-y-0.5 hover:shadow-md transition-all group">
+                            <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
+                                <i className="fas fa-database text-[#003D2B] text-base"></i>
+                            </div>
+                            <div>
+                                <h3 className="text-base font-[800] text-[#141912] mb-1.5">Persistent Contextual Memory</h3>
+                                <p className="text-[#4E5B49] leading-relaxed text-sm">
+                                    Maintain deep context across long-running sessions and disparate data sources, ensuring every action is informed by the complete picture.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </FeatureSplit>
+
             <ClientWorkShowcase />
             <OurServices />
-            <DashboardPreview />
-
-            <PlatformHighlight />
 
             <div className="relative z-10 bg-[#F4F7EE]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 <Features />
-
-                <FeatureSplit
-                    title="Unlock the Full Potential of Your Business with AI Agents"
-                    description=""
-                    imageSrc="/agent_workflow.png"
-                >
-                    <div className="relative mt-4">
-                        {/* Vertical Connecting Line */}
-                        <div className="absolute left-6 top-2 bottom-2 w-px bg-gradient-to-b from-transparent via-[#2D452C]/30 to-transparent"></div>
-
-                        <div className="space-y-4 relative z-10">
-                            {/* Feature 1 */}
-                            <div className="flex gap-4 bg-white border border-[#D5E1CE] shadow-xs rounded-2xl p-5 hover:-translate-y-0.5 hover:shadow-md transition-all group">
-                                <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
-                                    <i className="fas fa-network-wired text-[#003D2B] text-base"></i>
-                                </div>
-                                <div>
-                                    <h3 className="text-base font-[800] text-[#141912] mb-1.5">Seamless Workflow Orchestration</h3>
-                                    <p className="text-[#4E5B49] leading-relaxed text-sm">
-                                        With advanced reasoning capabilities, our agents can handle complex tasks, make informed decisions, and adapt to evolving scenarios.
-                                    </p>
-                                    <Link to="/how-ai-agents-are-reshaping-small-businesses" className="inline-flex items-center gap-1.5 mt-2.5 text-[#003D2B] hover:text-[#022D20] text-sm font-bold transition-colors">
-                                        <span>Read how AI agents are reshaping small businesses</span>
-                                        <i className="fas fa-arrow-right text-xs"></i>
-                                    </Link>
-                                </div>
-                            </div>
-
-                            {/* Feature 2 */}
-                            <div className="flex gap-4 bg-white border border-[#D5E1CE] shadow-xs rounded-2xl p-5 hover:-translate-y-0.5 hover:shadow-md transition-all group">
-                                <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
-                                    <i className="fas fa-desktop text-[#003D2B] text-base"></i>
-                                </div>
-                                <div>
-                                    <h3 className="text-base font-[800] text-[#141912] mb-1.5">Cross-Platform AI-First Interface</h3>
-                                    <p className="text-[#4E5B49] leading-relaxed text-sm">
-                                        Deliver AI-first experiences through chat, AI-powered apps, or embedded interfaces within your existing ecosystem.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </FeatureSplit>
-
-                <FeatureSplit
-                    title="Cognitive Processing & Memory"
-                    description="Beyond simple automation. Our agents maintain long-term context, learn from past interactions, and adapt their strategies to optimize outcomes across your entire enterprise ecosystem."
-                    imageSrc="https://images.unsplash.com/photo-1655720828018-edd2daec9349?q=80&w=1000&auto=format&fit=crop"
-                    reversed={true}
-                >
-                    <div className="relative mt-4">
-                        {/* Vertical Connecting Line */}
-                        <div className="absolute left-6 top-2 bottom-2 w-px bg-gradient-to-b from-transparent via-[#2D452C]/30 to-transparent"></div>
-
-                        <div className="space-y-4 relative z-10">
-                            {/* Feature 1 */}
-                            <div className="flex gap-4 bg-white border border-[#D5E1CE] shadow-xs rounded-2xl p-5 hover:-translate-y-0.5 hover:shadow-md transition-all group">
-                                <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
-                                    <i className="fas fa-brain text-[#003D2B] text-base"></i>
-                                </div>
-                                <div>
-                                    <h3 className="text-base font-[800] text-[#141912] mb-1.5">Adaptive Learning Engine</h3>
-                                    <p className="text-[#4E5B49] leading-relaxed text-sm">
-                                        Agents continuously learn from interactions, refining their decision-making models to improve accuracy and efficiency over time.
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Feature 2 */}
-                            <div className="flex gap-4 bg-white border border-[#D5E1CE] shadow-xs rounded-2xl p-5 hover:-translate-y-0.5 hover:shadow-md transition-all group">
-                                <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
-                                    <i className="fas fa-database text-[#003D2B] text-base"></i>
-                                </div>
-                                <div>
-                                    <h3 className="text-base font-[800] text-[#141912] mb-1.5">Persistent Contextual Memory</h3>
-                                    <p className="text-[#4E5B49] leading-relaxed text-sm">
-                                        Maintain deep context across long-running sessions and disparate data sources, ensuring every action is informed by the complete picture.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </FeatureSplit>
 
                 <DeepDive />
                 <Integrations />
@@ -206,7 +161,6 @@ const Home: React.FC = () => {
                 </div>
                 
                 <FAQ />
-                <CTA />
             </div>
             {/* <EbookPopup /> */}
         </>

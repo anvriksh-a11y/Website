@@ -65,7 +65,7 @@ const Footer: React.FC = () => {
               <ul className="space-y-2.5 text-sm">
                 <li><Link to="/gen-ai" className="text-[#A7C2B2] hover:text-white transition-colors">AI Calling Agents</Link></li>
                 <li><Link to="/software-solutions" className="text-[#A7C2B2] hover:text-white transition-colors">Website Development</Link></li>
-                <li><Link to="/software-solutions" className="text-[#A7C2B2] hover:text-white transition-colors">Mobile Application</Link></li>
+                <li><Link to="/digital-marketing" className="text-[#A7C2B2] hover:text-white transition-colors">Digital Marketing</Link></li>
                 <li><Link to="/software-solutions" className="text-[#A7C2B2] hover:text-white transition-colors">Custom Software</Link></li>
                 <li><Link to="/gen-ai" className="text-[#A7C2B2] hover:text-white transition-colors">SEO &amp; AEO Engine</Link></li>
                 <li><Link to="/gen-ai" className="text-[#A7C2B2] hover:text-white transition-colors">AI Model Development</Link></li>
@@ -110,11 +110,13 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="pt-7 border-t border-white/10 flex flex-col md:flex-row items-center justify-between text-xs text-[#A7C2B2] gap-4">
-            <p>&copy; 2026 ANVRiksh Tech Solutions. All rights reserved.</p>
-            <div className="flex items-center gap-6">
+            <p>&copy; 2026 ANVRiksh Tech Solutions LLP. All rights reserved. • LLPIN: ADA-3944</p>
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
               <Link to="/company/who-we-are" className="hover:text-white transition-colors">About Us</Link>
               <Link to="/company/contact-us" className="hover:text-white transition-colors">Contact</Link>
               <Link to="/platform" className="hover:text-white transition-colors">Platform</Link>
+              <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link to="/terms-and-conditions" className="hover:text-white transition-colors">Terms &amp; Conditions</Link>
             </div>
             <a href="#root" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="bg-white/10 w-9 h-9 rounded-full flex items-center justify-center text-white hover:bg-[#003D2B] hover:-translate-y-0.5 transition-all" aria-label="Back to top">
               <i className="fas fa-arrow-up text-xs" />

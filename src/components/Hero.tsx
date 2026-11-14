@@ -10,6 +10,7 @@ interface ReelCard {
 const reelCards: ReelCard[] = [
   { id: 'voice-ai', image: '/services/reels/reel_voice_ai.webp', alt: 'AI Calling Agent' },
   { id: 'web-dev', image: '/services/reels/reel_web_dev.webp', alt: 'Web Development' },
+  { id: 'digital-marketing', image: '/digital_marketing_bouquet.jpg', alt: 'Digital Marketing' },
   { id: 'agentic-ai', image: '/services/reels/reel_agentic_ai.webp', alt: 'Agentic AI' },
   { id: 'custom-software', image: '/services/reels/reel_custom_software.webp', alt: 'Custom Software Development' },
   { id: 'gen-ai', image: '/services/reels/reel_gen_ai.webp', alt: 'Gen AI' },
