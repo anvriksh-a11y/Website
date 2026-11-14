@@ -1,281 +1,174 @@
 import { Link } from 'react-router-dom';
+import Reveal from './Reveal';
 
 const DeepDive: React.FC = () => {
     return (
-        <section className="py-24 bg-gradient-to-b from-transparent to-gray-900/50">
-            <div className="container mx-auto px-5 max-w-7xl">
+        <section className="py-20 sm:py-28 bg-[#F4F7EE] relative overflow-hidden select-none" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            <div className="absolute top-0 right-0 w-[480px] h-[320px] rounded-full pointer-events-none opacity-40" style={{ background: 'radial-gradient(circle, #E3EDE0 0%, transparent 70%)', filter: 'blur(60px)' }} />
+            <div className="container mx-auto px-5 max-w-7xl relative z-10">
                 {/* Header */}
-                <div className="mb-12">
-                    <span className="inline-block px-4 py-1.5 bg-slate-800/50 border border-white/10 rounded-full text-slate-200 text-sm font-normal backdrop-blur-sm">
-                        More Features
-                    </span>
-                </div>
-
-                {/* Title and Buttons */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-6">
-                    <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-                        <span className="text-white">Achieve Enterprise-Wide</span>
-                        <br />
-                        <span className="text-blue-400">Productivity With AI Agents</span>
-                    </h2>
-                    <div className="flex gap-4">
-                        <Link to="/company/contact-us" className="px-6 py-3 bg-transparent hover:bg-white/5 text-white rounded-lg font-medium transition-colors border border-white/20">
-                            Book a Demo
-                        </Link>
+                <Reveal variant="up" duration={700}>
+                    <div className="mb-4">
+                        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#E3EDE0] border border-[#D3E2CF] shadow-xs">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#2D452C] animate-pulse" />
+                            <span className="text-[12px] sm:text-[13px] font-semibold text-[#2D452C] tracking-tight">More Features</span>
+                        </span>
                     </div>
-                </div>
+                    {/* Title and Buttons */}
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 sm:mb-16 gap-6">
+                        <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-[800] leading-[1.08] text-[#141912] tracking-[-0.035em]">
+                            Achieve Enterprise-Wide
+                            <br />
+                            <span className="text-[#003D2B]">Productivity With AI Agents</span>
+                        </h2>
+                        <div className="flex gap-3.5 shrink-0">
+                            <Link to="/company/contact-us" className="px-8 py-3.5 rounded-full text-sm font-bold text-white bg-[#003D2B] hover:bg-[#022D20] shadow-[0_12px_28px_rgba(0,61,43,0.30)] hover:shadow-[0_16px_36px_rgba(0,61,43,0.40)] hover:scale-105 active:scale-100 transition-all">
+                                Book a Demo
+                            </Link>
+                        </div>
+                    </div>
+                </Reveal>
 
                 {/* Features Grid Wrapper */}
                 <div className="relative">
-                    {/* Background Glow */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <img
-                            src="/back.avif"
-                            alt=""
-                            className="w-full h-full object-cover opacity-100"
-                        />
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-7 relative z-10">
                         {/* LLM-Agnostic Framework */}
-                        <div className="bg-slate-900/50 border border-white/10 rounded-2xl p-8 hover:border-blue-500/30 transition-colors">
+                        <div className="bg-white border border-[#D5E1CE] shadow-[0_4px_16px_rgba(21,24,17,0.04)] hover:shadow-[0_16px_36px_rgba(0,61,43,0.10)] rounded-[22px] p-7 sm:p-8 transition-all">
                             <div className="flex items-center gap-4 mb-6">
-                                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
-                                    <i className="fas fa-cog text-blue-400 text-xl"></i>
+                                <div className="w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center flex-shrink-0">
+                                    <i className="fas fa-cog text-[#003D2B] text-xl"></i>
                                 </div>
-                                <h3 className="text-2xl font-bold text-white">LLM-Agnostic Framework</h3>
+                                <h3 className="text-xl sm:text-2xl font-[800] text-[#141912] tracking-tight">LLM-Agnostic Framework</h3>
                             </div>
 
                             {/* Dropdown/Select UI */}
-                            <div className="bg-slate-950/80 border border-white/10 rounded-lg p-4 mb-6">
-                                <div className="flex items-center justify-between mb-3 pb-3 border-b border-white/10">
-                                    <span className="text-gray-400 text-sm">Select</span>
-                                    <i className="fas fa-chevron-down text-gray-400 text-xs"></i>
+                            <div className="bg-[#F4F7EE] border border-[#D5E1CE] rounded-xl p-4 mb-6">
+                                <div className="flex items-center justify-between mb-3 pb-3 border-b border-[#D5E1CE]">
+                                    <span className="text-[#4E5B49] text-xs font-semibold uppercase tracking-wider">Select AI Model</span>
+                                    <i className="fas fa-chevron-down text-[#4E5B49] text-xs"></i>
                                 </div>
-                                <div className="space-y-2 max-h-48 overflow-y-auto">
+                                <div className="space-y-1.5 max-h-48 overflow-y-auto">
                                     {[
-                                        'Google Gemini Pro 1.5 (0813)',
-                                        'Google Gemini 1.5 Flash Experimental',
-                                        'Google Gemini Flash 8B 1.5 Experimental',
-                                        'Meta-Llama 3.2 11B Vision Instruct (free)',
-                                        'Meta-Llama 3.2 1B Instruct (free)',
-                                        'Meta-Llama 3.2 3B Instruct (free)',
-                                        'Meta-Llama 3.1 8B Instruct (free)',
-                                        'Meta-Llama 3.2 3B Instruct',
-                                        'Meta-Llama 3.2 3B Instruct',
-                                        'Google Gemini 1.5 Flash-8B'
+                                        'Google Gemini 2.0 Flash / Pro',
+                                        'OpenAI GPT-4o & GPT-4o-mini',
+                                        'Anthropic Claude 3.5 Sonnet',
+                                        'Meta-Llama 3.3 70B Instruct',
+                                        'Mistral Large 2',
+                                        'Custom Fine-Tuned Domain Models'
                                     ].map((model, index) => (
                                         <div
                                             key={index}
-                                            className="text-gray-300 text-sm py-2 px-3 hover:bg-white/5 rounded cursor-pointer transition-colors"
+                                            className="text-[#141912] text-xs sm:text-sm py-2 px-3 hover:bg-white rounded-lg cursor-pointer transition-colors font-medium flex items-center justify-between"
                                         >
-                                            {model}
+                                            <span>{model}</span>
+                                            {index === 0 && <span className="w-2 h-2 rounded-full bg-[#003D2B]" />}
                                         </div>
                                     ))}
                                 </div>
                             </div>
-                            <p className="text-gray-400 leading-relaxed">
+                            <p className="text-[#4E5B49] leading-relaxed text-sm">
                                 Select different models for diverse functions to optimize AI performance throughout the entire implementation process.
                             </p>
                         </div>
 
                         {/* Session Monitoring */}
-                        <div className="bg-slate-900/50 border border-white/10 rounded-2xl p-8 hover:border-blue-500/30 transition-colors">
+                        <div className="bg-white border border-[#D5E1CE] shadow-[0_4px_16px_rgba(21,24,17,0.04)] hover:shadow-[0_16px_36px_rgba(0,61,43,0.10)] rounded-[22px] p-7 sm:p-8 transition-all">
                             <div className="flex items-center gap-4 mb-6">
-                                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
-                                    <i className="fas fa-search text-blue-400 text-xl"></i>
+                                <div className="w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center flex-shrink-0">
+                                    <i className="fas fa-search text-[#003D2B] text-xl"></i>
                                 </div>
-                                <h3 className="text-2xl font-bold text-white">Session Monitoring</h3>
+                                <h3 className="text-xl sm:text-2xl font-[800] text-[#141912] tracking-tight">Session Monitoring</h3>
                             </div>
 
                             {/* Session Monitoring UI */}
-                            <div className="bg-slate-950/80 border border-white/10 rounded-lg p-4 mb-6 space-y-4">
-                                {/* Request Complete Card */}
-                                <div className="bg-slate-900/50 border border-white/10 rounded-lg p-4">
-                                    <div className="flex items-center justify-between mb-3">
+                            <div className="bg-[#F4F7EE] border border-[#D5E1CE] rounded-xl p-4 mb-6 space-y-3">
+                                <div className="bg-white border border-[#D5E1CE] rounded-lg p-3.5 shadow-xs">
+                                    <div className="flex items-center justify-between mb-2">
                                         <div className="flex items-center gap-2">
-                                            <i className="fas fa-check-circle text-green-400"></i>
-                                            <span className="text-white text-sm font-medium">Request Complete</span>
+                                            <i className="fas fa-check-circle text-[#003D2B] text-xs"></i>
+                                            <span className="text-[#141912] text-xs font-bold">Request Complete</span>
                                         </div>
-                                        <span className="text-gray-400 text-xs">Thinking</span>
+                                        <span className="text-[#2D452C] bg-[#E3EDE0] text-[10px] font-semibold px-2 py-0.5 rounded-full">Thinking</span>
                                     </div>
-                                    <p className="text-gray-400 text-xs leading-relaxed mb-3">
-                                        I'll analyze this incoming email request from Emily Johnson regarding checking account balance inquiry. Key points to consider:
-                                    </p>
-                                    <ol className="text-gray-400 text-xs space-y-1 ml-4 list-decimal mb-3">
-                                        <li>This is a request for sensitive account information (balance inquiry)</li>
-                                        <li>The email contains account number information needing in...</li>
-                                        <li>We need to handle this with appropriate security protocols</li>
-                                        <li>First, we should understand the type of request and analyze sentiment</li>
-                                    </ol>
-                                    <p className="text-gray-400 text-xs">
-                                        Let's first classify the email and analyze its sentiment to determine how to handle this request appropriately.
+                                    <p className="text-[#4E5B49] text-xs leading-relaxed">
+                                        Analyzing incoming customer intent, extracting key entities, and routing to specialized agent flow.
                                     </p>
                                 </div>
 
-                                {/* Email Classification Agent Card */}
-                                <div className="bg-slate-900/50 border border-white/10 rounded-lg p-4">
-                                    <div className="flex items-center justify-between mb-3">
+                                <div className="bg-white border border-[#D5E1CE] rounded-lg p-3.5 shadow-xs">
+                                    <div className="flex items-center justify-between mb-2">
                                         <div className="flex items-center gap-2">
-                                            <i className="fas fa-check-circle text-green-400"></i>
-                                            <span className="text-white text-sm font-medium">Request Complete</span>
+                                            <i className="fas fa-envelope text-[#003D2B] text-xs"></i>
+                                            <span className="text-[#141912] text-xs font-bold">Classification Agent</span>
                                         </div>
-                                        <span className="text-gray-400 text-xs">Action</span>
+                                        <span className="text-[#2D452C] bg-[#E3EDE0] text-[10px] font-semibold px-2 py-0.5 rounded-full">Action</span>
                                     </div>
-                                    <div className="bg-slate-950/80 border border-blue-500/30 rounded p-3 mb-2">
-                                        <div className="flex items-center gap-2 mb-2">
-                                            <i className="fas fa-envelope text-blue-400 text-xs"></i>
-                                            <span className="text-blue-400 text-xs font-medium">Email Classification Agent</span>
-                                            <i className="fas fa-check text-green-400 text-xs ml-auto"></i>
-                                        </div>
-                                        <div className="text-gray-400 text-xs font-mono">
-                                            {`{"email": "Subject: Checking Account Balance Inquiry\\n\\nCould you please tell me my current checking account balance? Account ending in -1234.\\n\\nThank you for your assistance.\\n\\nRegards,\\nEmily Johnson"}`}
-                                        </div>
+                                    <div className="text-[#4E5B49] text-xs font-mono bg-[#F4F7EE] p-2 rounded border border-[#D5E1CE]">
+                                        {`{"status": "classified", "urgency": "high", "routing": "sales"}`}
                                     </div>
-                                    <button className="text-gray-400 text-xs hover:text-white transition-colors flex items-center gap-1">
-                                        View Content
-                                        <i className="fas fa-chevron-down text-xs"></i>
-                                    </button>
                                 </div>
                             </div>
 
-
-                            <p className="text-gray-400 leading-relaxed">
+                            <p className="text-[#4E5B49] leading-relaxed text-sm">
                                 Gain deep insights by analyzing historical sessions, tracking LLM calls, control flows, and decision-making processes.
                             </p>
                         </div>
 
                         {/* Flexible Deployment Options */}
-                        <div className="bg-slate-900/50 border border-white/10 rounded-2xl p-8 hover:border-blue-500/30 transition-colors">
+                        <div className="bg-white border border-[#D5E1CE] shadow-[0_4px_16px_rgba(21,24,17,0.04)] hover:shadow-[0_16px_36px_rgba(0,61,43,0.10)] rounded-[22px] p-7 sm:p-8 transition-all">
                             <div className="flex items-center gap-4 mb-6">
-                                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
-                                    <i className="fas fa-server text-blue-400 text-xl"></i>
+                                <div className="w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center flex-shrink-0">
+                                    <i className="fas fa-server text-[#003D2B] text-xl"></i>
                                 </div>
-                                <h3 className="text-2xl font-bold text-white">Flexible Deployment Options</h3>
+                                <h3 className="text-xl sm:text-2xl font-[800] text-[#141912] tracking-tight">Flexible Deployment Options</h3>
                             </div>
 
-                            {/* Cloud Platforms Grid */}
-                            <div className="bg-slate-950/80 border border-white/10 rounded-lg p-6 mb-6">
-                                <div className="grid grid-cols-2 gap-4">
-                                    {/* AWS */}
-                                    <div className="bg-slate-900/50 border border-white/10 rounded-lg p-4 flex items-center gap-3 hover:border-blue-500/30 transition-colors">
-                                        <div className="w-10 h-10 flex items-center justify-center">
-                                            <img
-                                                src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
-                                                alt="AWS"
-                                                className="w-8 h-8 object-contain"
-                                            />
+                            <div className="bg-[#F4F7EE] border border-[#D5E1CE] rounded-xl p-5 mb-6">
+                                <div className="grid grid-cols-2 gap-3">
+                                    {[
+                                        { name: 'Amazon AWS', icon: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' },
+                                        { name: 'Google Cloud', icon: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg' },
+                                        { name: 'Microsoft Azure', icon: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg' },
+                                        { name: 'Private VPC', icon: 'https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg' }
+                                    ].map((platform, idx) => (
+                                        <div key={idx} className="bg-white border border-[#D5E1CE] rounded-lg p-3 flex items-center gap-3 shadow-xs">
+                                            <img src={platform.icon} alt={platform.name} className="w-6 h-6 object-contain" />
+                                            <span className="text-[#141912] text-xs font-semibold">{platform.name}</span>
                                         </div>
-                                        <span className="text-gray-300 text-sm font-medium">Amazon AWS</span>
-                                    </div>
-
-                                    {/* Google Cloud */}
-                                    <div className="bg-slate-900/50 border border-white/10 rounded-lg p-4 flex items-center gap-3 hover:border-blue-500/30 transition-colors">
-                                        <div className="w-10 h-10 flex items-center justify-center">
-                                            <img
-                                                src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg"
-                                                alt="Google Cloud"
-                                                className="w-8 h-8 object-contain"
-                                            />
-                                        </div>
-                                        <span className="text-gray-300 text-sm font-medium">Google Cloud</span>
-                                    </div>
-
-                                    {/* Microsoft Azure */}
-                                    <div className="bg-slate-900/50 border border-white/10 rounded-lg p-4 flex items-center gap-3 hover:border-blue-500/30 transition-colors">
-                                        <div className="w-10 h-10 flex items-center justify-center">
-                                            <img
-                                                src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg"
-                                                alt="Microsoft Azure"
-                                                className="w-8 h-8 object-contain"
-                                            />
-                                        </div>
-                                        <span className="text-gray-300 text-sm font-medium">Microsoft Azure</span>
-                                    </div>
-
-                                    {/* Salesforce */}
-                                    <div className="bg-slate-900/50 border border-white/10 rounded-lg p-4 flex items-center gap-3 hover:border-blue-500/30 transition-colors">
-                                        <div className="w-10 h-10 flex items-center justify-center">
-                                            <img
-                                                src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg"
-                                                alt="Salesforce"
-                                                className="w-8 h-8 object-contain"
-                                            />
-                                        </div>
-                                        <span className="text-gray-300 text-sm font-medium">Salesforce</span>
-                                    </div>
-
-                                    {/* Digital Ocean */}
-                                    <div className="bg-slate-900/50 border border-white/10 rounded-lg p-4 flex items-center gap-3 hover:border-blue-500/30 transition-colors">
-                                        <div className="w-10 h-10 flex items-center justify-center">
-                                            <img
-                                                src="https://upload.wikimedia.org/wikipedia/commons/f/ff/DigitalOcean_logo.svg"
-                                                alt="Digital Ocean"
-                                                className="w-8 h-8 object-contain"
-                                            />
-                                        </div>
-                                        <span className="text-gray-300 text-sm font-medium">Digital Ocean</span>
-                                    </div>
-
-                                    {/* Oracle Cloud */}
-                                    <div className="bg-slate-900/50 border border-white/10 rounded-lg p-4 flex items-center gap-3 hover:border-blue-500/30 transition-colors">
-                                        <div className="w-10 h-10 flex items-center justify-center">
-                                            <img
-                                                src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg"
-                                                alt="Oracle Cloud"
-                                                className="w-8 h-8 object-contain"
-                                            />
-                                        </div>
-                                        <span className="text-gray-300 text-sm font-medium">Oracle Cloud</span>
-                                    </div>
+                                    ))}
                                 </div>
                             </div>
 
-
-                            <p className="text-gray-400 leading-relaxed">
-                                Deploy effortlessly across major cloud platforms (AWS, Azure, GCP, and more), within your own Virtual Private Cloud (VPC), or on-premise.
+                            <p className="text-[#4E5B49] leading-relaxed text-sm">
+                                Deploy effortlessly across major cloud platforms, within your own Virtual Private Cloud (VPC), or on-premise with zero vendor lock-in.
                             </p>
                         </div>
 
                         {/* PII Masking and Encryption */}
-                        <div className="bg-slate-900/50 border border-white/10 rounded-2xl p-8 hover:border-blue-500/30 transition-colors">
+                        <div className="bg-white border border-[#D5E1CE] shadow-[0_4px_16px_rgba(21,24,17,0.04)] hover:shadow-[0_16px_36px_rgba(0,61,43,0.10)] rounded-[22px] p-7 sm:p-8 transition-all">
                             <div className="flex items-center gap-4 mb-6">
-                                <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
-                                    <i className="fas fa-shield-alt text-blue-400 text-xl"></i>
+                                <div className="w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center flex-shrink-0">
+                                    <i className="fas fa-shield-alt text-[#003D2B] text-xl"></i>
                                 </div>
-                                <h3 className="text-2xl font-bold text-white">PII Masking and Encryption</h3>
+                                <h3 className="text-xl sm:text-2xl font-[800] text-[#141912] tracking-tight">PII Masking & Encryption</h3>
                             </div>
 
-                            {/* Security Visualization */}
-                            <div className="bg-slate-950/80 border border-white/10 rounded-lg p-6 mb-6">
-                                <div className="flex items-center justify-center mb-4">
-                                    <div className="relative">
-                                        {/* Lock Icon */}
-                                        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-2 border-blue-500/30 flex items-center justify-center">
-                                            <i className="fas fa-lock text-blue-400 text-4xl"></i>
-                                        </div>
-                                        {/* Orbiting dots */}
-                                        <div className="absolute -top-2 -right-2 w-4 h-4 bg-blue-500 rounded-full animate-pulse"></div>
-                                        <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-purple-500 rounded-full animate-pulse"></div>
+                            <div className="bg-[#F4F7EE] border border-[#D5E1CE] rounded-xl p-5 mb-6">
+                                <div className="space-y-2.5">
+                                    <div className="bg-white border border-[#D5E1CE] rounded-lg p-3 shadow-xs text-xs text-[#141912]">
+                                        <span className="text-[#003D2B] font-mono font-bold">████-██-████</span> Identity data sanitized
+                                    </div>
+                                    <div className="bg-white border border-[#D5E1CE] rounded-lg p-3 shadow-xs text-xs text-[#141912]">
+                                        <span className="text-[#003D2B] font-mono font-bold">████@████.com</span> Email encrypted via AES-256
+                                    </div>
+                                    <div className="bg-white border border-[#D5E1CE] rounded-lg p-3 shadow-xs text-xs text-[#141912]">
+                                        Payment info <span className="text-[#003D2B] font-mono font-bold">****-****-****-1234</span> tokenized
                                     </div>
                                 </div>
-
-                                <div className="bg-slate-900/50 border border-white/10 rounded-lg p-4">
-                                    <p className="text-gray-400 text-sm leading-relaxed">
-                                        <span className="text-blue-400 font-mono">████-██-████</span> Social Security Number detected and masked
-                                    </p>
-                                    <p className="text-gray-400 text-sm leading-relaxed mt-2">
-                                        <span className="text-blue-400 font-mono">████@████.com</span> Email address encrypted
-                                    </p>
-                                    <p className="text-gray-400 text-sm leading-relaxed mt-2">
-                                        Credit card <span className="text-blue-400 font-mono">****-****-****-1234</span> protected
-                                    </p>
-                                </div>
                             </div>
 
-
-                            <p className="text-gray-400 leading-relaxed">
-                                Protect sensitive information with PII data masking and encryption techniques.
+                            <p className="text-[#4E5B49] leading-relaxed text-sm">
+                                Protect enterprise and customer information with automated PII masking, tokenization, and SOC2-compliant encryption.
                             </p>
                         </div>
                     </div>

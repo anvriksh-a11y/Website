@@ -13,18 +13,23 @@ const WhatsAppBot: React.FC = () => {
     };
 
     return (
-        <div className="fixed bottom-8 right-8 z-50 flex items-center gap-3">
-            <div className="bg-slate-900/90 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl shadow-lg hidden md:block">
-                <p className="text-gray-200 text-sm font-medium whitespace-nowrap">Need help? Chat with us</p>
+        <div className="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-50 flex items-center gap-3">
+            <div className="glass-strong px-4 py-2.5 rounded-2xl shadow-lg hidden md:flex items-center gap-2.5 animate-fadeIn">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <p className="text-slate-700 text-sm font-semibold whitespace-nowrap">Need help? Chat with us</p>
             </div>
 
-            <button
-                onClick={handleClick}
-                className="w-14 h-14 bg-slate-900/80 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center hover:bg-[#25D366] transition-all duration-300 group shadow-lg hover:shadow-[#25D366]/20"
-                aria-label="Chat on WhatsApp"
-            >
-                <i className="fab fa-whatsapp text-[#25D366] text-3xl group-hover:text-white transition-colors"></i>
-            </button>
+            <div className="relative">
+                <span className="absolute inset-0 rounded-full bg-emerald-500/30 animate-ping" style={{ animationDuration: '2.4s' }} />
+                <button
+                    onClick={handleClick}
+                    className="relative w-14 h-14 rounded-full flex items-center justify-center text-white shadow-[0_12px_32px_rgba(37,211,102,0.45)] hover:scale-110 active:scale-95 transition-all"
+                    style={{ background: 'linear-gradient(145deg,#2EEA6B 0%, #25D366 45%, #128C4B 100%)', border: '1px solid rgba(255,255,255,0.5)', boxShadow: '0 12px 32px rgba(37,211,102,0.45), inset 0 1px 0 rgba(255,255,255,0.45)' }}
+                    aria-label="Chat on WhatsApp"
+                >
+                    <i className="fab fa-whatsapp text-[26px]" />
+                </button>
+            </div>
         </div>
     );
 };

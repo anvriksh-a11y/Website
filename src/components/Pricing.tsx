@@ -33,24 +33,26 @@ const UseCases: React.FC = () => {
     ];
 
     return (
-        <section className="py-24 bg-[#030712] overflow-hidden">
-            <div className="container mx-auto px-5 mb-16 max-w-7xl">
+        <section className="py-20 sm:py-28 bg-[#F4F7EE] overflow-hidden relative select-none" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            <div className="absolute -top-24 left-1/3 w-[560px] h-[280px] rounded-full pointer-events-none opacity-40" style={{ background: 'radial-gradient(ellipse at center, #E3EDE0 0%, transparent 70%)', filter: 'blur(56px)' }} />
+            <div className="container mx-auto px-5 mb-14 max-w-7xl relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-start gap-10">
                     <div className="max-w-2xl">
-                        <div className="inline-block px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-gray-300 text-sm font-medium mb-6">
-                            More Use Cases
+                        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#E3EDE0] border border-[#D3E2CF] shadow-xs mb-4">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#2D452C] animate-pulse" />
+                            <span className="text-[12px] sm:text-[13px] font-semibold text-[#2D452C] tracking-tight">More Use Cases</span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+                        <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-[800] text-[#141912] leading-[1.08] tracking-[-0.035em]">
                             AI Agents Built for <br />
-                            <span className="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">Enterprise Brilliance</span>
+                            <span className="text-[#003D2B]">Enterprise Brilliance</span>
                         </h2>
                     </div>
-                    <div className="max-w-xl text-gray-400 text-lg leading-relaxed">
-                        <p className="mb-6">
-                            Businesses are crippled with high operational costs, decreasing employee productivity, operational challenges, poor customer experience, mediocre data utilization, security vulnerabilities, and limited scalability.
+                    <div className="max-w-xl text-[#4E5B49] text-base sm:text-lg leading-relaxed">
+                        <p className="mb-4">
+                            Businesses are crippled with high operational costs, manual bottlenecks, poor customer response times, and limited scalability.
                         </p>
                         <p>
-                            Transform your enterprise challenges into stories of efficiency, accuracy, and success with AI agents.
+                            Transform your enterprise workflows into stories of efficiency, speed, and precision with custom autonomous AI agents.
                         </p>
                     </div>
                 </div>
@@ -59,31 +61,37 @@ const UseCases: React.FC = () => {
             {/* Marquee Rows */}
             <div className="relative w-full">
                 {/* Gradient Masks */}
-                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#030712] to-transparent z-10"></div>
-                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#030712] to-transparent z-10"></div>
+                <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#F4F7EE] to-transparent z-10 pointer-events-none"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#F4F7EE] to-transparent z-10 pointer-events-none"></div>
 
                 {/* Row 1 */}
-                <div className="flex gap-6 mb-6 animate-marquee whitespace-nowrap">
+                <div className="flex gap-5 mb-5 animate-marquee whitespace-nowrap py-1">
                     {[...useCases, ...useCases].map((item, index) => (
                         <div
                             key={`row1-${index}`}
-                            className="inline-block w-[400px] bg-white/5 border border-white/10 rounded-xl p-8 hover:bg-white/10 transition-colors whitespace-normal flex-shrink-0"
+                            className="inline-block w-[360px] bg-white border border-[#D5E1CE] shadow-[0_4px_16px_rgba(21,24,17,0.04)] rounded-[22px] p-7 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(0,61,43,0.12)] transition-all duration-300 whitespace-normal flex-shrink-0"
                         >
-                            <h3 className="text-xl font-bold text-white mb-4">{item.title}</h3>
-                            <p className="text-gray-400 leading-relaxed">{item.description}</p>
+                            <div className="w-9 h-9 rounded-xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center mb-4">
+                                <i className="fas fa-sparkles text-[#003D2B] text-xs" />
+                            </div>
+                            <h3 className="text-base font-[800] text-[#141912] mb-2 tracking-tight">{item.title}</h3>
+                            <p className="text-[#4E5B49] leading-relaxed text-sm">{item.description}</p>
                         </div>
                     ))}
                 </div>
 
                 {/* Row 2 (Reverse) */}
-                <div className="flex gap-6 animate-marquee-reverse whitespace-nowrap">
-                    {[...useCases.reverse(), ...useCases].map((item, index) => (
+                <div className="flex gap-5 animate-marquee-reverse whitespace-nowrap py-1">
+                    {[...useCases.slice().reverse(), ...useCases].map((item, index) => (
                         <div
                             key={`row2-${index}`}
-                            className="inline-block w-[400px] bg-white/5 border border-white/10 rounded-xl p-8 hover:bg-white/10 transition-colors whitespace-normal flex-shrink-0"
+                            className="inline-block w-[360px] bg-white border border-[#D5E1CE] shadow-[0_4px_16px_rgba(21,24,17,0.04)] rounded-[22px] p-7 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(0,61,43,0.12)] transition-all duration-300 whitespace-normal flex-shrink-0"
                         >
-                            <h3 className="text-xl font-bold text-white mb-4">{item.title}</h3>
-                            <p className="text-gray-400 leading-relaxed">{item.description}</p>
+                            <div className="w-9 h-9 rounded-xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center mb-4">
+                                <i className="fas fa-bolt text-[#003D2B] text-xs" />
+                            </div>
+                            <h3 className="text-base font-[800] text-[#141912] mb-2 tracking-tight">{item.title}</h3>
+                            <p className="text-[#4E5B49] leading-relaxed text-sm">{item.description}</p>
                         </div>
                     ))}
                 </div>

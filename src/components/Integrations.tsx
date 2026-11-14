@@ -81,26 +81,29 @@ const Integrations: React.FC = () => {
     ];
 
     return (
-        <section ref={sectionRef} className="py-32 relative overflow-hidden bg-[#030712]">
-            {/* Background Glows */}
-            <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-indigo-500/5 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none"></div>
-            <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none"></div>
+        <section ref={sectionRef} className="py-24 sm:py-32 relative overflow-hidden bg-[#F4F7EE] select-none" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            {/* Background Rings and Ambient Glow */}
+            <div className="absolute top-1/2 left-1/4 w-96 h-96 rounded-full pointer-events-none opacity-40" style={{ background: 'radial-gradient(circle, #E3EDE0 0%, transparent 70%)', filter: 'blur(90px)' }} />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] rounded-full border border-[#D5E1CE] pointer-events-none opacity-60" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[640px] rounded-full border border-dashed border-[#CCD8C3] pointer-events-none opacity-60" />
 
             <div className="container mx-auto px-5 max-w-7xl relative z-10">
                 {/* Central Content */}
                 <div className="text-center max-w-2xl mx-auto relative z-20">
-                    <div className="inline-block px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-gray-300 text-sm font-medium mb-6">
-                        Integrations
+                    <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#E3EDE0] border border-[#D3E2CF] shadow-xs mb-4">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#2D452C] animate-pulse" />
+                        <span className="text-[12px] sm:text-[13px] font-semibold text-[#2D452C] tracking-tight">Integrations</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+                    <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-[800] mb-5 text-[#141912] tracking-[-0.035em]">
                         Enterprise-Ready <br />
-                        <span className="bg-gradient-to-b from-blue-200 to-blue-500 bg-clip-text text-transparent">Integrations</span>
+                        <span className="text-[#003D2B]">Integrations</span>
                     </h2>
-                    <p className="text-gray-400 text-lg mb-10 leading-relaxed">
+                    <p className="text-[#4E5B49] text-base sm:text-lg mb-8 leading-relaxed">
                         Seamlessly connect your enterprise AI Agents with 100+ tools and software.
                     </p>
-                    <Link to="/platform" className="inline-block px-8 py-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all text-white font-medium">
-                        Explore All Integrations
+                    <Link to="/platform" className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#003D2B] hover:bg-[#022D20] text-white text-sm font-bold shadow-[0_12px_28px_rgba(0,61,43,0.30)] hover:shadow-[0_16px_36px_rgba(0,61,43,0.40)] hover:scale-105 active:scale-100 transition-all">
+                        <span>Explore All Integrations</span>
+                        <i className="fas fa-arrow-right text-xs text-white" />
                     </Link>
                 </div>
 
@@ -109,7 +112,7 @@ const Integrations: React.FC = () => {
                     {integrationItems.map((item, index) => (
                         <div
                             key={index}
-                            className={`absolute flex items-center justify-center rounded-full bg-[#0B0F19] border border-white/5 shadow-2xl p-4 ${item.size} transition-all duration-1000 ease-out`}
+                            className={`absolute flex items-center justify-center rounded-[1.4rem] bg-white border border-[#D5E1CE] shadow-[0_12px_32px_rgba(21,24,17,0.08)] p-4 ${item.size} transition-all duration-1000 ease-out hover:shadow-[0_20px_40px_rgba(0,61,43,0.18)]`}
                             style={{
                                 top: item.top,
                                 left: item.left,
@@ -123,7 +126,7 @@ const Integrations: React.FC = () => {
                                 <img
                                     src={item.src}
                                     alt="Integration Logo"
-                                    className="w-full h-full object-contain opacity-90 hover:opacity-100 transition-opacity"
+                                    className="w-full h-full object-contain"
                                 />
                             </div>
                         </div>
@@ -135,7 +138,7 @@ const Integrations: React.FC = () => {
                     {integrationItems.map((item, index) => (
                         <div
                             key={index}
-                            className={`flex items-center justify-center aspect-square rounded-2xl bg-[#0B0F19] border border-white/5 p-3 transition-all duration-700 ease-out`}
+                            className={`flex items-center justify-center aspect-square rounded-2xl bg-white border border-[#D5E1CE] shadow-xs p-3 transition-all duration-700 ease-out`}
                             style={{
                                 opacity: isVisible ? 1 : 0,
                                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -145,7 +148,7 @@ const Integrations: React.FC = () => {
                             <img
                                 src={item.src}
                                 alt="Integration Logo"
-                                className="w-full h-full object-contain opacity-90"
+                                className="w-full h-full object-contain"
                             />
                         </div>
                     ))}

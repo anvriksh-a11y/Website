@@ -14,18 +14,19 @@ import Article from './pages/Article';
 import Whitepaper from './pages/resources/Whitepaper';
 import WhatsAppBot from './components/WhatsAppBot';
 import AnalyticsTracker from './components/AnalyticsTracker';
-
 import ScrollToTop from './components/ScrollToTop';
+import AmbientBackground from './components/AmbientBackground';
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <AnalyticsTracker />
-      <div className="min-h-screen bg-bg-color text-text-main font-inter selection:bg-indigo-500/30">
-        <div className="background-glow"></div>
+      <div className="min-h-screen bg-[#F4F7EE] text-[#1A130E] font-inter selection:bg-[#003D2B]/15 relative">
+        {/* ScrollProgress removed to eliminate the top orange indicator */}
+        <AmbientBackground variant="light" />
         <Navbar />
-        <main>
+        <main className="relative z-[1]">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/gen-ai" element={<GenAI />} />

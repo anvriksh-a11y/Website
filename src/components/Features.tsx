@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Reveal from './Reveal';
 
 const Features: React.FC = () => {
     const [messages, setMessages] = useState<Array<{ text: string; isUser: boolean; id: number }>>([
@@ -40,160 +41,111 @@ const Features: React.FC = () => {
     }, []);
 
     return (
-        <>
+        <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }} className="select-none">
             {/* Specialized Agents Horizontal Marquee Section */}
-            <section className="py-24 bg-[#030712] relative overflow-hidden border-b border-white/5">
-                {/* Section Glow Background */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none"></div>
+            <section className="py-20 sm:py-28 bg-[#F4F7EE] relative overflow-hidden border-b border-[#D5E1CE]">
+                {/* Section Soft Glow */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[420px] rounded-full pointer-events-none opacity-40" style={{ background: 'radial-gradient(ellipse at center, #E3EDE0 0%, transparent 70%)', filter: 'blur(60px)' }} />
 
                 <div className="container mx-auto px-5 max-w-7xl relative z-10">
                     <div className="flex flex-col lg:flex-row gap-16 items-center">
                         {/* Left Content */}
-                        <div className="flex-1 lg:max-w-md">
-                            <div className="inline-block px-4 py-1.5 bg-slate-800/50 border border-white/10 rounded-full text-slate-200 text-sm font-normal mb-6 backdrop-blur-sm">
-                                Agentic Ecosystem
+                        <Reveal variant="left" duration={800} className="flex-1 lg:max-w-md">
+                            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#E3EDE0] border border-[#D3E2CF] shadow-xs mb-4">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#2D452C] animate-pulse" />
+                                <span className="text-[12px] sm:text-[13px] font-semibold text-[#2D452C] tracking-tight">
+                                    Agentic Ecosystem
+                                </span>
                             </div>
 
-                            <h2 className="text-4xl md:text-5xl font-semibold leading-tight mb-6 bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent tracking-tight">
+                            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-[800] text-[#141912] leading-[1.08] mb-6 tracking-[-0.035em]">
                                 Specialized Agents <br />
-                                <span className="text-blue-400">for Every Task</span>
+                                <span className="text-[#003D2B]">for Every Task</span>
                             </h2>
-                            <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+                            <p className="text-base sm:text-lg text-[#4E5B49] mb-8 leading-relaxed">
                                 From voice calls to social outreach, our ecosystem of specialized agents
                                 is designed to automate your most time-consuming workflows with precision.
                             </p>
-                            <Link to="/company/contact-us" className="px-8 py-4 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium transition-all group flex items-center gap-2 w-fit">
-                                Explore Solutions
-                                <i className="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                            <Link to="/company/contact-us" className="px-8 py-3.5 rounded-full bg-[#003D2B] hover:bg-[#022D20] text-white text-sm font-bold shadow-[0_12px_28px_rgba(0,61,43,0.30)] hover:shadow-[0_16px_36px_rgba(0,61,43,0.40)] hover:scale-105 active:scale-100 transition-all group flex items-center gap-2.5 w-fit">
+                                <span>Explore Solutions</span>
+                                <i className="fas fa-arrow-right group-hover:translate-x-1 transition-transform text-white text-xs"></i>
                             </Link>
-                        </div>
+                        </Reveal>
 
                         {/* Right Scrollable Container */}
                         <div className="flex-1 min-w-0 relative group overflow-hidden">
                             {/* Gradient Masks */}
-                            <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-[#030712] to-transparent z-20 pointer-events-none"></div>
-                            <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[#030712] to-transparent z-20 pointer-events-none"></div>
+                            <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-[#F4F7EE] to-transparent z-20 pointer-events-none"></div>
+                            <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-[#F4F7EE] to-transparent z-20 pointer-events-none"></div>
 
                             {/* Marquee Wrapper */}
                             <div 
-                                className="flex gap-6 animate-marquee-horizontal hover:[animation-play-state:paused] w-max"
+                                className="flex gap-5 animate-marquee-horizontal hover:[animation-play-state:paused] w-max py-2"
                             >
                                 {[
                                     {
                                         title: "Enterprise RAG AI",
                                         desc: "Advanced RAG models grounded in your private business documents for highly accurate, contextual responses.",
                                         icon: "fas fa-database",
-                                        color: "text-blue-400",
-                                        bg: "bg-blue-500/10",
-                                        border: "border-blue-500/20"
                                     },
                                     {
                                         title: "Voice AI Agent",
                                         desc: "Human-like voice agents for inbound customer support and outbound sales calls with low-latency streaming.",
                                         icon: "fas fa-microphone-alt",
-                                        color: "text-purple-400",
-                                        bg: "bg-purple-500/10",
-                                        border: "border-purple-500/20"
                                     },
                                     {
                                         title: "Sales Pipeline AI",
                                         desc: "End-to-end LinkedIn and Email automation that identifies, nurtures, and qualifies leads autonomously.",
                                         icon: "fas fa-chart-line",
-                                        color: "text-emerald-400",
-                                        bg: "bg-emerald-500/10",
-                                        border: "border-emerald-500/20"
                                     },
                                     {
                                         title: "Agentic SEO Hub",
                                         desc: "Continuous SEO engineering that optimizes site performance, metadata, and keywords for dominant rankings.",
                                         icon: "fas fa-search-dollar",
-                                        color: "text-amber-400",
-                                        bg: "bg-amber-500/10",
-                                        border: "border-amber-500/20"
                                     },
                                     {
                                         title: "CRM Calling Agent",
                                         desc: "Autonomous voice agent that handles outbound sales calls, qualifies leads, and updates CRM in real-time.",
                                         icon: "fas fa-phone-volume",
-                                        color: "text-blue-400",
-                                        bg: "bg-blue-500/10",
-                                        border: "border-blue-500/20"
                                     },
                                     {
                                         title: "LinkedIn Automation",
                                         desc: "Intelligent networking bot that identifies prospects, sends personalized connection requests, and manages follow-ups.",
                                         icon: "fab fa-linkedin",
-                                        color: "text-blue-500",
-                                        bg: "bg-blue-600/10",
-                                        border: "border-blue-600/20"
                                     },
                                     {
                                         title: "WhatsApp Booking",
                                         desc: "24/7 scheduling assistant that converses with clients on WhatsApp to book, reschedule, and confirm appointments.",
                                         icon: "fab fa-whatsapp",
-                                        color: "text-green-400",
-                                        bg: "bg-green-500/10",
-                                        border: "border-green-500/20"
                                     },
                                     {
                                         title: "Blockchain FTP",
                                         desc: "Secure, decentralized file transfer protocol powered by blockchain technology for immutable data storage.",
                                         icon: "fas fa-cube",
-                                        color: "text-indigo-400",
-                                        bg: "bg-indigo-500/10",
-                                        border: "border-indigo-500/20"
-                                    },
-                                    {
-                                        title: "Fake Video Analyzer",
-                                        desc: "Advanced AI tool that detects deepfakes and manipulated video content with high precision.",
-                                        icon: "fas fa-video-slash",
-                                        color: "text-red-400",
-                                        bg: "bg-red-500/10",
-                                        border: "border-red-500/20"
-                                    },
-                                    {
-                                        title: "Earthquake Prediction",
-                                        desc: "Machine learning models that analyze seismic data to predict earthquake risks and alert communities.",
-                                        icon: "fas fa-globe-americas",
-                                        color: "text-orange-400",
-                                        bg: "bg-orange-500/10",
-                                        border: "border-orange-500/20"
                                     },
                                     {
                                         title: "Business Web Builder",
                                         desc: "Autonomous agent that designs, builds, and deploys professional business websites in minutes.",
                                         icon: "fas fa-laptop-code",
-                                        color: "text-cyan-400",
-                                        bg: "bg-cyan-500/10",
-                                        border: "border-cyan-500/20"
                                     },
                                     // Duplicates for seamless loop
                                     {
                                         title: "Enterprise RAG AI",
                                         desc: "Advanced RAG models grounded in your private business documents for highly accurate, contextual responses.",
                                         icon: "fas fa-database",
-                                        color: "text-blue-400",
-                                        bg: "bg-blue-500/10",
-                                        border: "border-blue-500/20"
                                     },
                                     {
                                         title: "Voice AI Agent",
                                         desc: "Human-like voice agents for inbound customer support and outbound sales calls with low-latency streaming.",
                                         icon: "fas fa-microphone-alt",
-                                        color: "text-purple-400",
-                                        bg: "bg-purple-500/10",
-                                        border: "border-purple-500/20"
                                     }
                                 ].map((project, idx) => (
-                                    <div key={idx} className={`flex-shrink-0 w-[300px] md:w-[350px] p-8 rounded-2xl bg-slate-900/40 backdrop-blur-md border border-white/10 hover:border-white/20 hover:bg-slate-900/60 transition-all duration-300 group cursor-pointer relative overflow-hidden`}>
-                                        {/* Hover Glow Effect */}
-                                        <div className={`absolute inset-0 bg-gradient-to-br ${project.bg} opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none`}></div>
-                                        
-                                        <div className={`relative z-10 w-14 h-14 rounded-xl ${project.bg} border border-white/5 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all`}>
-                                            <i className={`${project.icon} text-2xl ${project.color}`}></i>
+                                    <div key={idx} className="flex-shrink-0 w-[290px] md:w-[330px] p-7 rounded-[22px] bg-white border border-[#D5E1CE] shadow-[0_4px_16px_rgba(21,24,17,0.04)] group cursor-pointer relative overflow-hidden hover:-translate-y-1.5 transition-all duration-300 hover:shadow-[0_16px_36px_rgba(0,61,43,0.12)]">
+                                        <div className="relative z-10 w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                                            <i className={`${project.icon} text-lg text-[#003D2B]`}></i>
                                         </div>
-                                        <h3 className="text-2xl font-semibold text-white mb-4 leading-tight relative z-10">{project.title}</h3>
-                                        <p className="text-gray-400 leading-relaxed text-sm relative z-10">{project.desc}</p>
+                                        <h3 className="text-[17px] font-[800] text-[#141912] group-hover:text-[#003D2B] mb-2 leading-tight relative z-10 tracking-tight transition-colors">{project.title}</h3>
+                                        <p className="text-[#4E5B49] leading-relaxed text-[13.5px] relative z-10">{project.desc}</p>
                                     </div>
                                 ))}
                             </div>
@@ -223,60 +175,66 @@ const Features: React.FC = () => {
             </section>
 
             {/* Main Features Section */}
-            <section className="py-24 relative" id="features">
+            <section className="py-20 sm:py-28 bg-[#F4F7EE] relative" id="features">
                 <div className="container mx-auto px-5 max-w-7xl">
                     {/* Header Section */}
-                    <div className="mb-8">
-                        <span className="inline-block px-4 py-1.5 bg-slate-800/50 border border-white/10 rounded-full text-slate-200 text-sm font-normal backdrop-blur-sm">
-                            Features
-                        </span>
-                    </div>
+                    <Reveal variant="up" duration={700}>
+                        <div className="mb-6">
+                            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#E3EDE0] border border-[#D3E2CF] shadow-xs">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#2D452C] animate-pulse" />
+                                <span className="text-[12px] sm:text-[13px] font-semibold text-[#2D452C] tracking-tight">Features</span>
+                            </span>
+                        </div>
+                    </Reveal>
 
                     {/* Main Content Grid */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                         {/* Left Side - Title and Chat Interface */}
-                        <div className="space-y-8">
+                        <Reveal variant="left" duration={800} className="space-y-8">
                             {/* Title */}
                             <div>
-                                <h2 className="text-4xl md:text-5xl font-semibold leading-tight mb-6 bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent tracking-tight">
+                                <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-[800] text-[#141912] leading-[1.08] mb-6 tracking-[-0.035em]">
                                     Empower Your Teams with AI Agents Designed to Think, Learn, and Adapt
                                 </h2>
                             </div>
 
                             {/* Chat Interface */}
-                            <div className="relative pt-12">
-                                <div className="relative rounded-2xl overflow-hidden border border-blue-500/30 shadow-[0_0_50px_rgba(59,130,246,0.3)]">
-                                    {/* Gradient Background */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-blue-600/10 to-transparent"></div>
-
+                            <div className="relative pt-6">
+                                <div className="absolute top-0 left-6 z-10 bg-[#E3EDE0] border border-[#D3E2CF] rounded-full px-3.5 py-1 text-[11px] font-bold text-[#2D452C] flex items-center gap-2 shadow-xs">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[#2D452C] animate-pulse" /> Live agent demo
+                                </div>
+                                <div className="relative rounded-[22px] overflow-hidden border border-[#D5E1CE] shadow-[0_16px_40px_rgba(21,24,17,0.08)] bg-white">
                                     {/* Chat Container */}
-                                    <div className="relative bg-slate-900/90 backdrop-blur-sm p-6">
+                                    <div className="p-6">
                                         {/* Header */}
-                                        <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+                                        <div className="flex items-center justify-between mb-5 pb-4 border-b border-[#EAEFE5]">
                                             <div className="flex items-center gap-3">
-                                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                                                    <i className="fas fa-user text-white text-sm"></i>
+                                                <div className="w-9 h-9 rounded-full bg-[#003D2B] flex items-center justify-center">
+                                                    <i className="fas fa-robot text-white text-xs"></i>
                                                 </div>
-                                                <span className="font-semibold text-white">ANVRiksh's AI</span>
+                                                <div>
+                                                    <span className="font-bold text-[#141912] text-sm block">ANVRiksh AI Assistant</span>
+                                                    <span className="text-[11px] text-[#2D452C] font-semibold">Online</span>
+                                                </div>
                                             </div>
-                                            <i className="fas fa-history text-gray-400"></i>
+                                            <i className="fas fa-ellipsis-h text-[#4E5B49]"></i>
                                         </div>
 
-                                        {/* Chat Messages - Fixed Height with Scroll */}
-                                        <div className="space-y-4 mb-6 h-[300px] overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500/20 scrollbar-track-transparent">
+                                        {/* Chat Messages */}
+                                        <div className="space-y-3.5 mb-5 h-[280px] overflow-y-auto pr-1">
                                             {messages.map((message) => (
                                                 <div
                                                     key={message.id}
-                                                    className={`animate-fadeIn ${message.isUser ? '' : 'flex justify-start'}`}
+                                                    className={`animate-fadeIn flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
                                                 >
                                                     {message.isUser ? (
-                                                        <div className="inline-block bg-blue-500 text-white px-4 py-2 rounded-2xl rounded-tl-sm">
+                                                        <div className="bg-[#003D2B] text-white px-4 py-2 rounded-2xl rounded-tr-xs text-sm font-medium shadow-xs">
                                                             {message.text}
                                                         </div>
                                                     ) : (
-                                                        <div className="border border-blue-400/50 bg-slate-800/50 px-4 py-3 rounded-lg inline-block max-w-[85%]">
-                                                            <div className="flex items-start gap-2 text-gray-300 text-sm">
-                                                                <i className="fas fa-arrow-right text-blue-400 mt-1"></i>
+                                                        <div className="border border-[#D5E1CE] bg-[#F4F7EE] px-4 py-2.5 rounded-2xl rounded-tl-xs max-w-[85%] text-sm text-[#141912]">
+                                                            <div className="flex items-start gap-2">
+                                                                <i className="fas fa-check-circle text-[#2D452C] mt-1 text-xs"></i>
                                                                 <span>{message.text}</span>
                                                             </div>
                                                         </div>
@@ -286,74 +244,72 @@ const Features: React.FC = () => {
                                         </div>
 
                                         {/* Input Field */}
-                                        <div className="flex gap-3 items-center bg-white rounded-full p-2 shadow-lg">
+                                        <div className="flex gap-2 items-center bg-[#F4F7EE] border border-[#D5E1CE] rounded-full p-1.5">
                                             <input
                                                 type="text"
-                                                placeholder="Type your message..."
-                                                className="flex-1 px-4 py-2 bg-transparent text-gray-800 outline-none"
+                                                placeholder="Ask anything..."
+                                                className="flex-1 px-4 py-1.5 bg-transparent text-[#141912] outline-none text-sm placeholder:text-[#4E5B49]"
                                                 readOnly
                                             />
-                                            <button className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white hover:bg-blue-600 transition-colors">
-                                                <i className="fas fa-paper-plane"></i>
+                                            <button className="w-9 h-9 rounded-full bg-[#003D2B] hover:bg-[#022D20] flex items-center justify-center text-white transition-all shadow-xs">
+                                                <i className="fas fa-paper-plane text-xs"></i>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </Reveal>
 
                         {/* Right Side - Description and Features */}
-                        <div className="space-y-6">
-                            {/* Description */}
+                        <Reveal variant="right" duration={800} delay={120} className="space-y-6">
                             <div>
-                                <p className="text-gray-400 text-base leading-relaxed">
+                                <p className="text-[#4E5B49] text-base leading-relaxed">
                                     Leverage our AI agent studio to build robust AI agents tailored to your business data that can autonomously handle complex tasks, adapt to real-time insights, and collaborate with other agents for cohesive automation across all levels of your enterprise.
                                 </p>
                             </div>
 
                             {/* Features Section */}
-                            <div className="mt-16 pt-20 pl-6 relative">
-                                {/* Gradient Border Line */}
-                                <div className="absolute left-0 top-20 bottom-0 w-0.5 bg-gradient-to-b from-white/10 via-white/60 to-white/10"></div>
+                            <div className="mt-8 pl-4 relative">
+                                <div className="absolute left-0 top-2 bottom-2 w-0.5 bg-[#D5E1CE]"></div>
 
-                                <h3 className="text-xl font-normal text-white mb-6">
+                                <h3 className="text-xl font-[800] text-[#141912] mb-6 tracking-tight">
                                     Enterprise AI Agents Tailored to Your Business, Data, and Workflows
                                 </h3>
 
                                 {/* Features List */}
-                                <div className="space-y-6">
+                                <div className="space-y-4">
                                     {/* Knowledge Management */}
-                                    <div className="flex gap-4">
-                                        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center">
-                                            <i className="fas fa-lightbulb text-blue-400 text-xl"></i>
+                                    <div className="group flex gap-4 bg-white border border-[#D5E1CE] shadow-xs rounded-2xl p-5 hover:-translate-y-0.5 hover:shadow-md transition-all">
+                                        <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center group-hover:scale-110 transition-transform">
+                                            <i className="fas fa-lightbulb text-[#003D2B] text-base"></i>
                                         </div>
                                         <div>
-                                            <h4 className="text-lg font-medium text-white mb-2">Knowledge Management</h4>
-                                            <p className="text-gray-400 text-sm">
+                                            <h4 className="text-base font-bold text-[#141912] mb-1.5">Knowledge Management</h4>
+                                            <p className="text-[#4E5B49] text-sm leading-relaxed">
                                                 Centralize and manage your enterprise knowledge with agents that curate, organize, and retrieve information effortlessly.
                                             </p>
                                         </div>
                                     </div>
 
                                     {/* Custom Workflows */}
-                                    <div className="flex gap-4">
-                                        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center">
-                                            <i className="fas fa-cogs text-blue-400 text-xl"></i>
+                                    <div className="group flex gap-4 bg-white border border-[#D5E1CE] shadow-xs rounded-2xl p-5 hover:-translate-y-0.5 hover:shadow-md transition-all">
+                                        <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center group-hover:scale-110 transition-transform">
+                                            <i className="fas fa-cogs text-[#003D2B] text-base"></i>
                                         </div>
                                         <div>
-                                            <h4 className="text-lg font-medium text-white mb-2">Custom Workflows</h4>
-                                            <p className="text-gray-400 text-sm">
+                                            <h4 className="text-base font-bold text-[#141912] mb-1.5">Custom Workflows</h4>
+                                            <p className="text-[#4E5B49] text-sm leading-relaxed">
                                                 Design tailored workflows with AI agents that adapt to your unique business needs and data, ensuring maximum efficiency and flexibility.
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </Reveal>
                     </div>
                 </div>
             </section>
-        </>
+        </div>
     );
 };
 

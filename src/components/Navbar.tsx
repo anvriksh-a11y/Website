@@ -1,119 +1,309 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+
+interface ServiceDropdownItem {
+  label: string;
+  to: string;
+  icon: string;
+}
+
+const serviceItems: ServiceDropdownItem[] = [
+  { label: 'Calling Agent', to: '/gen-ai', icon: 'fas fa-phone-alt' },
+  { label: 'Website Development', to: '/software-solutions', icon: 'fas fa-laptop-code' },
+  { label: 'Gen AI', to: '/gen-ai', icon: 'fas fa-brain' },
+  { label: 'Agentic AI', to: '/#services-section', icon: 'fas fa-network-wired' },
+  { label: 'Data Security', to: '/platform', icon: 'fas fa-shield-alt' },
+];
 
 const Navbar: React.FC = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    const handleMouseEnter = (menu: string) => {
-        setActiveDropdown(menu);
-    };
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 15);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-    const handleMouseLeave = () => {
-        setActiveDropdown(null);
-    };
+  useEffect(() => {
+    setIsMenuOpen(false);
+    setIsServicesOpen(false);
+    setIsMobileServicesOpen(false);
+  }, [location.pathname]);
 
-    return (
-        <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
-            <nav className="w-full max-w-5xl bg-gray-950/80 backdrop-blur-md border border-white/10 rounded-2xl px-6 py-3 flex justify-between items-center shadow-lg">
-                <Link to="/" className="flex items-center gap-2.5 font-bold text-xl tracking-tighter">
-                    <img src="/logo1.png" alt="ANVRiksh Logo" className="w-48 h-14 rounded-md object-contain" />
-                </Link>
+  const handleDropdownEnter = () => {
+    if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
+    setIsServicesOpen(true);
+  };
 
-                {/* Desktop Menu */}
-                <ul className="hidden md:flex gap-8 items-center">
-                    <li><Link to="/" className="text-gray-400 hover:text-white text-sm transition-colors">Agentic AI</Link></li>
-                    <li><Link to="/gen-ai" className="text-gray-400 hover:text-white text-sm transition-colors">Gen AI</Link></li>
-                    <li><Link to="/software-solutions" className="text-gray-400 hover:text-white text-sm transition-colors">Software Solutions</Link></li>
-                    <li><Link to="/platform" className="text-gray-400 hover:text-white text-sm transition-colors">Platform</Link></li>
+  const handleDropdownLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setIsServicesOpen(false);
+    }, 150);
+  };
 
-                    {/* Resources Dropdown */}
-                    <li
-                        className="relative"
-                        onMouseEnter={() => handleMouseEnter('resources')}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        <button className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-1">
-                            Resources <i className="fas fa-chevron-down text-xs"></i>
-                        </button>
-                        {activeDropdown === 'resources' && (
-                            <div className="absolute top-full left-0 pt-4 w-48">
-                                <div className="bg-gray-900 border border-white/10 rounded-lg shadow-xl py-2 flex flex-col">
-                                    <Link to="/resources/case-studies" className="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5">Case Studies</Link>
-                                    <Link to="/resources/blogs" className="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5">Blogs</Link>
-                                    <Link to="/resources/ebooks" className="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5">E-books</Link>
-                                    <Link to="/resources/whitepaper" className="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5">Whitepaper</Link>
-                                </div>
-                            </div>
-                        )}
-                    </li>
+  return (
+    <div className="fixed top-0 inset-x-0 z-50 flex justify-center px-3 sm:px-6 pt-3 sm:pt-4 pointer-events-none select-none">
+      
+      {/* ————————————————— MODERN GEN-Z FLOATING CAPSULE NAVBAR ————————————————— */}
+      <header
+        className={`pointer-events-auto w-full max-w-[900px] rounded-full transition-all duration-300 ease-out border bg-[#F4F7EE]/90 backdrop-blur-xl border-[#CCD8C3]/80 shadow-[0_8px_32px_rgba(20,25,18,0.08),0_1px_2px_rgba(20,25,18,0.04)] ${
+          scrolled
+            ? 'py-1.5 px-4 sm:px-6 shadow-[0_12px_36px_rgba(20,25,18,0.10),0_2px_4px_rgba(20,25,18,0.05)]'
+            : 'py-1.5 sm:py-2 px-4 sm:px-6'
+        }`}
+        style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+      >
+        <div className="flex items-center justify-between">
+          
+          {/* ————————————————— LEFT: PROMINENT ANVRIKSH LOGO ————————————————— */}
+          <Link 
+            to="/" 
+            className="flex items-center gap-2 group shrink-0 transition-transform duration-200 active:scale-95 py-0.5" 
+            aria-label="ANVRiksh home"
+          >
+            <img
+              src="/anvriksh_logo_clean.png"
+              alt="ANVRiksh"
+              className="h-9 sm:h-10.5 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-xs"
+            />
+          </Link>
 
-                    {/* Company Dropdown */}
-                    <li
-                        className="relative"
-                        onMouseEnter={() => handleMouseEnter('company')}
-                        onMouseLeave={handleMouseLeave}
-                    >
-                        <button className="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-1">
-                            Company <i className="fas fa-chevron-down text-xs"></i>
-                        </button>
-                        {activeDropdown === 'company' && (
-                            <div className="absolute top-full left-0 pt-4 w-48">
-                                <div className="bg-gray-900 border border-white/10 rounded-lg shadow-xl py-2 flex flex-col">
-                                    <Link to="/company/who-we-are" className="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5">Who We Are</Link>
-                                    <Link to="/company/contact-us" className="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5">Contact Us</Link>
-                                    {/* <Link to="/company/technical-partners" className="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5">Technical Partners</Link> */}
-                                </div>
-                            </div>
-                        )}
-                    </li>
-                </ul>
+          {/* ————————————————— CENTER: NAVIGATION ITEMS ————————————————— */}
+          <nav className="hidden md:flex items-center gap-1 lg:gap-1.5 p-1 rounded-full bg-[#EAEFE5]/50 border border-[#D5E1CE]/60">
+            
+            {/* 1. Platform */}
+            <Link
+              to="/platform"
+              className={`relative px-3.5 py-1.5 rounded-full text-[13px] font-semibold transition-all duration-200 ${
+                location.pathname === '/platform'
+                  ? 'text-[#003D2B] bg-white shadow-xs'
+                  : 'text-[#4E5B49] hover:text-[#141912] hover:bg-white/60'
+              }`}
+            >
+              Platform
+            </Link>
 
-                <div className="hidden md:flex gap-3">
-                    <Link to="/company/contact-us" className="flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm bg-indigo-500/10 text-indigo-400 border border-indigo-500/50 shadow-[0_0_15px_rgba(99,102,241,0.1)] hover:bg-indigo-500/20 hover:shadow-[0_0_25px_rgba(99,102,241,0.3)] hover:-translate-y-px transition-all">
-                        Book a Demo
-                    </Link>
-                </div>
-
-                {/* Mobile Menu Button */}
-                <button
-                    className="md:hidden text-white text-2xl"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+            {/* 2. Services Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={handleDropdownEnter}
+              onMouseLeave={handleDropdownLeave}
+            >
+              <button
+                onClick={() => setIsServicesOpen(!isServicesOpen)}
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13px] font-semibold transition-all duration-200 ${
+                  isServicesOpen || location.pathname === '/gen-ai' || location.pathname === '/software-solutions'
+                    ? 'text-[#003D2B] bg-white shadow-xs'
+                    : 'text-[#4E5B49] hover:text-[#141912] hover:bg-white/60'
+                }`}
+                aria-expanded={isServicesOpen}
+              >
+                <span>Services</span>
+                <svg
+                  className={`w-3 h-3 text-[#4E5B49] transition-transform duration-200 ${isServicesOpen ? 'rotate-180 text-[#003D2B]' : ''}`}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
-                    <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
-                </button>
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
 
-                {/* Mobile Menu Dropdown */}
-                {isMenuOpen && (
-                    <div className="absolute top-[70px] left-0 w-full bg-gray-950/95 border-b border-white/10 p-5 flex flex-col gap-4 md:hidden">
-                        <Link to="/" className="text-gray-400 hover:text-white" onClick={() => setIsMenuOpen(false)}>Agentic AI</Link>
-                        <Link to="/gen-ai" className="text-gray-400 hover:text-white" onClick={() => setIsMenuOpen(false)}>Gen AI</Link>
-                        <Link to="/software-solutions" className="text-gray-400 hover:text-white" onClick={() => setIsMenuOpen(false)}>Software Solutions</Link>
-                        <Link to="/platform" className="text-gray-400 hover:text-white" onClick={() => setIsMenuOpen(false)}>Platform</Link>
+              {/* Floating Dropdown Card */}
+              <div
+                className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 transition-all duration-200 z-50 ${
+                  isServicesOpen
+                    ? 'opacity-100 translate-y-0 pointer-events-auto visible'
+                    : 'opacity-0 -translate-y-2 pointer-events-none invisible'
+                }`}
+              >
+                <div className="w-56 rounded-[20px] p-2 bg-white/95 backdrop-blur-xl border border-[#D5E1CE] shadow-[0_16px_40px_rgba(20,25,18,0.12)] space-y-1">
+                  {serviceItems.map((item) => (
+                    <Link
+                      key={item.label}
+                      to={item.to}
+                      onClick={() => setIsServicesOpen(false)}
+                      className="flex items-center gap-3 px-3 py-2 rounded-xl text-[13px] font-semibold text-[#141912] hover:text-[#003D2B] hover:bg-[#F4F7EE] transition-all group"
+                    >
+                      <span className="w-7 h-7 rounded-lg bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center text-[#003D2B] group-hover:scale-110 group-hover:bg-[#003D2B] group-hover:text-white transition-all shrink-0">
+                        <i className={`${item.icon} text-xs`} />
+                      </span>
+                      <span>{item.label}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
 
-                        <div className="text-gray-400 font-medium">Resources</div>
-                        <div className="pl-4 flex flex-col gap-2">
-                            <Link to="/resources/case-studies" className="text-gray-500 hover:text-white text-sm" onClick={() => setIsMenuOpen(false)}>Case Studies</Link>
-                            <Link to="/resources/blogs" className="text-gray-500 hover:text-white text-sm" onClick={() => setIsMenuOpen(false)}>Blogs</Link>
-                            <Link to="/resources/ebooks" className="text-gray-500 hover:text-white text-sm" onClick={() => setIsMenuOpen(false)}>E-books</Link>
-                            <Link to="/resources/whitepaper" className="text-gray-500 hover:text-white text-sm" onClick={() => setIsMenuOpen(false)}>Whitepaper</Link>
-                        </div>
+            {/* 3. Blogs */}
+            <Link
+              to="/resources/blogs"
+              className={`relative px-3.5 py-1.5 rounded-full text-[13px] font-semibold transition-all duration-200 ${
+                location.pathname === '/resources/blogs'
+                  ? 'text-[#003D2B] bg-white shadow-xs'
+                  : 'text-[#4E5B49] hover:text-[#141912] hover:bg-white/60'
+              }`}
+            >
+              Blogs
+            </Link>
 
-                        <div className="text-gray-400 font-medium">Company</div>
-                        <div className="pl-4 flex flex-col gap-2">
-                            <Link to="/company/who-we-are" className="text-gray-500 hover:text-white text-sm" onClick={() => setIsMenuOpen(false)}>Who We Are</Link>
-                            <Link to="/company/contact-us" className="text-gray-500 hover:text-white text-sm" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
-                            {/* <Link to="/company/technical-partners" className="text-gray-500 hover:text-white text-sm">Technical Partners</Link> */}
-                        </div>
+            {/* 4. Company */}
+            <Link
+              to="/company/who-we-are"
+              className={`relative px-3.5 py-1.5 rounded-full text-[13px] font-semibold transition-all duration-200 ${
+                location.pathname === '/company/who-we-are'
+                  ? 'text-[#003D2B] bg-white shadow-xs'
+                  : 'text-[#4E5B49] hover:text-[#141912] hover:bg-white/60'
+              }`}
+            >
+              Company
+            </Link>
 
-                        <div className="flex flex-col gap-3 mt-4">
-                            <Link to="/company/contact-us" className="text-center py-2 bg-indigo-500/10 text-indigo-400 border border-indigo-500/50 rounded-lg" onClick={() => setIsMenuOpen(false)}>Book a Demo</Link>
-                        </div>
-                    </div>
-                )}
-            </nav>
-        </header>
-    );
+          </nav>
+
+          {/* ————————————————— RIGHT: GET IN TOUCH BUTTON ————————————————— */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <Link
+              to="/company/contact-us"
+              className="group relative inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full text-xs sm:text-[13px] font-bold text-white bg-[#003D2B] hover:bg-[#022D20] shadow-[0_4px_14px_rgba(0,61,43,0.22)] hover:shadow-[0_6px_20px_rgba(0,61,43,0.32)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
+            >
+              <span>Get in touch</span>
+              <svg 
+                className="w-3 h-3 text-white/90 transition-transform duration-200 group-hover:translate-x-0.5" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
+
+            {/* Mobile Menu Hamburger */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden w-8 h-8 rounded-full bg-[#EAEFE5] border border-[#D5E1CE] flex items-center justify-center text-[#141912] transition-transform active:scale-90"
+              aria-label="Toggle menu"
+              aria-expanded={isMenuOpen}
+            >
+              <span className="relative block w-3.5 h-2.5">
+                <span className={`absolute left-0 top-0 h-[1.5px] w-full bg-current rounded-full transition-all duration-300 ${isMenuOpen ? 'top-[4px] rotate-45' : ''}`} />
+                <span className={`absolute left-0 top-[4px] h-[1.5px] w-full bg-current rounded-full transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} />
+                <span className={`absolute left-0 top-[8px] h-[1.5px] w-full bg-current rounded-full transition-all duration-300 ${isMenuOpen ? 'top-[4px] -rotate-45' : ''}`} />
+              </span>
+            </button>
+          </div>
+
+        </div>
+
+        {/* ————————————————— MOBILE DROPDOWN FLOATING SHEET ————————————————— */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            isMenuOpen
+              ? 'max-h-[420px] opacity-100 pt-3 mt-2.5 border-t border-[#D5E1CE]/80'
+              : 'max-h-0 opacity-0 pointer-events-none'
+          }`}
+        >
+          <div className="flex flex-col gap-1 pb-2">
+            
+            {/* Mobile 1. Platform */}
+            <Link
+              to="/platform"
+              onClick={() => setIsMenuOpen(false)}
+              className="px-4 py-2 rounded-xl text-sm font-semibold text-[#141912] hover:bg-black/[0.04]"
+            >
+              Platform
+            </Link>
+
+            {/* Mobile 2. Services Collapsible */}
+            <div>
+              <button
+                onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                className="w-full flex items-center justify-between px-4 py-2 rounded-xl text-sm font-semibold text-[#141912] hover:bg-black/[0.04]"
+              >
+                <span>Services</span>
+                <svg
+                  className={`w-3.5 h-3.5 text-[#4E5B49] transition-transform duration-200 ${isMobileServicesOpen ? 'rotate-180' : ''}`}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+
+              {/* Sub-items */}
+              <div
+                className={`overflow-hidden transition-all duration-200 pl-4 space-y-1 ${
+                  isMobileServicesOpen ? 'max-h-60 opacity-100 mt-1 mb-2' : 'max-h-0 opacity-0'
+                }`}
+              >
+                {serviceItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-[#4E5B49] hover:text-[#003D2B] hover:bg-black/[0.04]"
+                  >
+                    <i className={`${item.icon} text-[10px] text-[#003D2B]`} />
+                    <span>{item.label}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile 3. Blogs */}
+            <Link
+              to="/resources/blogs"
+              onClick={() => setIsMenuOpen(false)}
+              className="px-4 py-2 rounded-xl text-sm font-semibold text-[#141912] hover:bg-black/[0.04]"
+            >
+              Blogs
+            </Link>
+
+            {/* Mobile 4. Company */}
+            <Link
+              to="/company/who-we-are"
+              onClick={() => setIsMenuOpen(false)}
+              className="px-4 py-2 rounded-xl text-sm font-semibold text-[#141912] hover:bg-black/[0.04]"
+            >
+              Company
+            </Link>
+
+            <div className="h-px bg-[#D5E1CE] my-1" />
+
+            <div className="pt-1 flex items-center justify-between px-2">
+              <Link
+                to="/company/contact-us"
+                onClick={() => setIsMenuOpen(false)}
+                className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold text-white bg-[#003D2B]"
+              >
+                <span>Get in touch</span>
+                <i className="fas fa-arrow-right text-[10px]" />
+              </Link>
+            </div>
+
+          </div>
+        </div>
+
+      </header>
+
+    </div>
+  );
 };
 
 export default Navbar;

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import Hero from '../components/Hero';
+import ClientWorkShowcase from '../components/ClientWorkShowcase';
+import OurServices from '../components/OurServices';
 import DashboardPreview from '../components/DashboardPreview';
 import Features from '../components/Features';
 import FeatureSplit from '../components/FeatureSplit';
@@ -96,11 +98,13 @@ const Home: React.FC = () => {
                 ogImage="/platform_hero.png"
             />
             <Hero />
+            <ClientWorkShowcase />
+            <OurServices />
             <DashboardPreview />
 
             <PlatformHighlight />
 
-            <div className="relative z-10 bg-[#030712]">
+            <div className="relative z-10 bg-[#F4F7EE]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                 <Features />
 
                 <FeatureSplit
@@ -110,33 +114,34 @@ const Home: React.FC = () => {
                 >
                     <div className="relative mt-4">
                         {/* Vertical Connecting Line */}
-                        <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-slate-700 to-transparent"></div>
+                        <div className="absolute left-6 top-2 bottom-2 w-px bg-gradient-to-b from-transparent via-[#2D452C]/30 to-transparent"></div>
 
-                        <div className="space-y-10 relative z-10">
+                        <div className="space-y-4 relative z-10">
                             {/* Feature 1 */}
-                            <div className="flex gap-6">
-                                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#0B0F19] border border-white/10 flex items-center justify-center relative z-10">
-                                    <i className="fas fa-network-wired text-blue-400 text-lg"></i>
+                            <div className="flex gap-4 bg-white border border-[#D5E1CE] shadow-xs rounded-2xl p-5 hover:-translate-y-0.5 hover:shadow-md transition-all group">
+                                <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
+                                    <i className="fas fa-network-wired text-[#003D2B] text-base"></i>
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-semibold text-white mb-2">Seamless Workflow Orchestration</h3>
-                                    <p className="text-gray-400 leading-relaxed text-sm">
+                                    <h3 className="text-base font-[800] text-[#141912] mb-1.5">Seamless Workflow Orchestration</h3>
+                                    <p className="text-[#4E5B49] leading-relaxed text-sm">
                                         With advanced reasoning capabilities, our agents can handle complex tasks, make informed decisions, and adapt to evolving scenarios.
                                     </p>
-                                    <Link to="/how-ai-agents-are-reshaping-small-businesses" className="inline-block mt-3 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors">
-                                        Read how AI agents are reshaping small businesses <i className="fas fa-arrow-right ml-1"></i>
+                                    <Link to="/how-ai-agents-are-reshaping-small-businesses" className="inline-flex items-center gap-1.5 mt-2.5 text-[#003D2B] hover:text-[#022D20] text-sm font-bold transition-colors">
+                                        <span>Read how AI agents are reshaping small businesses</span>
+                                        <i className="fas fa-arrow-right text-xs"></i>
                                     </Link>
                                 </div>
                             </div>
 
                             {/* Feature 2 */}
-                            <div className="flex gap-6">
-                                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#0B0F19] border border-white/10 flex items-center justify-center relative z-10">
-                                    <i className="fas fa-desktop text-blue-400 text-lg"></i>
+                            <div className="flex gap-4 bg-white border border-[#D5E1CE] shadow-xs rounded-2xl p-5 hover:-translate-y-0.5 hover:shadow-md transition-all group">
+                                <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
+                                    <i className="fas fa-desktop text-[#003D2B] text-base"></i>
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-semibold text-white mb-2">Cross-Platform AI-First Interface</h3>
-                                    <p className="text-gray-400 leading-relaxed text-sm">
+                                    <h3 className="text-base font-[800] text-[#141912] mb-1.5">Cross-Platform AI-First Interface</h3>
+                                    <p className="text-[#4E5B49] leading-relaxed text-sm">
                                         Deliver AI-first experiences through chat, AI-powered apps, or embedded interfaces within your existing ecosystem.
                                     </p>
                                 </div>
@@ -153,30 +158,30 @@ const Home: React.FC = () => {
                 >
                     <div className="relative mt-4">
                         {/* Vertical Connecting Line */}
-                        <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-slate-700 to-transparent"></div>
+                        <div className="absolute left-6 top-2 bottom-2 w-px bg-gradient-to-b from-transparent via-[#2D452C]/30 to-transparent"></div>
 
-                        <div className="space-y-10 relative z-10">
+                        <div className="space-y-4 relative z-10">
                             {/* Feature 1 */}
-                            <div className="flex gap-6">
-                                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#0B0F19] border border-white/10 flex items-center justify-center relative z-10">
-                                    <i className="fas fa-brain text-blue-400 text-lg"></i>
+                            <div className="flex gap-4 bg-white border border-[#D5E1CE] shadow-xs rounded-2xl p-5 hover:-translate-y-0.5 hover:shadow-md transition-all group">
+                                <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
+                                    <i className="fas fa-brain text-[#003D2B] text-base"></i>
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-semibold text-white mb-2">Adaptive Learning Engine</h3>
-                                    <p className="text-gray-400 leading-relaxed text-sm">
+                                    <h3 className="text-base font-[800] text-[#141912] mb-1.5">Adaptive Learning Engine</h3>
+                                    <p className="text-[#4E5B49] leading-relaxed text-sm">
                                         Agents continuously learn from interactions, refining their decision-making models to improve accuracy and efficiency over time.
                                     </p>
                                 </div>
                             </div>
 
                             {/* Feature 2 */}
-                            <div className="flex gap-6">
-                                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#0B0F19] border border-white/10 flex items-center justify-center relative z-10">
-                                    <i className="fas fa-database text-blue-400 text-lg"></i>
+                            <div className="flex gap-4 bg-white border border-[#D5E1CE] shadow-xs rounded-2xl p-5 hover:-translate-y-0.5 hover:shadow-md transition-all group">
+                                <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#E3EDE0] border border-[#D3E2CF] flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
+                                    <i className="fas fa-database text-[#003D2B] text-base"></i>
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-semibold text-white mb-2">Persistent Contextual Memory</h3>
-                                    <p className="text-gray-400 leading-relaxed text-sm">
+                                    <h3 className="text-base font-[800] text-[#141912] mb-1.5">Persistent Contextual Memory</h3>
+                                    <p className="text-[#4E5B49] leading-relaxed text-sm">
                                         Maintain deep context across long-running sessions and disparate data sources, ensuring every action is informed by the complete picture.
                                     </p>
                                 </div>
@@ -190,7 +195,7 @@ const Home: React.FC = () => {
                 <Pricing />
                 <Testimonials />
                 
-                <div className="container mx-auto px-6 max-w-5xl relative z-10 mt-10">
+                <div className="container mx-auto px-6 max-w-5xl relative z-10 mt-6">
                     <KeyTakeaways takeaways={[
                         "<strong>Enterprise Security:</strong> End-to-end data encryption and strict access controls for all autonomous agent workflows.",
                         "<strong>Measured Impact:</strong> AI orchestration reduces manual operational overhead by up to <strong>40%</strong> within the first quarter of deployment.",
