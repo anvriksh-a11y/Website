@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import Hero from '../components/Hero';
+import GTMPlatformPreview from '../components/GTMPlatformPreview';
 import ClientWorkShowcase from '../components/ClientWorkShowcase';
 import OurServices from '../components/OurServices';
 import DashboardPreview from '../components/DashboardPreview';
@@ -98,6 +99,7 @@ const Home: React.FC = () => {
                 ogImage="/platform_hero.png"
             />
             <Hero />
+            <GTMPlatformPreview />
             <ClientWorkShowcase />
             <OurServices />
             <DashboardPreview />
