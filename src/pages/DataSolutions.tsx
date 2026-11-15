@@ -145,7 +145,6 @@ const WHY_CHOOSE_US = [
 ];
 
 const DataSolutions: React.FC = () => {
-  const [selectedLayer, setSelectedLayer] = useState<'all' | 'sources' | 'store' | 'compute' | 'databricks' | 'medallion'>('all');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeApproachStep, setActiveApproachStep] = useState(0);
 
@@ -196,56 +195,6 @@ const DataSolutions: React.FC = () => {
 
     return () => observer.disconnect();
   }, []);
-
-  const architectureLayers = [
-    { id: 'all', label: 'All Architecture', icon: 'fas fa-globe' },
-    { id: 'sources', label: '1. Ingestion & Sources', icon: 'fas fa-database' },
-    { id: 'store', label: '2. OneLake Unified Store', icon: 'fas fa-cubes' },
-    { id: 'compute', label: '3. Serverless Compute & Fabric', icon: 'fas fa-microchip' },
-    { id: 'databricks', label: '4. Azure Databricks & AI', icon: 'fas fa-fire' },
-    { id: 'medallion', label: '5. Medallion Pipeline (Bronze/Silver/Gold)', icon: 'fas fa-layer-group' }
-  ];
-
-  const layerHighlights: Record<string, { title: string; desc: string; components: string[]; badge: string }> = {
-    all: {
-      title: 'Unified Microsoft Fabric & Azure Databricks Architecture',
-      desc: 'An end-to-end modern lakehouse platform combining Fabric serverless compute and OneLake with Databricks distributed PySpark and MLflow.',
-      components: ['Data Sources (Azure SQL, Snowflake, Dataverse)', 'OneLake Delta-Parquet Unified Storage', 'Fabric Real-Time & Synapse Engines', 'Azure Databricks PySpark & MLflow', 'Power BI DirectLake'],
-      badge: 'DREAM Lab Blueprint'
-    },
-    sources: {
-      title: 'Multi-Source Data Ingestion & Streaming',
-      desc: 'Ingestion from relational databases, cloud warehouses, IoT sensor feeds, and external storage via Pipelines, Dataflow Gen2, and Event Hubs.',
-      components: ['Sales Data (Azure SQL DB)', 'Campaigns Data (Snowflake)', 'Customer Insights Data (Dataverse)', 'Store Sensors & Streaming (Event Hubs)', 'ADLS Gen2'],
-      badge: 'Ingestion Layer'
-    },
-    store: {
-      title: 'OneLake & Unified Storage Foundation',
-      desc: 'Open storage lake utilizing Delta-Parquet format with OneSecurity centralized access control, eliminating enterprise data silos.',
-      components: ['OneSecurity Central Access Control', 'Lakehouse Delta-Parquet Format', 'Warehouse Delta-Parquet Format', 'Kusto DB Time-Series Store', 'Zero-Copy Fabric Shortcuts'],
-      badge: 'Storage & Catalog'
-    },
-    compute: {
-      title: 'Fabric Serverless Compute & Analytical Engines',
-      desc: 'Decoupled compute services scaling dynamically to run Spark data engineering, T-SQL warehousing, and DirectLake reporting.',
-      components: ['Data Engineering (Spark)', 'Data Factory (ETL Orchestration)', 'Data Warehouse (T-SQL Engine)', 'Data Science (Spark)', 'Power BI (Analysis Services DirectLake)'],
-      badge: 'Compute Layer'
-    },
-    databricks: {
-      title: 'Azure Databricks Advanced Engineering & MLflow',
-      desc: 'Distributed computing cluster running PySpark, Delta Live Tables, and MLflow for experiment tracking and AI serving.',
-      components: ['PySpark Distributed Transformation', 'MLflow Model Experiment Tracking', 'Model Registry Governance', 'Real-Time Model Serving Endpoints', 'Delta Live Tables'],
-      badge: 'Advanced Analytics & AI'
-    },
-    medallion: {
-      title: 'Bronze \u2192 Silver \u2192 Gold Medallion Lakehouse Flow',
-      desc: 'Multi-hop data refinement transforming raw records into validated, high-fidelity business metrics with 100% ACID compliance.',
-      components: ['Bronze: Raw append-only landing zone', 'Silver: Cleaned, deduplicated, conformant models', 'Gold: Aggregated analytical marts and business KPIs', 'Delta Live Tables Quality Gates'],
-      badge: 'Medallion Processing'
-    }
-  };
-
-  const activeHighlight = layerHighlights[selectedLayer] || layerHighlights.all;
 
   return (
     <div 
@@ -365,31 +314,8 @@ const DataSolutions: React.FC = () => {
             </p>
           </Reveal>
 
-          {/* Interactive Layer Filter Buttons */}
-          <Reveal variant="up" delay={150}>
-            <div className="flex flex-wrap items-center justify-center gap-1.5 mb-8 max-w-4xl mx-auto">
-              {architectureLayers.map(layer => {
-                const isActive = selectedLayer === layer.id;
-                return (
-                  <button
-                    key={layer.id}
-                    onClick={() => setSelectedLayer(layer.id as typeof selectedLayer)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 transition-all ${
-                      isActive
-                        ? 'bg-[#003D2B] text-white shadow-xs scale-105'
-                        : 'bg-white hover:bg-[#EAEFE5] text-[#4E5B49] hover:text-[#141912] border border-[#D5E1CE]'
-                    }`}
-                  >
-                    <i className={`${layer.icon} text-[10px] ${isActive ? 'text-[#C6F56F]' : 'text-[#003D2B]'}`} />
-                    <span>{layer.label}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </Reveal>
-
           {/* Architecture Showcase Viewer Container */}
-          <Reveal variant="scale" delay={200}>
+          <Reveal variant="scale" delay={150}>
             <div className={`bg-[#0C140E] rounded-[32px] sm:rounded-[36px] border-2 border-[#D5E1CE] shadow-[0_24px_60px_rgba(20,25,18,0.2)] p-4 sm:p-6 relative overflow-hidden text-white transition-all duration-700 ${
               isArchVisible ? 'opacity-100 translate-y-0' : 'opacity-90 translate-y-3'
             }`}>
@@ -434,28 +360,6 @@ const DataSolutions: React.FC = () => {
                     <span className="w-1.5 h-1.5 rounded-full bg-[#50E6FF] animate-pulse" />
                     <span>Delta Live Tables ACID</span>
                   </div>
-                </div>
-              </div>
-
-              {/* Layer Inspector Strip */}
-              <div className="mt-4 p-4 rounded-2xl bg-white/5 border border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-[#C6F56F] text-[#003D2B]">
-                      {activeHighlight.badge}
-                    </span>
-                    <h4 className="text-sm font-bold text-white">{activeHighlight.title}</h4>
-                  </div>
-                  <p className="text-xs text-white/75 max-w-2xl leading-relaxed">
-                    {activeHighlight.desc}
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-1">
-                  {activeHighlight.components.slice(0, 3).map((comp, idx) => (
-                    <span key={idx} className="px-2 py-0.5 rounded-md bg-white/10 text-white/80 text-[10px] font-mono">
-                      {comp}
-                    </span>
-                  ))}
                 </div>
               </div>
 

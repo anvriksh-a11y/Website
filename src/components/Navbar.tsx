@@ -12,7 +12,7 @@ const serviceItems: ServiceDropdownItem[] = [
   { label: 'Website Development', to: '/software-solutions', icon: 'fas fa-laptop-code' },
   { label: 'Digital Marketing', to: '/digital-marketing', icon: 'fas fa-bullhorn' },
   { label: 'Gen AI', to: '/gen-ai', icon: 'fas fa-brain' },
-  { label: 'Agentic AI', to: '/#services-section', icon: 'fas fa-network-wired' },
+  { label: 'Agentic AI', to: '/agentic-ai', icon: 'fas fa-network-wired' },
   { label: 'Data Solutions', to: '/data-solutions', icon: 'fas fa-database' },
 ];
 
@@ -53,25 +53,29 @@ const Navbar: React.FC = () => {
       
       {/* ————————————————— MODERN GEN-Z FLOATING CAPSULE NAVBAR ————————————————— */}
       <header
-        className={`pointer-events-auto w-full max-w-[900px] rounded-full transition-all duration-300 ease-out border bg-[#F4F7EE]/90 backdrop-blur-xl border-[#CCD8C3]/80 shadow-[0_8px_32px_rgba(20,25,18,0.08),0_1px_2px_rgba(20,25,18,0.04)] ${
-          scrolled
-            ? 'py-1.5 px-4 sm:px-6 shadow-[0_12px_36px_rgba(20,25,18,0.10),0_2px_4px_rgba(20,25,18,0.05)]'
-            : 'py-1.5 sm:py-2 px-4 sm:px-6'
+        className={`pointer-events-auto w-full max-w-[900px] transition-all duration-300 ease-out border bg-[#F4F7EE]/95 backdrop-blur-xl border-[#CCD8C3]/80 shadow-[0_8px_32px_rgba(20,25,18,0.08),0_1px_2px_rgba(20,25,18,0.04)] ${
+          isMenuOpen
+            ? 'rounded-[28px] p-4 sm:p-5 shadow-[0_16px_40px_rgba(20,25,18,0.14)]'
+            : `rounded-full ${
+                scrolled
+                  ? 'py-2 px-4 sm:px-6 shadow-[0_12px_36px_rgba(20,25,18,0.10),0_2px_4px_rgba(20,25,18,0.05)]'
+                  : 'py-2 sm:py-2.5 px-4 sm:px-6'
+              }`
         }`}
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between pl-1 sm:pl-0 pr-1.5 sm:pr-0">
           
           {/* ————————————————— LEFT: PROMINENT ANVRIKSH LOGO ————————————————— */}
           <Link 
             to="/" 
-            className="flex items-center gap-2 group shrink-0 transition-transform duration-200 active:scale-95 py-0.5" 
+            className="flex items-center gap-2 group shrink-0 max-h-8 sm:max-h-9 md:max-h-10 transition-transform duration-200 active:scale-95 py-0.5" 
             aria-label="ANVRiksh home"
           >
             <img
               src="/anvriksh_logo_clean.png"
               alt="ANVRiksh"
-              className="h-9 sm:h-10.5 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-xs"
+              className="h-8 max-h-8 sm:h-9 sm:max-h-9 md:h-10 md:max-h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-xs"
             />
           </Link>
 
@@ -99,7 +103,7 @@ const Navbar: React.FC = () => {
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
                 className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13px] font-semibold transition-all duration-200 ${
-                  isServicesOpen || location.pathname === '/calling-agent' || location.pathname === '/gen-ai' || location.pathname === '/software-solutions' || location.pathname === '/digital-marketing' || location.pathname === '/data-solutions'
+                  isServicesOpen || location.pathname === '/calling-agent' || location.pathname === '/gen-ai' || location.pathname === '/software-solutions' || location.pathname === '/digital-marketing' || location.pathname === '/data-solutions' || location.pathname === '/agentic-ai'
                     ? 'text-[#003D2B] bg-white shadow-xs'
                     : 'text-[#4E5B49] hover:text-[#141912] hover:bg-white/60'
                 }`}
@@ -175,7 +179,7 @@ const Navbar: React.FC = () => {
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <Link
               to="/company/contact-us"
-              className="group relative inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full text-xs sm:text-[13px] font-bold text-white bg-[#003D2B] hover:bg-[#022D20] shadow-[0_4px_14px_rgba(0,61,43,0.22)] hover:shadow-[0_6px_20px_rgba(0,61,43,0.32)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
+              className="hidden sm:inline-flex group relative items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full text-xs sm:text-[13px] font-bold text-white bg-[#003D2B] hover:bg-[#022D20] shadow-[0_4px_14px_rgba(0,61,43,0.22)] hover:shadow-[0_6px_20px_rgba(0,61,43,0.32)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
             >
               <span>Get in touch</span>
               <svg 
@@ -191,18 +195,41 @@ const Navbar: React.FC = () => {
               </svg>
             </Link>
 
-            {/* Mobile Menu Hamburger */}
+            {/* Mobile Menu Hamburger / Close Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden w-8 h-8 rounded-full bg-[#EAEFE5] border border-[#D5E1CE] flex items-center justify-center text-[#141912] transition-transform active:scale-90"
+              className="md:hidden w-8 h-8 mr-0.5 sm:mr-0 rounded-full bg-[#EAEFE5] hover:bg-[#D5E1CE] border border-[#CCD8C3] flex items-center justify-center text-[#141912] transition-all active:scale-90 shrink-0"
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
             >
-              <span className="relative block w-3.5 h-2.5">
-                <span className={`absolute left-0 top-0 h-[1.5px] w-full bg-current rounded-full transition-all duration-300 ${isMenuOpen ? 'top-[4px] rotate-45' : ''}`} />
-                <span className={`absolute left-0 top-[4px] h-[1.5px] w-full bg-current rounded-full transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} />
-                <span className={`absolute left-0 top-[8px] h-[1.5px] w-full bg-current rounded-full transition-all duration-300 ${isMenuOpen ? 'top-[4px] -rotate-45' : ''}`} />
-              </span>
+              {isMenuOpen ? (
+                <svg 
+                  className="w-4 h-4 text-[#141912]" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2.5" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              ) : (
+                <svg 
+                  className="w-4 h-4 text-[#141912]" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2.5" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                >
+                  <line x1="4" y1="6" x2="20" y2="6" />
+                  <line x1="4" y1="12" x2="20" y2="12" />
+                  <line x1="4" y1="18" x2="20" y2="18" />
+                </svg>
+              )}
             </button>
           </div>
 
@@ -212,7 +239,7 @@ const Navbar: React.FC = () => {
         <div
           className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
             isMenuOpen
-              ? 'max-h-[420px] opacity-100 pt-3 mt-2.5 border-t border-[#D5E1CE]/80'
+              ? 'max-h-[600px] opacity-100 pt-3 mt-2.5 border-t border-[#D5E1CE]/80'
               : 'max-h-0 opacity-0 pointer-events-none'
           }`}
         >

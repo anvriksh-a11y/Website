@@ -17,6 +17,7 @@ import TermsAndConditions from './pages/legal/TermsAndConditions';
 import DigitalMarketing from './pages/DigitalMarketing';
 import CallingAgent from './pages/CallingAgent';
 import DataSolutions from './pages/DataSolutions';
+import AgenticAI from './pages/AgenticAI';
 import WhatsAppBot from './components/WhatsAppBot';
 import AnalyticsTracker from './components/AnalyticsTracker';
 import ScrollToTop from './components/ScrollToTop';
@@ -27,7 +28,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <AnalyticsTracker />
-      <div className="min-h-screen bg-[#F4F7EE] text-[#1A130E] font-inter selection:bg-[#003D2B]/15 relative">
+      <div className="min-h-screen bg-[#F4F7EE] text-[#1A130E] font-inter selection:bg-[#003D2B]/15 relative overflow-x-hidden w-full">
         {/* ScrollProgress removed to eliminate the top orange indicator */}
         <AmbientBackground variant="light" />
         <Navbar />
@@ -43,6 +44,8 @@ function App() {
             <Route path="/software-solutions" element={<SoftwareSolutions />} />
             <Route path="/digital-marketing" element={<DigitalMarketing />} />
             <Route path="/services/digital-marketing" element={<Navigate to="/digital-marketing" replace />} />
+            <Route path="/agentic-ai" element={<AgenticAI />} />
+            <Route path="/services/agentic-ai" element={<Navigate to="/agentic-ai" replace />} />
             <Route path="/resources/case-studies" element={<CaseStudies />} />
             <Route path="/resources/blogs" element={<Blogs />} />
             <Route path="/blogs" element={<Navigate to="/resources/blogs" replace />} />

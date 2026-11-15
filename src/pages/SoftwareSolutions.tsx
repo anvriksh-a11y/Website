@@ -348,18 +348,18 @@ const SoftwareSolutions: React.FC = () => {
                 </section>
 
 {/* ═══════════════════════════════════════════════════════
-                    OUR SERVICES — overview split
+                    OUR SERVICES — SEO, AEO & GEO IN-DEPTH OVERVIEW
                 ═══════════════════════════════════════════════════════ */}
-                <section id="services" className="py-16 sm:py-24 scroll-mt-24">
+                <section id="seo-aeo-geo" className="py-16 sm:py-24 scroll-mt-24">
                     <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
                         <div className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-[#E3EDE0] text-[13px] font-semibold text-[#2F6B45] mb-5">
-                            Our services
+                            Search &amp; AI Visibility
                         </div>
                         <h2 className="text-3xl sm:text-5xl font-[800] text-[#141912] tracking-[-0.04em] leading-[1.08] mb-4">
-                            In-depth overview of the software we build
+                            Built-in SEO, AEO &amp; GEO Optimization
                         </h2>
                         <p className="text-[#5C6B57] text-[15px] sm:text-base leading-relaxed">
-                            Web platforms, internal tools, APIs, and the cloud around them. One team from the first sketch to the launch.
+                            Every web platform we engineer is architected for top Google search rankings, featured snippets, voice search, and citation across AI engines like ChatGPT, Perplexity, and Gemini.
                         </p>
                     </div>
 
@@ -433,7 +433,7 @@ const SoftwareSolutions: React.FC = () => {
                             );
 
                             return (
-                                <article key={service.acronym} className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+                                <article key={service.acronym} id={service.acronym.toLowerCase()} className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16 scroll-mt-28">
                                     {imageFirst ? <>{image}{content}</> : <>{content}{image}</>}
                                 </article>
                             );
