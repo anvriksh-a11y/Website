@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import SEO from '../../components/SEO';
 import Reveal from '../../components/Reveal';
@@ -7,6 +8,8 @@ import { COMPANY_DETAILS } from '../../constants/contact';
 
 const ContactUs: React.FC = () => {
     const form = useRef<HTMLFormElement>(null);
+    const location = useLocation();
+    const presetEmail = (location.state as { email?: string } | null)?.email ?? '';
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
@@ -281,6 +284,7 @@ const ContactUs: React.FC = () => {
                                             type="email"
                                             name="user_email"
                                             required
+                                            defaultValue={presetEmail}
                                             placeholder="you@company.com"
                                             className="w-full bg-[#F4F7EE] border border-[#D5E1CE] rounded-xl px-4 py-3 text-sm text-[#141912] placeholder-[#8F9E8B] focus:outline-none focus:border-[#003D2B] focus:ring-1 focus:ring-[#003D2B] transition-all"
                                         />
