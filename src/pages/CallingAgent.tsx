@@ -369,11 +369,12 @@ const CallingAgent: React.FC = () => {
   const row3Ref = useRef<HTMLDivElement>(null);
 
   const [isVoiceStyleVisible, setIsVoiceStyleVisible] = useState<boolean>(false);
-  const [row1Anim, setRow1Anim] = useState({ scale: 0.92, blur: 6, opacity: 0.4, x: -24 });
-  const [row2Anim, setRow2Anim] = useState({ scale: 0.92, blur: 6, opacity: 0.4, x: 24 });
-  const [row3Anim, setRow3Anim] = useState({ scale: 0.92, blur: 6, opacity: 0.4, x: -24 });
+  const [row1Anim, setRow1Anim] = useState({ x: -72, blur: 8, opacity: 0.45 });
+  const [row2Anim, setRow2Anim] = useState({ x: 72, blur: 8, opacity: 0.45 });
+  const [row3Anim, setRow3Anim] = useState({ x: -72, blur: 8, opacity: 0.45 });
 
-  // Rows keep moving for the whole time they travel through the viewport
+  // Each row slides in from the side and is blurred only while it is arriving.
+  // The entrance finishes once the row sits in the upper part of the screen.
   useEffect(() => {
     const el = voiceStyleSectionRef.current;
     if (!el) return;
@@ -386,24 +387,24 @@ const CallingAgent: React.FC = () => {
         const sectionRect = el.getBoundingClientRect();
         setIsVoiceStyleVisible(sectionRect.top < windowHeight * 0.86 && sectionRect.bottom > 0);
 
-        const calcRow = (rowEl: HTMLDivElement | null, dir: 'left' | 'right') => {
-          if (!rowEl) return { scale: 0.92, blur: 6, opacity: 0.4, x: dir === 'left' ? -24 : 24 };
-          const rRect = rowEl.getBoundingClientRect();
-          const travel = windowHeight + rRect.height;
-          const progress = Math.max(0, Math.min(1, (windowHeight - rRect.top) / travel));
-          const centered = progress * 2 - 1;
-
-          const scale = Number((0.9 + progress * 0.1).toFixed(3));
-          const blur = Number(((1 - progress) * 6).toFixed(1));
-          const opacity = Number((0.35 + progress * 0.65).toFixed(2));
-          const x = Number(((dir === 'left' ? -1 : 1) * (1 - centered) * 36).toFixed(1));
-
-          return { scale, blur, opacity, x };
+        const calcRow = (rowEl: HTMLDivElement | null, dir: 'left' | 'right', settleAt: number) => {
+          const hidden = { x: dir === 'left' ? -72 : 72, blur: 8, opacity: 0.45 };
+          if (!rowEl) return hidden;
+          const top = rowEl.getBoundingClientRect().top;
+          const enterStart = windowHeight * 0.98;
+          const enterFull = windowHeight * settleAt;
+          const progress = Math.max(0, Math.min(1, (enterStart - top) / (enterStart - enterFull)));
+          const eased = 1 - (1 - progress) * (1 - progress);
+          return {
+            x: Number(((dir === 'left' ? -72 : 72) * (1 - eased)).toFixed(1)),
+            blur: Number(((1 - eased) * 8).toFixed(1)),
+            opacity: Number((0.45 + eased * 0.55).toFixed(2)),
+          };
         };
 
-        setRow1Anim(calcRow(row1Ref.current, 'left'));
-        setRow2Anim(calcRow(row2Ref.current, 'right'));
-        setRow3Anim(calcRow(row3Ref.current, 'left'));
+        setRow1Anim(calcRow(row1Ref.current, 'left', 0.72));
+        setRow2Anim(calcRow(row2Ref.current, 'right', 0.64));
+        setRow3Anim(calcRow(row3Ref.current, 'left', 0.56));
       });
     };
 
@@ -904,10 +905,10 @@ const CallingAgent: React.FC = () => {
               <div 
                 ref={row1Ref}
                 style={{
-                  transform: `scale(${row1Anim.scale}) translateX(${row1Anim.x}px)`,
+                  transform: `translateX(${row1Anim.x}px)`,
                   opacity: row1Anim.opacity,
                   filter: `blur(${row1Anim.blur}px)`,
-                  transition: 'transform 0.08s linear, opacity 0.08s linear, filter 0.08s linear'
+                  transition: 'transform 0.12s ease-out, opacity 0.12s ease-out, filter 0.12s ease-out'
                 }}
                 className="flex flex-row items-center justify-center gap-2.5 sm:gap-3 flex-wrap sm:flex-nowrap"
               >
@@ -932,10 +933,10 @@ const CallingAgent: React.FC = () => {
               <div 
                 ref={row2Ref}
                 style={{
-                  transform: `scale(${row2Anim.scale}) translateX(${row2Anim.x}px)`,
+                  transform: `translateX(${row2Anim.x}px)`,
                   opacity: row2Anim.opacity,
                   filter: `blur(${row2Anim.blur}px)`,
-                  transition: 'transform 0.08s linear, opacity 0.08s linear, filter 0.08s linear'
+                  transition: 'transform 0.12s ease-out, opacity 0.12s ease-out, filter 0.12s ease-out'
                 }}
                 className="flex flex-row items-center justify-center gap-2.5 sm:gap-3 flex-wrap sm:flex-nowrap"
               >
@@ -960,10 +961,10 @@ const CallingAgent: React.FC = () => {
               <div 
                 ref={row3Ref}
                 style={{
-                  transform: `scale(${row3Anim.scale}) translateX(${row3Anim.x}px)`,
+                  transform: `translateX(${row3Anim.x}px)`,
                   opacity: row3Anim.opacity,
                   filter: `blur(${row3Anim.blur}px)`,
-                  transition: 'transform 0.08s linear, opacity 0.08s linear, filter 0.08s linear'
+                  transition: 'transform 0.12s ease-out, opacity 0.12s ease-out, filter 0.12s ease-out'
                 }}
                 className="flex flex-row items-center justify-center gap-2.5 sm:gap-3 flex-wrap sm:flex-nowrap"
               >
@@ -1011,14 +1012,14 @@ const CallingAgent: React.FC = () => {
               </div>
 
               {/* Text Input Sandbox */}
-              <div className="w-full lg:max-w-xl">
+              <div className="w-full lg:max-w-xl min-w-0">
                 <div className="relative">
                   <input
                     type="text"
                     value={customPrompt}
                     onChange={(e) => setCustomPrompt(e.target.value)}
                     placeholder="Type words for the AI agent to speak..."
-                    className="w-full bg-[#F4F7EE] border border-[#CCD8C3] rounded-full px-5 py-3 text-xs sm:text-sm text-[#141912] placeholder-[#4E5B49]/60 focus:outline-none focus:border-[#003D2B] focus:ring-1 focus:ring-[#003D2B]"
+                    className="w-full min-w-0 bg-[#F4F7EE] border border-[#CCD8C3] rounded-full pl-5 pr-36 py-3 text-xs sm:text-sm text-[#141912] placeholder-[#4E5B49]/60 focus:outline-none focus:border-[#003D2B] focus:ring-1 focus:ring-[#003D2B]"
                   />
                   <button 
                     onClick={() => {
@@ -1028,7 +1029,7 @@ const CallingAgent: React.FC = () => {
                         playAudioFile(activeVoice.audioSrc);
                       }
                     }}
-                    className="absolute right-1.5 top-1.5 bottom-1.5 px-5 rounded-full bg-[#003D2B] text-white text-xs font-bold hover:bg-[#022D20] transition-colors flex items-center gap-1.5 shadow-sm active:scale-95"
+                    className="absolute right-1.5 top-1.5 bottom-1.5 px-4 rounded-full bg-[#003D2B] text-white text-xs font-bold hover:bg-[#022D20] transition-colors flex items-center gap-1.5 shadow-sm active:scale-95"
                   >
                     <i className={`fas ${isPlaying ? 'fa-pause' : 'fa-play'} text-[10px]`} />
                     <span>{isPlaying ? 'Pause' : 'Listen Voice'}</span>
