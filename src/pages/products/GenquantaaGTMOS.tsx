@@ -127,7 +127,7 @@ const GenquantaaGTMOS: React.FC = () => {
       />
 
       {/* ————————————————— BREADCRUMB STRIP ————————————————— */}
-      <div className="pt-24 sm:pt-28 pb-3 bg-[#F4F7EE] border-b border-[#D5E1CE] relative z-20">
+      <div className="pt-20 sm:pt-22 pb-2.5 bg-[#F4F7EE] border-b border-[#D5E1CE]/80 relative z-20">
         <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
           <nav className="flex items-center gap-2 text-xs text-[#4E5B49] font-medium" aria-label="Breadcrumb">
             <Link to="/" className="hover:text-[#141912] transition-colors">

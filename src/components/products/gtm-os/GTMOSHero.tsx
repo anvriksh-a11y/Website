@@ -46,7 +46,7 @@ export const GTMOSHero: React.FC = () => {
 
   return (
     <section 
-      className="relative w-full pt-28 sm:pt-36 pb-20 md:pb-28 bg-[#F4F7EE] text-[#141912] overflow-hidden select-none"
+      className="relative w-full pt-6 sm:pt-8 md:pt-10 pb-16 md:pb-24 bg-[#F4F7EE] text-[#141912] overflow-hidden select-none"
       style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
     >
       {/* Soft Ambient Green Glows matching home page */}
@@ -64,7 +64,7 @@ export const GTMOSHero: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
         
         {/* ————————————————— TWO-COLUMN HERO: TEXT (LEFT) + 3D FUNNEL (RIGHT) ————————————————— */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16 sm:mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-12 sm:mb-16">
           
           {/* Left Column: Text, Badges, CTAs, Highlights (lg:col-span-7) */}
           <Reveal variant="left" duration={800} className="lg:col-span-7 space-y-6 text-left">
