@@ -93,24 +93,24 @@ export const WhoWeAre: React.FC = () => {
 
   const milestones = [
     {
-      year: "2024",
-      title: "Incorporation in Karnataka, India",
-      desc: "Registered as ANVRiksh Tech Solutions LLP (LLPIN: ADA-3944), committed to sovereign AI engineering and verifiable client ROI."
+      year: "Mid 2025",
+      title: "Genesis & Software Engineering Services",
+      desc: "Started ANVRiksh with a mission to deliver bespoke software engineering, enterprise full-stack development, and modern intelligent automation."
     },
     {
-      year: "2024",
-      title: "Sovereign Multi-Agent Architecture",
-      desc: "Developed proprietary multi-agent orchestration frameworks featuring sub-500ms neural voice calls and real-time CRM memory."
+      year: "Mid 2025 – Present",
+      title: "15+ High-Impact Projects Delivered",
+      desc: "Delivered 15+ successful software engineering and digital transformation projects across diverse business verticals with 100% client code sovereignty."
     },
     {
-      year: "2025",
-      title: "Launch of Genquantaa GTM OS",
-      desc: "Unveiled 24-module autonomous revenue platform integrating customer discovery, verification, AI creative studio, and multichannel delivery."
+      year: "Q3 2026",
+      title: "Formal Incorporation in Karnataka, India",
+      desc: "Officially incorporated as ANVRiksh Tech Solutions LLP (LLPIN: ADA-3944), establishing sovereign engineering governance and compliance standards."
     },
     {
-      year: "2026",
-      title: "100% Client IP Sovereignty Standard",
-      desc: "Operating dedicated private cloud and on-premise deployments with zero client data used for public LLM training."
+      year: "Q3 2026",
+      title: "Launch of Flagship Genquantaa GTM OS",
+      desc: "Commercial launch of our 24-module autonomous revenue platform spanning intelligent customer discovery, email verification, AI creative studio, and voice automation."
     }
   ];
 
@@ -219,16 +219,16 @@ export const WhoWeAre: React.FC = () => {
             {/* Quick Metrics Strip */}
             <div className="grid grid-cols-3 gap-4 pt-6 border-t border-[#D5E1CE]/80 max-w-xl">
               <div>
+                <div className="text-2xl sm:text-3xl font-[800] text-[#003D2B]">15+</div>
+                <div className="text-xs text-[#4E5B49] font-medium mt-0.5">Projects Delivered</div>
+              </div>
+              <div>
                 <div className="text-2xl sm:text-3xl font-[800] text-[#003D2B]">100%</div>
                 <div className="text-xs text-[#4E5B49] font-medium mt-0.5">Client IP Ownership</div>
               </div>
               <div>
                 <div className="text-2xl sm:text-3xl font-[800] text-[#003D2B]">24/7</div>
                 <div className="text-xs text-[#4E5B49] font-medium mt-0.5">Autonomous Execution</div>
-              </div>
-              <div>
-                <div className="text-2xl sm:text-3xl font-[800] text-[#003D2B]">0%</div>
-                <div className="text-xs text-[#4E5B49] font-medium mt-0.5">Client Data Training</div>
               </div>
             </div>
           </Reveal>
@@ -310,9 +310,7 @@ export const WhoWeAre: React.FC = () => {
             </Reveal>
             <Reveal variant="up" delay={140}>
               <p className="text-sm sm:text-base text-[#4E5B49] mt-3 max-w-2xl mx-auto leading-relaxed">
-                Founded in Karnataka, India, ANVRiksh Tech Solutions LLP emerged from a direct engineering frustration: 
-                enterprises were struggling with brittle AI wrappers, bloated software stacks, and data leakage risks. 
-                We set out to build autonomous, sovereign technology that businesses actually own.
+                Started in mid 2025 and officially incorporated in Karnataka in Q3 2026, ANVRiksh Tech Solutions LLP delivers sovereign software engineering, custom enterprise systems, and autonomous AI architectures. Having completed 15+ production projects, we build technology enterprises genuinely own.
               </p>
             </Reveal>
           </div>
@@ -344,7 +342,7 @@ export const WhoWeAre: React.FC = () => {
                       </span>
                     </div>
                     <span className="text-[10px] font-mono font-bold text-[#003D2B] bg-[#E3EDE0] px-2.5 py-1 rounded-full border border-[#D3E2CF] shrink-0">
-                      FOUNDED 2024
+                      EST. MID 2025 • INC. Q3 2026
                     </span>
                   </div>
                 </div>

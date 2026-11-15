@@ -42,7 +42,7 @@ const Home: React.FC = () => {
                     "alternateName": "ANVRiksh Tech Solutions LLP"
                 },
                 "description": "ANVRiksh Tech Solutions LLP is an India-based AI company specializing in Agentic AI, Generative AI, Custom Voice Assistants, and Enterprise Software Solutions.",
-                "foundingDate": "2024",
+                "foundingDate": "2025",
                 "foundingLocation": "Belgaum, Karnataka, India",
                 "url": "https://anvriksh.com",
                 "logo": "https://anvriksh.com/logo.png",
