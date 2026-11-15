@@ -152,10 +152,10 @@ export const GTMOSHero: React.FC = () => {
               {/* Main 3D Card Shell */}
               <div 
                 onClick={() => setIsLightboxOpen(true)}
-                className="relative rounded-[2rem] bg-white/95 backdrop-blur-xl border border-[#D5E1CE] p-3 sm:p-4 shadow-[0_20px_50px_rgba(0,61,43,0.12),0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_28px_65px_rgba(0,61,43,0.18)] transition-all duration-300 cursor-pointer overflow-hidden group-hover:-translate-y-1"
+                className="relative rounded-[2rem] bg-white/95 backdrop-blur-xl p-3 sm:p-4 shadow-[0_20px_50px_rgba(0,61,43,0.12),0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_28px_65px_rgba(0,61,43,0.18)] transition-all duration-300 cursor-pointer overflow-hidden group-hover:-translate-y-1"
               >
                 {/* Image Container with Floating Badge Overlays */}
-                <div className="relative rounded-2xl overflow-hidden bg-gradient-to-b from-[#F7F4EE] to-[#EBE4D8] border border-[#E5DAC8]">
+                <div className="relative rounded-2xl overflow-hidden bg-gradient-to-b from-[#F7F4EE] to-[#EBE4D8]">
                   <img
                     src="/gtm_funnel_3d.jpg"
                     alt="ANVRiksh Genquantaa GTM OS End-to-End Sales Funnel & Revenue Acquisition Engine"
@@ -195,22 +195,6 @@ export const GTMOSHero: React.FC = () => {
                     <Maximize2 className="w-3 h-3" />
                   </span>
                 </div>
-              </div>
-
-              {/* Floating Chip 1 (Top-Right): "AI Qualified Leads 🎯" */}
-              <div className="hidden sm:flex absolute -top-4 -right-4 items-center z-20 pointer-events-none animate-float">
-                <span className="bg-[#003D2B] text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-[0_8px_20px_rgba(0,61,43,0.3)] border border-emerald-500/40 whitespace-nowrap flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#B4F04D] animate-ping" />
-                  <span>Real-Time ICP Match</span>
-                </span>
-              </div>
-
-              {/* Floating Chip 2 (Bottom-Left): "Automated Outreach 🚀" */}
-              <div className="hidden sm:flex absolute -bottom-3 -left-3 items-center z-20 pointer-events-none animate-float-reverse">
-                <span className="bg-white text-[#141912] text-[11px] font-bold px-3 py-1 rounded-full shadow-[0_10px_25px_rgba(0,0,0,0.12)] border border-[#D5E1CE] whitespace-nowrap flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-[#003D2B]" />
-                  <span>Autonomous Outreach</span>
-                </span>
               </div>
 
             </div>
