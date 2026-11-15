@@ -15,6 +15,8 @@ import PrivacyPolicy from './pages/legal/PrivacyPolicy';
 import TermsAndConditions from './pages/legal/TermsAndConditions';
 import DigitalMarketing from './pages/DigitalMarketing';
 import GenquantaaGTMOS from './pages/products/GenquantaaGTMOS';
+import CallingAgent from './pages/CallingAgent';
+import DataSolutions from './pages/DataSolutions';
 import WhatsAppBot from './components/WhatsAppBot';
 import AnalyticsTracker from './components/AnalyticsTracker';
 import ScrollToTop from './components/ScrollToTop';
@@ -32,6 +34,11 @@ function App() {
         <main className="relative z-[1]">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/calling-agent" element={<CallingAgent />} />
+            <Route path="/callingagent" element={<Navigate to="/calling-agent" replace />} />
+            <Route path="/data-solutions" element={<DataSolutions />} />
+            <Route path="/data-engineering" element={<Navigate to="/data-solutions" replace />} />
+            <Route path="/cloud-data-engineering" element={<Navigate to="/data-solutions" replace />} />
             <Route path="/gen-ai" element={<GenAI />} />
             <Route path="/software-solutions" element={<SoftwareSolutions />} />
             <Route path="/digital-marketing" element={<DigitalMarketing />} />

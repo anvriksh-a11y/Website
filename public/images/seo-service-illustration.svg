@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="90" y1="50" x2="1090" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E9F2D8"/>
+      <stop offset="1" stop-color="#D9E7CF"/>
+    </linearGradient>
+    <linearGradient id="chart" x1="400" y1="510" x2="940" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#78956A"/>
+      <stop offset="1" stop-color="#003D2B"/>
+    </linearGradient>
+    <filter id="shadow" x="170" y="106" width="860" height="530" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="18"/>
+      <feOffset dy="16"/>
+      <feColorMatrix values="0 0 0 0 0.13 0 0 0 0 0.2 0 0 0 0 0.13 0 0 0 .14 0"/>
+      <feBlend in2="SourceGraphic" result="shadow"/>
+      <feBlend in="SourceGraphic" in2="shadow" result="shape"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="720" rx="32" fill="url(#bg)"/>
+  <circle cx="1000" cy="106" r="118" fill="#F8FBF2" fill-opacity=".4"/>
+  <g filter="url(#shadow)">
+    <rect x="208" y="140" width="784" height="456" rx="28" fill="#fff"/>
+    <rect x="208" y="140" width="784" height="72" rx="28" fill="#F7F9F4"/>
+    <path d="M208 184h784v28H208z" fill="#F7F9F4"/>
+    <circle cx="251" cy="176" r="8" fill="#D3A777"/>
+    <circle cx="279" cy="176" r="8" fill="#C5D6B6"/>
+    <circle cx="307" cy="176" r="8" fill="#78956A"/>
+    <rect x="362" y="160" width="438" height="32" rx="16" fill="#E9EFE4"/>
+    <circle cx="386" cy="176" r="7" stroke="#718269" stroke-width="4"/>
+    <path d="m391 181 8 8" stroke="#718269" stroke-width="4" stroke-linecap="round"/>
+    <rect x="236" y="238" width="728" height="76" rx="16" fill="#F7F9F4"/>
+    <circle cx="269" cy="276" r="13" stroke="#718269" stroke-width="5"/>
+    <path d="m278 285 10 10" stroke="#718269" stroke-width="5" stroke-linecap="round"/>
+    <rect x="310" y="260" width="284" height="11" rx="5.5" fill="#AEBBA5"/>
+    <rect x="310" y="282" width="205" height="8" rx="4" fill="#D8E0D3"/>
+    <rect x="236" y="340" width="294" height="224" rx="18" fill="#F7F9F4"/>
+    <text x="266" y="382" fill="#52634A" font-family="Arial,sans-serif" font-size="21" font-weight="700">Organic visibility</text>
+    <path d="M270 518h224M270 476h224M270 434h224" stroke="#E1E8DC" stroke-width="2"/>
+    <rect x="282" y="484" width="26" height="34" rx="8" fill="#B5C9A8"/>
+    <rect x="327" y="460" width="26" height="58" rx="8" fill="#9DB88D"/>
+    <rect x="372" y="440" width="26" height="78" rx="8" fill="#83A375"/>
+    <rect x="417" y="408" width="26" height="110" rx="8" fill="#64865D"/>
+    <path d="m287 458 52-28 48 8 75-58" stroke="url(#chart)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M449 380h19v19" stroke="#003D2B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="552" y="340" width="412" height="224" rx="18" fill="#fff" stroke="#E9EFE4" stroke-width="2"/>
+    <text x="584" y="381" fill="#718269" font-family="Arial,sans-serif" font-size="17" font-weight="700">SEARCH RESULT</text>
+    <rect x="584" y="402" width="214" height="16" rx="8" fill="#829B70"/>
+    <rect x="584" y="432" width="330" height="10" rx="5" fill="#D9E1D5"/>
+    <rect x="584" y="451" width="292" height="10" rx="5" fill="#D9E1D5"/>
+    <rect x="584" y="481" width="148" height="10" rx="5" fill="#E7ECE3"/>
+    <rect x="584" y="501" width="306" height="10" rx="5" fill="#E7ECE3"/>
+    <rect x="584" y="521" width="250" height="10" rx="5" fill="#E7ECE3"/>
+    <rect x="822" y="386" width="112" height="32" rx="16" fill="#E6F0DF"/>
+    <text x="843" y="408" fill="#42643D" font-family="Arial,sans-serif" font-size="15" font-weight="700">Organic</text>
+  </g>
+</svg>

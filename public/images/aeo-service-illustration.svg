@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="100" y1="0" x2="1060" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EDF2E5"/>
+      <stop offset="1" stop-color="#DBE9DB"/>
+    </linearGradient>
+    <linearGradient id="spark" x1="838" y1="143" x2="1040" y2="333" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B9CF9B"/>
+      <stop offset="1" stop-color="#66835E"/>
+    </linearGradient>
+    <filter id="shadow" x="154" y="110" width="892" height="538" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="18"/>
+      <feOffset dy="16"/>
+      <feColorMatrix values="0 0 0 0 0.13 0 0 0 0 0.2 0 0 0 0 0.13 0 0 0 .14 0"/>
+      <feBlend in2="SourceGraphic" result="shadow"/>
+      <feBlend in="SourceGraphic" in2="shadow" result="shape"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="720" rx="32" fill="url(#bg)"/>
+  <circle cx="1010" cy="112" r="120" fill="#F8FBF2" fill-opacity=".42"/>
+  <g filter="url(#shadow)">
+    <rect x="194" y="152" width="812" height="438" rx="26" fill="#fff"/>
+    <rect x="194" y="152" width="812" height="68" rx="26" fill="#F7F9F4"/>
+    <path d="M194 194h812v26H194z" fill="#F7F9F4"/>
+    <circle cx="234" cy="186" r="8" fill="#D3A777"/>
+    <circle cx="262" cy="186" r="8" fill="#C5D6B6"/>
+    <circle cx="290" cy="186" r="8" fill="#78956A"/>
+    <rect x="360" y="170" width="400" height="32" rx="16" fill="#E9EFE4"/>
+    <text x="390" y="192" fill="#718269" font-family="Arial,sans-serif" font-size="15">Ask a question...</text>
+    <rect x="235" y="252" width="470" height="78" rx="20" fill="#F2F6ED"/>
+    <circle cx="271" cy="291" r="19" fill="#DCE8D5"/>
+    <path d="M263 291h16M271 283v16" stroke="#54744E" stroke-width="4" stroke-linecap="round"/>
+    <rect x="309" y="273" width="340" height="12" rx="6" fill="#8C9C81"/>
+    <rect x="309" y="296" width="275" height="10" rx="5" fill="#C7D2C0"/>
+    <rect x="235" y="350" width="730" height="196" rx="22" fill="#fff" stroke="#E5ECE1" stroke-width="2"/>
+    <rect x="267" y="378" width="174" height="30" rx="15" fill="#E5F0DE"/>
+    <circle cx="286" cy="393" r="7" fill="#66835E"/>
+    <text x="303" y="399" fill="#4B6545" font-family="Arial,sans-serif" font-size="15" font-weight="700">TRUSTED ANSWER</text>
+    <rect x="267" y="431" width="570" height="14" rx="7" fill="#7E9274"/>
+    <rect x="267" y="458" width="628" height="11" rx="5.5" fill="#D4DED0"/>
+    <rect x="267" y="481" width="577" height="11" rx="5.5" fill="#D4DED0"/>
+    <rect x="267" y="504" width="380" height="11" rx="5.5" fill="#D4DED0"/>
+    <rect x="858" y="378" width="74" height="30" rx="15" fill="#F2F6ED"/>
+    <path d="m878 393 8 8 15-17" stroke="#54744E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <path d="m939 96 12 30 30 12-30 12-12 30-12-30-30-12 30-12 12-30Z" fill="url(#spark)"/>
+  <path d="m1005 236 7 17 17 7-17 7-7 17-7-17-17-7 17-7 7-17Z" fill="#A9C493"/>
+</svg>

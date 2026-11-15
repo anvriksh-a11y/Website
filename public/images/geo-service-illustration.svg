@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="90" y1="32" x2="1104" y2="702" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EAF1E3"/>
+      <stop offset="1" stop-color="#DCE8D7"/>
+    </linearGradient>
+    <linearGradient id="globe" x1="451" y1="210" x2="746" y2="510" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9DB88D"/>
+      <stop offset="1" stop-color="#436846"/>
+    </linearGradient>
+    <filter id="shadow" x="150" y="116" width="900" height="520" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="18"/>
+      <feOffset dy="16"/>
+      <feColorMatrix values="0 0 0 0 0.13 0 0 0 0 0.2 0 0 0 0 0.13 0 0 0 .14 0"/>
+      <feBlend in2="SourceGraphic" result="shadow"/>
+      <feBlend in="SourceGraphic" in2="shadow" result="shape"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="720" rx="32" fill="url(#bg)"/>
+  <circle cx="1000" cy="108" r="122" fill="#F8FBF2" fill-opacity=".42"/>
+  <g stroke="#91A985" stroke-width="5" stroke-dasharray="10 10">
+    <path d="m487 286-152-74M713 286l152-74M487 438l-152 74M713 438l152 74"/>
+  </g>
+  <g filter="url(#shadow)">
+    <circle cx="600" cy="362" r="151" fill="url(#globe)"/>
+    <circle cx="600" cy="362" r="119" stroke="#EAF1E3" stroke-opacity=".78" stroke-width="4"/>
+    <path d="M481 362h238M600 243c43 34 66 75 66 119s-23 85-66 119m0-238c-43 34-66 75-66 119s23 85 66 119M500 300c28 17 61 26 100 26s72-9 100-26m-200 124c28-17 61-26 100-26s72 9 100 26" stroke="#EAF1E3" stroke-opacity=".78" stroke-width="4"/>
+    <rect x="234" y="170" width="168" height="92" rx="22" fill="#fff"/>
+    <circle cx="276" cy="216" r="18" fill="#E5F0DE"/>
+    <path d="M269 216h14m-7-7v14" stroke="#54744E" stroke-width="4" stroke-linecap="round"/>
+    <rect x="307" y="202" width="65" height="9" rx="4.5" fill="#78916C"/>
+    <rect x="307" y="219" width="48" height="8" rx="4" fill="#D5DED0"/>
+    <rect x="798" y="170" width="168" height="92" rx="22" fill="#fff"/>
+    <circle cx="840" cy="216" r="18" fill="#E5F0DE"/>
+    <path d="m832 216 6 6 12-13" stroke="#54744E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="871" y="202" width="65" height="9" rx="4.5" fill="#78916C"/>
+    <rect x="871" y="219" width="48" height="8" rx="4" fill="#D5DED0"/>
+    <rect x="234" y="462" width="168" height="92" rx="22" fill="#fff"/>
+    <circle cx="276" cy="508" r="18" fill="#E5F0DE"/>
+    <path d="m268 509 6 6 11-14" stroke="#54744E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="307" y="494" width="65" height="9" rx="4.5" fill="#78916C"/>
+    <rect x="307" y="511" width="48" height="8" rx="4" fill="#D5DED0"/>
+    <rect x="798" y="462" width="168" height="92" rx="22" fill="#fff"/>
+    <circle cx="840" cy="508" r="18" fill="#E5F0DE"/>
+    <path d="M833 508h14m-7-7v14" stroke="#54744E" stroke-width="4" stroke-linecap="round"/>
+    <rect x="871" y="494" width="65" height="9" rx="4.5" fill="#78916C"/>
+    <rect x="871" y="511" width="48" height="8" rx="4" fill="#D5DED0"/>
+  </g>
+  <circle cx="600" cy="362" r="21" fill="#F4F7EE"/>
+  <circle cx="600" cy="362" r="9" fill="#315B3A"/>
+</svg>

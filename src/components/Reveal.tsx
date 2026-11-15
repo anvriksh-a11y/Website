@@ -37,31 +37,39 @@ export default function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    let raf = 0;
+    let stopped = false;
 
-    // Graceful fallback for non-browser or environments lacking IntersectionObserver
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
-      setVisible(true);
-      return;
-    }
-
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          if (once) obs.disconnect();
-        } else if (!once) {
-          setVisible(false);
+    const check = () => {
+      if (stopped) return;
+      const rect = el.getBoundingClientRect();
+      const viewH = window.innerHeight || document.documentElement.clientHeight;
+      const inView = rect.top < viewH * 0.9 && rect.bottom > viewH * 0.05;
+      if (inView) {
+        setVisible(true);
+        if (once) {
+          stopped = true;
+          window.removeEventListener('scroll', onScroll, true);
+          window.removeEventListener('resize', onScroll);
         }
-      },
-      { 
-        threshold: 0.08, 
-        rootMargin: '0px 0px -40px 0px' 
+      } else if (!once) {
+        setVisible(false);
       }
-    );
-    obs.observe(el);
+    };
 
-    return () => { 
-      obs.disconnect(); 
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(check);
+    };
+
+    check();
+    window.addEventListener('scroll', onScroll, { passive: true, capture: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      stopped = true;
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', onScroll, true);
+      window.removeEventListener('resize', onScroll);
     };
   }, [once]);
 
