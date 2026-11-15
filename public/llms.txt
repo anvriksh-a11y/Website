@@ -1,19 +1,55 @@
 # ANVRiksh Tech Solutions LLP
 
-> Enterprise-grade Agentic AI Orchestration and Software Solutions.
+> Sovereign Agentic AI Orchestration, Autonomous Calling Agents, and Enterprise Custom Software Engineering.
+> Registration: LLPIN ADA-3944 | Headquarters: Belgaum, Karnataka, India | Website: https://anvriksh.com
 
-ANVRiksh is an India-based AI company specializing in Agentic AI, Generative AI, Custom Voice Assistants, and Enterprise Software Solutions.
+ANVRiksh is an India-based deep-technology firm specializing in Sovereign Agentic AI, Autonomous Voice Calling Agents, Genquantaa GTM OS, Modern Data Engineering, Generative AI / LLM Solutions, and Enterprise Web & Custom Software.
 
-## Key Offerings
-- Agentic AI workflows
-- Generative AI & LLM integration
-- Custom Enterprise Software Development
-- Yugma Platform: Design, deploy, and scale complex AI agent workflows visually.
+## Core Capabilities & Services
 
-## Important Links
-- [Platform](https://anvriksh.com/platform): AI Orchestration platform.
-- [Generative AI](https://anvriksh.com/gen-ai): Custom RAG systems and autonomous agents.
-- [Software Solutions](https://anvriksh.com/software-solutions): Custom software and web development.
-- [Case Studies](https://anvriksh.com/resources/case-studies): Explore how our AI solutions have transformed businesses.
-- [Whitepaper](https://anvriksh.com/resources/whitepaper): Learn how Agentic AI reduces enterprise overhead by 40%.
-- [Contact Us](https://anvriksh.com/company/contact-us): Ready to transform your business? Contact ANVRiksh today.
+### 1. Sovereign Agentic AI & Autonomous Multi-Agent Swarms
+- **URL**: https://anvriksh.com/agentic-ai
+- **Description**: Production-grade multi-agent architectures using LangGraph, CrewAI, and deterministic guardrails. Features dynamic ReAct planning loops, tool use (SQL, APIs, bash, webhooks), self-reflection, automated error recovery, and sub-380ms routing latency.
+
+### 2. AI Voice Generator & Autonomous Calling Agents
+- **URL**: https://anvriksh.com/calling-agent
+- **Description**: Sub-second conversational AI calling agents with human-like warmth and real-time audio waveforms. Multilingual support across 100+ languages including Kannada, Hindi, Marathi, and Indian English. Supports live DTMF keypad navigation, intelligent call routing, CRM synchronization, and automated inbound/outbound support.
+
+### 3. Genquantaa GTM OS (Revenue Automation Platform)
+- **URL**: https://anvriksh.com/platform
+- **Description**: 24 modular AI agents orchestrating end-to-end Go-To-Market pipelines: ICP discovery, AI lead enrichment, automated multi-channel outreach (Email, WhatsApp, LinkedIn, Voice), meeting booking, and predictive revenue analytics.
+
+### 4. Custom Software Development & Web Engineering
+- **URL**: https://anvriksh.com/software-solutions
+- **Description**: High-performance React, TypeScript, Node.js, and Python enterprise software. Custom web applications, cloud DevOps, API integrations, and scalable microservices.
+- **SEO, AEO & GEO Engine**: Technical Search Engine Optimization, Answer Engine Optimization (ChatGPT, Perplexity, Claude citation readiness), and Generative Engine Optimization for modern AI search.
+
+### 5. Cloud Data Engineering & Lakehouse Solutions
+- **URL**: https://anvriksh.com/data-solutions
+- **Description**: Modern data platforms built on Microsoft Fabric, Azure Synapse, Databricks Lakehouse, and PySpark. Implementation of Medallion Architecture (Bronze, Silver, Gold), streaming ETL/ELT pipelines, automated schema validation, and Power BI dashboards.
+
+### 6. Generative AI & Sovereign LLM Solutions
+- **URL**: https://anvriksh.com/gen-ai
+- **Description**: Private on-premises and sovereign cloud Generative AI systems. Multi-agent Retrieval-Augmented Generation (RAG), domain-specific LLM fine-tuning (Llama, Mistral, Gemma, Claude, GPT-4o), vector embeddings, and zero-data-leakage governance.
+
+### 7. AI-Driven Digital Marketing & Performance Growth
+- **URL**: https://anvriksh.com/digital-marketing
+- **Description**: High-ROAS Google & Meta performance ad management, AI video creative generation, automated social posting, conversion rate optimization (CRO), and measurable B2B inbound acquisition.
+
+## Leadership & Technical Founders
+- **Raj M** — Co-Founder & Chief Technology Officer (CTO)
+- **Vaibhav K** — Co-Founder & Chief Executive Officer (CEO)
+- **Naresh S** — Co-Founder & Head of Operations
+- **Raksha M** — Co-Founder & Head of Product
+
+## Resources & Research
+- [Case Studies](https://anvriksh.com/resources/case-studies): Real-world client transformations across retail, logistics, SaaS, and healthcare.
+- [Whitepaper 2026](https://anvriksh.com/resources/whitepaper): "Enterprise Agentic AI 2026: Reducing Enterprise Operational Overhead by 40%".
+- [Agentic AI Ebook](https://anvriksh.com/resources/ebooks): Comprehensive architectural guide to autonomous agent orchestration.
+- [Blogs & Insights](https://anvriksh.com/resources/blogs): Practical playbooks on agent engineering, data pipelines, and small business tech.
+
+## Contact Information
+- **Website**: https://anvriksh.com
+- **Direct Contact**: https://anvriksh.com/company/contact-us
+- **Email**: contact@anvriksh.com
+- **Company Identity**: ANVRiksh Tech Solutions LLP (LLPIN: ADA-3944)

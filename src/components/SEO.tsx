@@ -26,8 +26,8 @@ const SEO: React.FC<SEOProps> = ({
     articleAuthor
 }) => {
     useEffect(() => {
-        // Update Title
-        const fullTitle = title === 'ANVRiksh' ? title : `${title} | ANVRiksh`;
+        // Update Title (avoid double branding)
+        const fullTitle = title.includes('ANVRiksh') ? title : `${title} | ANVRiksh`;
         document.title = fullTitle;
 
         // Update Meta Tags Helper
@@ -46,11 +46,16 @@ const SEO: React.FC<SEOProps> = ({
         setMetaTag('description', description);
         if (keywords) setMetaTag('keywords', keywords);
 
+        // Resolve full image URL
+        const resolvedImage = ogImage.startsWith('http')
+            ? ogImage
+            : `https://anvriksh.com${ogImage.startsWith('/') ? ogImage : `/${ogImage}`}`;
+
         // Open Graph / Facebook
         setMetaTag('og:title', fullTitle, true);
         setMetaTag('og:description', description, true);
         setMetaTag('og:type', ogType, true);
-        setMetaTag('og:image', `https://anvriksh.com${ogImage}`, true);
+        setMetaTag('og:image', resolvedImage, true);
         setMetaTag('og:site_name', 'ANVRiksh Tech Solutions LLP', true);
         setMetaTag('og:locale', 'en_IN', true);
         if (canonicalUrl) setMetaTag('og:url', canonicalUrl, true);
@@ -67,7 +72,7 @@ const SEO: React.FC<SEOProps> = ({
         setMetaTag('twitter:card', 'summary_large_image');
         setMetaTag('twitter:title', fullTitle);
         setMetaTag('twitter:description', description);
-        setMetaTag('twitter:image', `https://anvriksh.com${ogImage}`);
+        setMetaTag('twitter:image', resolvedImage);
         setMetaTag('twitter:site', twitterHandle);
 
         // Update Canonical Link
@@ -81,12 +86,13 @@ const SEO: React.FC<SEOProps> = ({
             link.setAttribute('href', canonicalUrl);
         }
 
-        // Add Structured Data (JSON-LD)
+        // Add Structured Data (JSON-LD) with dedicated ID to avoid overwriting global Organization schema
         if (structuredData) {
-            let script = document.querySelector('script[type="application/ld+json"]');
+            let script = document.querySelector('script#dynamic-page-seo');
             if (!script) {
                 script = document.createElement('script');
                 script.setAttribute('type', 'application/ld+json');
+                script.setAttribute('id', 'dynamic-page-seo');
                 document.head.appendChild(script);
             }
             script.textContent = JSON.stringify(structuredData);

@@ -661,16 +661,44 @@ const CallingAgent: React.FC = () => {
 
   const activeDtmfOption = DTMF_OPTIONS.find(o => o.key === activeDtmfKey) || DTMF_OPTIONS[0];
 
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'AI Voice Generator & Autonomous Calling Agent',
+    name: 'ANVRiksh Autonomous Voice AI Platform',
+    provider: {
+      '@type': 'Organization',
+      name: 'ANVRiksh Tech Solutions LLP',
+      identifier: 'ADA-3944',
+      url: 'https://anvriksh.com',
+    },
+    areaServed: 'Worldwide',
+    description:
+      'Human-like autonomous AI calling agents and neural voice synthesis supporting 100+ languages including Kannada, Hindi, Marathi, and English. Sub-second latency, live DTMF navigation, and enterprise telephony integration.',
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Voice AI & Autonomous Calling Services',
+      itemListElement: [
+        { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Autonomous Inbound & Outbound Calling Agents' } },
+        { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Multilingual Neural Speech Synthesis (100+ Languages)' } },
+        { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Interactive DTMF Telephony & Smart Call Routing' } },
+        { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'CRM Integration & Automated Follow-Up Sync' } }
+      ]
+    }
+  };
+
   return (
     <div 
       className="min-h-screen bg-[#F4F7EE] text-[#141912] selection:bg-[#003D2B]/15 selection:text-[#003D2B] overflow-x-hidden"
       style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
     >
       <SEO
-        title="AI Voice Generator & Autonomous Calling Agent"
-        description="Experience realistic neural AI voice synthesis and autonomous calling agents. Real-time audio waveform animation, 100+ native languages, and broadcast-quality voice synthesis."
-        keywords="AI voice generator, calling agent, autonomous phone bot, voice AI, text to speech, speech synthesis, ANVRiksh"
+        title="AI Voice Generator & Autonomous Calling Agents | ANVRiksh Tech Solutions LLP"
+        description="Deploy human-like autonomous AI calling agents and broadcast-quality neural voice synthesis. Sub-second latency, multilingual support (Kannada, Hindi, Marathi, English), live DTMF, and CRM sync."
+        keywords="AI voice generator, calling agent, autonomous phone bot, voice AI India, conversational voice bot, text to speech, multilingual speech synthesis, ANVRiksh Tech Solutions LLP"
         canonicalUrl="https://anvriksh.com/calling-agent"
+        structuredData={structuredData}
+        ogImage="/platform_hero.png"
       />
 
       {/* Hidden audio element pointing to active voice sample */}

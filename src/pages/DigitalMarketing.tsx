@@ -73,6 +73,7 @@ const DigitalMarketing: React.FC = () => {
                 keywords="Digital Marketing Services, Performance Marketing India, Google Ads Agency, Meta Ads Specialist, SEO Services Belgaum, B2B Lead Generation, ANVRiksh Tech Solutions LLP"
                 canonicalUrl="https://anvriksh.com/digital-marketing"
                 structuredData={structuredData}
+                ogImage="/platform_hero.png"
             />
 
             {/* Vibrant Atmospheric Mesh Gradient Background */}

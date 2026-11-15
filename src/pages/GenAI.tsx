@@ -34,16 +34,24 @@ const GenAI: React.FC = () => {
     const structuredData = {
         "@context": "https://schema.org",
         "@type": "Service",
-        "name": "Generative AI Solutions",
+        "name": "Generative AI & Sovereign LLM Solutions",
         "provider": {
             "@type": "Organization",
-            "name": "ANVRiksh Tech Solutions LLP"
+            "name": "ANVRiksh Tech Solutions LLP",
+            "identifier": "ADA-3944",
+            "url": "https://anvriksh.com"
         },
-        "description": "Advanced Generative AI services including RAG, LLM integration, and autonomous agents.",
-        "serviceType": "Artificial Intelligence",
-        "offers": {
-            "@type": "Offer",
-            "name": "Generative AI Consulting"
+        "description": "Enterprise Generative AI services: Multi-Agent RAG architectures, sovereign private LLM fine-tuning, vector search, and zero-data-leakage governance.",
+        "serviceType": "Artificial Intelligence & Generative AI",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Generative AI Services",
+            "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Multi-Agent RAG Systems" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Domain-Specific LLM Fine-Tuning & Hosting" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vector Database & Semantic Search Architecture" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Enterprise AI Governance & Guardrails" } }
+            ]
         }
     };
 
@@ -53,11 +61,12 @@ const GenAI: React.FC = () => {
             style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
             <SEO
-                title="Generative AI & Agentic AI Solutions | ANVRiksh"
-                description="Unlock the power of Generative AI & Agentic AI. We build intelligent, autonomous agents and custom RAG systems for enterprise automation."
-                keywords="Generative AI, Agentic AI, RAG, LLM, AI Agents, Machine Learning, NLP, Enterprise AI"
+                title="Generative AI & Sovereign LLM Solutions | ANVRiksh Tech Solutions LLP"
+                description="Unlock enterprise Generative AI: Custom Multi-Agent RAG systems, domain-specific LLM fine-tuning, secure vector databases, and sovereign private AI architectures."
+                keywords="Generative AI India, Enterprise GenAI, Custom RAG Systems, LLM Fine-Tuning, Sovereign AI, Vector Search, AI Agents, NLP, Llama 3, Claude, GPT-4o, ANVRiksh Tech Solutions LLP"
                 canonicalUrl="https://anvriksh.com/gen-ai"
                 structuredData={structuredData}
+                ogImage="/platform_hero.png"
             />
             {/* Hero Section */}
             <section className="relative pt-32 pb-24 md:pt-48 md:pb-32 overflow-hidden">

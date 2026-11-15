@@ -57,7 +57,14 @@ const Home: React.FC = () => {
                     "Voice AI Assistants",
                     "Enterprise Software Development",
                     "AI Automation",
-                    "LLM Integration"
+                    "Agentic AI",
+                    "Autonomous Calling Agents",
+                    "Genquantaa GTM OS",
+                    "Custom Software Development",
+                    "Cloud Data Engineering",
+                    "Generative AI",
+                    "SEO & AEO Engine",
+                    "Digital Marketing"
                 ],
                 "contactPoint": {
                     "@type": "ContactPoint",
@@ -78,10 +85,13 @@ const Home: React.FC = () => {
             {
                 "@type": "BreadcrumbList",
                 "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": "Agentic AI", "item": "https://anvriksh.com/" },
-                    { "@type": "ListItem", "position": 2, "name": "Platform", "item": "https://anvriksh.com/platform" },
-                    { "@type": "ListItem", "position": 3, "name": "Gen AI", "item": "https://anvriksh.com/gen-ai" },
-                    { "@type": "ListItem", "position": 4, "name": "Who We Are", "item": "https://anvriksh.com/company/who-we-are" }
+                    { "@type": "ListItem", "position": 1, "name": "Agentic AI", "item": "https://anvriksh.com/agentic-ai" },
+                    { "@type": "ListItem", "position": 2, "name": "Calling Agent", "item": "https://anvriksh.com/calling-agent" },
+                    { "@type": "ListItem", "position": 3, "name": "Genquantaa GTM OS", "item": "https://anvriksh.com/platform" },
+                    { "@type": "ListItem", "position": 4, "name": "Software Solutions", "item": "https://anvriksh.com/software-solutions" },
+                    { "@type": "ListItem", "position": 5, "name": "Data Solutions", "item": "https://anvriksh.com/data-solutions" },
+                    { "@type": "ListItem", "position": 6, "name": "Gen AI", "item": "https://anvriksh.com/gen-ai" },
+                    { "@type": "ListItem", "position": 7, "name": "Who We Are", "item": "https://anvriksh.com/company/who-we-are" }
                 ]
             }
         ]
@@ -90,9 +100,9 @@ const Home: React.FC = () => {
     return (
         <>
             <SEO
-                title="Agentic AI & Enterprise Software | ANVRiksh"
-                description="Build, deploy, and scale autonomous AI workflows with ANVRiksh's enterprise-grade Agentic AI platform. Transform operations & cut overhead by 40%."
-                keywords="ANVRiksh Tech Solutions LLP, ANVRiksh Tech Solutions, ANVRiksh, ADA-3944, Software Solutions, Website Building, App Building, SEO, Digital Marketing, Agentic AI India, Autonomous AI Workflows, Enterprise AI Solutions, Yugma Platform, AI Orchestration, Business Process Automation, AI Company India, AI Company Karnataka"
+                title="Agentic AI, Calling Agents & Enterprise Software | ANVRiksh"
+                description="Build, deploy, and scale autonomous multi-agent swarms, voice calling agents, and custom enterprise software platforms with ANVRiksh Tech Solutions LLP."
+                keywords="ANVRiksh Tech Solutions LLP, ANVRiksh, ADA-3944, Agentic AI India, Autonomous Calling Agents, Voice AI, Genquantaa GTM OS, Software Solutions, Website Building, SEO Optimization, AEO Engine, GEO Engine, Cloud Data Engineering, Microsoft Fabric, Enterprise AI Solutions, Business Process Automation, AI Company India, AI Company Karnataka"
                 canonicalUrl="https://anvriksh.com/"
                 structuredData={structuredData}
                 ogImage="/platform_hero.png"

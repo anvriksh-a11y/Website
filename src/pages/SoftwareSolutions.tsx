@@ -114,12 +114,14 @@ const SoftwareSolutions: React.FC = () => {
         "areaServed": "Global",
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
-            "name": "Software Development Services",
+            "name": "Software Development & Growth Services",
             "itemListElement": [
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Web Application Development" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Enterprise Software Engineering" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloud DevOps & Architecture" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI & Agentic Workflows Integration" } }
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Web Application & SaaS Development" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Enterprise Software Engineering & Microservices" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloud DevOps & AWS/Azure Architecture" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO Optimization & Search Rank Acceleration" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AEO Engine - Answer Engine Optimization (ChatGPT & Perplexity)" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "GEO Engine - Generative Engine Optimization" } }
             ]
         }
     };
@@ -150,11 +152,12 @@ const SoftwareSolutions: React.FC = () => {
     return (
         <div className="bg-[#F4F7EE] text-[#141912] font-sans w-full min-h-screen flex flex-col items-center select-none" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             <SEO
-                title="Custom Software Solutions & High-Performance Web Development | ANVRiksh"
-                description="Scale your digital presence with enterprise custom software, cloud engineering, and modern web applications built by ANVRiksh Tech Solutions LLP."
-                keywords="software solutions, web development, custom software, enterprise web applications, react development, node.js, cloud computing, aws devops, anvriksh"
+                title="Custom Software, Web Development & SEO/AEO/GEO Engine | ANVRiksh"
+                description="Scale your digital presence with enterprise custom software, modern web development, and our proprietary SEO, AEO (Answer Engine) & GEO (Generative Engine) optimization framework."
+                keywords="custom software development, website development, SEO optimization, AEO engine, answer engine optimization, GEO engine, generative engine optimization, enterprise web applications, react development, node.js, cloud devops, anvriksh"
                 canonicalUrl="https://anvriksh.com/software-solutions"
                 structuredData={structuredData}
+                ogImage="/platform_hero.png"
             />
 
             <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 overflow-hidden">

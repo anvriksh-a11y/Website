@@ -203,6 +203,7 @@ const AgenticAI: React.FC = () => {
         keywords="Agentic AI, Autonomous AI Agents, Multi-Agent Systems, LangGraph Development, CrewAI Agency, AI Process Automation, Tool Use AI, Enterprise AgentOps, ANVRiksh Tech Solutions LLP"
         canonicalUrl="https://anvriksh.com/agentic-ai"
         structuredData={structuredData}
+        ogImage="/agentic_architecture_transparent.png"
       />
 
       {/* —————————— VIBRANT ATMOSPHERIC MESH GRADIENT BACKGROUND (IDENTICAL TO CONTACT PAGE) —————————— */}

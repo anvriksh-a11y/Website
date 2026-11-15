@@ -196,6 +196,32 @@ const DataSolutions: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Cloud Data Engineering & Modern Data Solutions',
+    name: 'ANVRiksh Cloud Data Engineering',
+    provider: {
+      '@type': 'Organization',
+      name: 'ANVRiksh Tech Solutions LLP',
+      identifier: 'ADA-3944',
+      url: 'https://anvriksh.com',
+    },
+    areaServed: 'Worldwide',
+    description:
+      'Enterprise cloud data engineering, Microsoft Fabric implementations, Azure Lakehouse architecture, PySpark ETL pipelines, and Medallion data engineering.',
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Cloud Data Services',
+      itemListElement: [
+        { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Microsoft Fabric & Azure Lakehouse Engineering' } },
+        { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Databricks & PySpark ETL/ELT Pipeline Development' } },
+        { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Medallion Architecture (Bronze, Silver, Gold Data Design)' } },
+        { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Data Migration & Real-Time Stream Analytics' } }
+      ]
+    }
+  };
+
   return (
     <div 
       className="min-h-screen bg-[#F4F7EE] text-[#141912] selection:bg-[#003D2B]/15 selection:text-[#003D2B] overflow-x-hidden"
@@ -203,9 +229,11 @@ const DataSolutions: React.FC = () => {
     >
       <SEO
         title="Cloud Data Engineering & Modern Data Solutions | ANVRiksh"
-        description="Transforming data into scalable, intelligent business solutions. Microsoft Fabric, Azure, Databricks lakehouse architectures, and modern ETL/ELT pipelines."
-        keywords="Cloud Data Engineering, Microsoft Fabric, Azure Data Engineering, Databricks, PySpark, Lakehouse Architecture, Medallion Architecture, ETL Pipelines, Data Migration, ANVRiksh"
+        description="Transform enterprise data into scalable, high-performance business intelligence with Microsoft Fabric, Azure, Databricks lakehouse architectures, and streaming PySpark ETL pipelines."
+        keywords="Cloud Data Engineering, Microsoft Fabric, Azure Data Engineering, Databricks, PySpark, Lakehouse Architecture, Medallion Architecture, ETL Pipelines, Data Migration, ANVRiksh Tech Solutions LLP"
         canonicalUrl="https://anvriksh.com/data-solutions"
+        structuredData={structuredData}
+        ogImage="/platform_hero.png"
       />
 
       {/* =========================================================================
