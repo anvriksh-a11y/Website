@@ -98,7 +98,7 @@ export const WhoWeAre: React.FC = () => {
       desc: "Started ANVRiksh with a mission to deliver bespoke software engineering, enterprise full-stack development, and modern intelligent automation."
     },
     {
-      year: "Mid 2025 – Present",
+      year: "Mid 2025",
       title: "15+ High-Impact Projects Delivered",
       desc: "Delivered 15+ successful software engineering and digital transformation projects across diverse business verticals with 100% client code sovereignty."
     },
