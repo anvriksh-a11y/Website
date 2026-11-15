@@ -37,21 +37,40 @@ export default function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    // Fallback: never leave content hidden if IO is unavailable or doesn't fire
-    const fallback = window.setTimeout(() => setVisible(true), 2600);
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          if (once) obs.disconnect();
-        } else if (!once) {
-          setVisible(false);
+    let raf = 0;
+    let stopped = false;
+
+    const check = () => {
+      if (stopped) return;
+      const rect = el.getBoundingClientRect();
+      const viewH = window.innerHeight || document.documentElement.clientHeight;
+      const inView = rect.top < viewH * 0.9 && rect.bottom > viewH * 0.05;
+      if (inView) {
+        setVisible(true);
+        if (once) {
+          stopped = true;
+          window.removeEventListener('scroll', onScroll, true);
+          window.removeEventListener('resize', onScroll);
         }
-      },
-      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
-    );
-    obs.observe(el);
-    return () => { obs.disconnect(); window.clearTimeout(fallback); };
+      } else if (!once) {
+        setVisible(false);
+      }
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(check);
+    };
+
+    check();
+    window.addEventListener('scroll', onScroll, { passive: true, capture: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      stopped = true;
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', onScroll, true);
+      window.removeEventListener('resize', onScroll);
+    };
   }, [once]);
 
   const hiddenTransform = y !== undefined ? `translateY(${y}px)` : baseMap[variant];
