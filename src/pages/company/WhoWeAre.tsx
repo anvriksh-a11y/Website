@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../components/SEO';
 import Reveal from '../../components/Reveal';
+import { BouncingLogoEcosystem } from '../../components/company/PartnerLogos';
 import { 
   Sparkles, 
   ShieldCheck, 
@@ -75,19 +76,6 @@ export const WhoWeAre: React.FC = () => {
       specialty: "Global Growth & Brand Strategy",
       linkedin: "https://www.linkedin.com/in/naresh-kallimani/" 
     }
-  ];
-
-  const partners = [
-    { name: "OpenAI", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" },
-    { name: "Anthropic Claude", logo: "https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg" },
-    { name: "Amazon Web Services", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" },
-    { name: "Google Cloud", logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg" },
-    { name: "Twilio", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Twilio-logo-red.svg" },
-    { name: "Meta Llama", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" },
-    { name: "Hugging Face", logo: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg" },
-    { name: "Salesforce", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg" },
-    { name: "HubSpot", logo: "https://upload.wikimedia.org/wikipedia/commons/1/15/HubSpot_Logo.png" },
-    { name: "Stripe", logo: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" }
   ];
 
   const milestones = [
@@ -459,23 +447,8 @@ export const WhoWeAre: React.FC = () => {
               </span>
             </div>
 
-            {/* Marquee Logo Strip */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 items-center justify-items-center opacity-85 hover:opacity-100 transition-opacity">
-              {partners.map((partner, i) => (
-                <div 
-                  key={i} 
-                  className="h-10 flex items-center justify-center p-2 rounded-xl hover:bg-[#F4F7EE] transition-colors w-full"
-                  title={partner.name}
-                >
-                  <img 
-                    src={partner.logo} 
-                    alt={partner.name} 
-                    className="max-h-7 sm:max-h-8 max-w-[120px] object-contain filter grayscale contrast-125 hover:grayscale-0 transition-all duration-300" 
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div>
+            {/* Rotating Bouncing & Fading Single-Line Logo Ecosystem (Original Full Color) */}
+            <BouncingLogoEcosystem />
           </div>
         </Reveal>
 
