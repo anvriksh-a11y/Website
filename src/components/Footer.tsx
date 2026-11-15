@@ -77,9 +77,14 @@ const Footer: React.FC = () => {
                 <span className="w-1.5 h-3.5 bg-[#A7E2AF] rounded-full" /> Platform
               </h4>
               <ul className="space-y-2.5 text-sm">
-                <li><Link to="/platform" className="text-[#A7C2B2] hover:text-white transition-colors">GTM Automation</Link></li>
-                <li><Link to="/platform" className="text-[#A7C2B2] hover:text-white transition-colors">Lead Discovery</Link></li>
-                <li><Link to="/platform" className="text-[#A7C2B2] hover:text-white transition-colors">ICP Scoring</Link></li>
+                <li>
+                  <Link to="/platform" className="text-[#A7E2AF] hover:text-white transition-colors flex items-center gap-1.5 font-semibold">
+                    <span>Genquantaa GTM OS</span>
+                    <span className="text-[9px] uppercase px-1.5 py-0.5 bg-emerald-500/20 text-emerald-300 rounded font-mono">GTM</span>
+                  </Link>
+                </li>
+                <li><Link to="/platform" className="text-[#A7C2B2] hover:text-white transition-colors">Multi-Agent Workflow</Link></li>
+                <li><Link to="/platform" className="text-[#A7C2B2] hover:text-white transition-colors">Lead Discovery &amp; ICP</Link></li>
                 <li><Link to="/resources/case-studies" className="text-[#A7C2B2] hover:text-white transition-colors">Case Studies</Link></li>
                 <li><Link to="/resources/blogs" className="text-[#A7C2B2] hover:text-white transition-colors">Blogs &amp; Insights</Link></li>
               </ul>

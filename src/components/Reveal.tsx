@@ -14,9 +14,9 @@ interface RevealProps {
 }
 
 const baseMap: Record<RevealVariant, string> = {
-  up: 'translateY(36px)',
+  up: 'translateY(36px) scale(0.985)',
   fade: 'translateY(0px)',
-  scale: 'scale(0.96) translateY(16px)',
+  scale: 'scale(0.95) translateY(20px)',
   left: 'translateX(-36px)',
   right: 'translateX(36px)',
   blur: 'translateY(20px) scale(0.98)',
@@ -25,7 +25,7 @@ const baseMap: Record<RevealVariant, string> = {
 export default function Reveal({
   children,
   delay = 0,
-  duration = 800,
+  duration = 750,
   variant = 'up',
   className = '',
   once = true,
@@ -37,8 +37,13 @@ export default function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    // Fallback: never leave content hidden if IO is unavailable or doesn't fire
-    const fallback = window.setTimeout(() => setVisible(true), 2600);
+
+    // Graceful fallback for non-browser or environments lacking IntersectionObserver
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+      setVisible(true);
+      return;
+    }
+
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -48,10 +53,16 @@ export default function Reveal({
           setVisible(false);
         }
       },
-      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+      { 
+        threshold: 0.08, 
+        rootMargin: '0px 0px -40px 0px' 
+      }
     );
     obs.observe(el);
-    return () => { obs.disconnect(); window.clearTimeout(fallback); };
+
+    return () => { 
+      obs.disconnect(); 
+    };
   }, [once]);
 
   const hiddenTransform = y !== undefined ? `translateY(${y}px)` : baseMap[variant];
@@ -64,7 +75,7 @@ export default function Reveal({
         opacity: visible ? 1 : 0,
         transform: visible ? 'translateY(0) scale(1) translateX(0)' : hiddenTransform,
         filter: visible ? 'blur(0px)' : variant === 'blur' ? 'blur(10px)' : 'blur(0px)',
-        transition: `opacity ${duration}ms cubic-bezier(0.22,1,0.36,1), transform ${duration}ms cubic-bezier(0.22,1,0.36,1), filter ${duration}ms cubic-bezier(0.22,1,0.36,1)`,
+        transition: `opacity ${duration}ms cubic-bezier(0.16,1,0.3,1), transform ${duration}ms cubic-bezier(0.16,1,0.3,1), filter ${duration}ms cubic-bezier(0.16,1,0.3,1)`,
         transitionDelay: `${delay}ms`,
         willChange: 'opacity, transform, filter',
       }}

@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
             <Link
               to="/platform"
               className={`relative px-3.5 py-1.5 rounded-full text-[13px] font-semibold transition-all duration-200 ${
-                location.pathname === '/platform'
+                location.pathname === '/platform' || location.pathname.startsWith('/products')
                   ? 'text-[#003D2B] bg-white shadow-xs'
                   : 'text-[#4E5B49] hover:text-[#141912] hover:bg-white/60'
               }`}

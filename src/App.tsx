@@ -9,12 +9,12 @@ import Blogs from './pages/resources/Blogs';
 import Ebooks from './pages/resources/Ebooks';
 import WhoWeAre from './pages/company/WhoWeAre';
 import ContactUs from './pages/company/ContactUs';
-import Platform from './pages/Platform';
 import Article from './pages/Article';
 import Whitepaper from './pages/resources/Whitepaper';
 import PrivacyPolicy from './pages/legal/PrivacyPolicy';
 import TermsAndConditions from './pages/legal/TermsAndConditions';
 import DigitalMarketing from './pages/DigitalMarketing';
+import GenquantaaGTMOS from './pages/products/GenquantaaGTMOS';
 import WhatsAppBot from './components/WhatsAppBot';
 import AnalyticsTracker from './components/AnalyticsTracker';
 import ScrollToTop from './components/ScrollToTop';
@@ -45,7 +45,10 @@ function App() {
             <Route path="/company/who-we-are" element={<WhoWeAre />} />
             <Route path="/company/contact-us" element={<ContactUs />} />
             <Route path="/company/technical-partners" element={<Navigate to="/company/who-we-are" replace />} />
-            <Route path="/platform" element={<Platform />} />
+            <Route path="/platform" element={<GenquantaaGTMOS />} />
+            <Route path="/products/genquantaa-gtm-os" element={<Navigate to="/platform" replace />} />
+            <Route path="/products/gtm-os" element={<Navigate to="/platform" replace />} />
+            <Route path="/products" element={<Navigate to="/platform" replace />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
