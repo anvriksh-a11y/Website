@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 
 // ————————————— 10 OFFICIAL AUTHENTIC FULL-COLOR BRAND LOGOS —————————————
 
-export const OpenAILogo: React.FC<{ className?: string }> = ({ className = "h-8" }) => (
-  <svg className={className} viewBox="0 0 145 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g transform="translate(2, 3) scale(0.84)">
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M31.2 16.3c-.4-2.8-2.3-5-4.9-5.9-.6-2.1-2.2-3.8-4.2-4.6-2.6-1-5.6-.6-7.8 1-1.2-.6-2.6-.9-4-.8-3.1.2-5.7 2.3-6.6 5.3-2.2 1.3-3.6 3.7-3.6 6.3 0 2.2 1 4.3 2.7 5.7.4 2.8 2.3 5 4.9 5.9.6 2.1 2.2 3.8 4.2 4.6 2.6 1 5.6.6 7.8-1 1.2.6 2.6.9 4 .8 3.1-.2 5.7-2.3 6.6-5.3 2.2-1.3 3.6-3.7 3.6-6.3.1-2.3-.9-4.5-2.7-5.7zm-14.8-5c1.4-.9 3.2-1.1 4.8-.5 1 .4 1.8 1.1 2.4 2-1.8 1-3.6 2.1-5.4 3.1-.4-.2-.8-.4-1.3-.5-.9-.2-1.8-.1-2.7.2.5-2 1.2-3.3 2.2-4.3zm-6.2 3.9c.7-.5 1.5-.8 2.4-.9v7.1l-2.7 1.6c-.6-.7-1-1.6-1-2.6.1-2.1 1.3-4.2 1.3-5.2zm-2.8 10.9c0-1.2.5-2.3 1.3-3.1 1.8 1.1 3.6 2.1 5.4 3.1v1.1c0 1 .4 1.9 1 2.6l-2.7 1.6c-1.4-1.1-2.4-2.6-3.3-3.9-.9-.5-1.7-1.4-1.7-1.4zm10.7 7.7c-1.4.9-3.2 1.1-4.8.5-1-.4-1.8-1.1-2.4-2 1.8-1 3.6-2.1 5.4-3.1.4.2.8.4 1.3.5.9.2 1.8.1 2.7-.2-.5 2-1.2 3.3-2.2 4.3zm6.2-3.9c-.7.5-1.5.8-2.4.9v-7.1l2.7-1.6c.6.7 1 1.6 1 2.6-.1 2.1-1.3 4.2-1.3 5.2zm7.6-5.4c0 1.2-.5 2.3-1.3 3.1-1.8-1.1-3.6-2.1-5.4-3.1v-1.1c0-1-.4-1.9-1-2.6l2.7-1.6c1.4 1.1 2.4 2.6 3.3 3.9.7.5 1.7 1.4 1.7 1.4z"
-        fill="#10A37F"
-      />
-    </g>
-    <text x="38" y="24" fontFamily="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" fontSize="21" fontWeight="800" fill="#0F172A" letterSpacing="-0.5">
+export const OpenAILogo: React.FC<{ className?: string }> = ({ className = "h-7" }) => (
+  <div className={`flex items-center gap-2.5 select-none ${className}`}>
+    <img 
+      src="/images/icons/openai.png" 
+      alt="OpenAI Logo" 
+      className="h-6 w-6 sm:h-7 sm:w-7 object-contain shrink-0" 
+    />
+    <span 
+      className="font-[800] text-[#0F172A] text-base sm:text-lg tracking-tight"
+      style={{ fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" }}
+    >
       OpenAI
-    </text>
-  </svg>
+    </span>
+  </div>
 );
 
 export const AnthropicLogo: React.FC<{ className?: string }> = ({ className = "h-8" }) => (
