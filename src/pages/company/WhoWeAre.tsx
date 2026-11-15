@@ -17,8 +17,7 @@ import {
   Search,
   Building2,
   Users,
-  Target,
-  Briefcase
+  Target
 } from 'lucide-react';
 
 const LinkedinIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
@@ -895,18 +894,6 @@ export const WhoWeAre: React.FC = () => {
               </Reveal>
             ))}
           </div>
-
-          {/* Careers / "Join Our Team" Pill Hook (Matching Reference) */}
-          <Reveal variant="up" delay={200} className="flex justify-center">
-            <Link
-              to="/company/contact-us"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white border border-[#D5E1CE] shadow-2xs hover:shadow-md hover:border-[#003D2B] text-[#003D2B] text-xs font-bold transition-all hover:scale-105 active:scale-95 cursor-pointer"
-            >
-              <Briefcase className="w-3.5 h-3.5 text-[#003D2B]" />
-              <span>We&apos;re hiring engineers &amp; AI researchers — Join our team</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </Reveal>
         </div>
 
         {/* ————————————————— 8. CONNECTED ECOSYSTEM ("YOUR ENTIRE TECH STACK") ————————————————— */}
