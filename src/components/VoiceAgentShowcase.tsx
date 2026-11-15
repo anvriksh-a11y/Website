@@ -55,7 +55,7 @@ const VoiceAgentShowcase: React.FC = () => {
 
           <Reveal variant="fade" duration={700} delay={160}>
             <Link
-              to="/services"
+              to="/calling-agent"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#141912] hover:bg-[#003D2B] text-white text-xs font-bold transition-all shadow-sm hover:shadow-md hover:scale-105 active:scale-95 shrink-0 self-start md:self-end"
             >
               <span>Explore features</span>

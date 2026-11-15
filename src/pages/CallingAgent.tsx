@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import Testimonials from '../components/Testimonials';
 import Reveal from '../components/Reveal';
 
 // Pre-defined voice styles with Indian names and native audio mappings
@@ -32,7 +31,7 @@ const VOICE_STYLES: VoiceStyle[] = [
     avatarBg: 'from-[#003D2B] to-[#526B3D]',
     avatarImg: '/images/avatars/ns-avatar-16.png',
     sampleText: 'ನಮಸ್ಕಾರ! ANVRiksh ತಂತ್ರಜ್ಞಾನ ಸೇವೆಗಳಿಗೆ ಸುಸ್ವಾಗತ. ನಿಮ್ಮ ಯೋಜನೆಗೆ ನಾನು ಹೇಗೆ ಸಹಾಯ ಮಾಡಲಿ?',
-    audioSrc: '/audio/Anvriksh_KN.aac'
+    audioSrc: '/audio/anvriksh_kn.wav'
   },
   {
     id: 'aarav',
@@ -85,7 +84,7 @@ const VOICE_STYLES: VoiceStyle[] = [
     avatarBg: 'from-[#526B3D] to-[#8B7355]',
     avatarImg: '/images/avatars/ns-avatar-28.png',
     sampleText: 'ANVRiksh एंटरप्राइज सपोर्ट में आपका स्वागत है। हमारे AI एजेंट्स 24 घंटे आपकी सेवा में उपलब्ध हैं।',
-    audioSrc: '/audio/Anvrikdh_HI.aac'
+    audioSrc: '/audio/anvriksh_hi.wav'
   },
   {
     id: 'dhruv',
@@ -98,7 +97,7 @@ const VOICE_STYLES: VoiceStyle[] = [
     avatarBg: 'from-[#003D2B] to-[#141912]',
     avatarImg: '/images/avatars/ns-avatar-31.png',
     sampleText: 'नमस्कार! ANVRiksh च्या व्यवसाय सोल्यूशन्स टीमकडून आम्ही आपले स्वागत करतो.',
-    audioSrc: '/audio/Anvriksh_Mh.aac'
+    audioSrc: '/audio/anvriksh_mh.wav'
   },
   {
     id: 'naveen',
@@ -125,7 +124,7 @@ const VOICE_STYLES: VoiceStyle[] = [
     avatarBg: 'from-[#8B7355] to-[#526B3D]',
     avatarImg: '/images/avatars/ns-avatar-35.png',
     sampleText: 'Check out the ANVRiksh AI Calling Platform built with sub-second multilingual speech synthesis.',
-    audioSrc: '/audio/deep_courses_en.wav'
+    audioSrc: '/audio/ai-voice-generator-voice-sample.mp3'
   },
   {
     id: 'lavanya',
@@ -250,8 +249,8 @@ export const DTMF_OPTIONS: DTMFOption[] = [
     nativeLang: 'हिन्दी',
     agentName: 'Zoya',
     agentRole: 'एंटरप्राइज एजेंट (Enterprise Agent)',
-    audioSrc: '/audio/Anvrikdh_HI.aac',
-    duration: '0:16',
+    audioSrc: '/audio/anvriksh_hi.wav',
+    duration: '0:21',
     description: 'व्यावसायिक पूछताछ, AI वॉयस ऑटोमेशन और सपोर्ट समाधानों के लिए तात्कालिक हिंदी कॉलिंग एजेंट।'
   },
   {
@@ -262,8 +261,8 @@ export const DTMF_OPTIONS: DTMFOption[] = [
     nativeLang: 'ಕನ್ನಡ',
     agentName: 'Aarohi',
     agentRole: 'ಗ್ರಾಹಕ ಬೆಂಬಲ ಅಧಿಕಾರಿ (Customer Support)',
-    audioSrc: '/audio/Anvriksh_KN.aac',
-    duration: '0:17',
+    audioSrc: '/audio/anvriksh_kn.wav',
+    duration: '0:23',
     description: 'ಕನ್ನಡದಲ್ಲಿ ANVRiksh ತಂತ್ರಜ್ಞಾನ ಸೇವೆಗಳು, ಸಾಫ್ಟ್‌ವೇರ್ ಪರಿಹಾರಗಳು ಮತ್ತು ಗ್ರಾಹಕ ಸಹಾಯವಾಣಿ।'
   },
   {
@@ -274,8 +273,8 @@ export const DTMF_OPTIONS: DTMFOption[] = [
     nativeLang: 'मराठी',
     agentName: 'Dhruv',
     agentRole: 'व्यवसाय सल्लागार (Business Consultant)',
-    audioSrc: '/audio/Anvriksh_Mh.aac',
-    duration: '0:19',
+    audioSrc: '/audio/anvriksh_mh.wav',
+    duration: '0:24',
     description: 'मराठीत ANVRiksh च्या AI व्हॉइस कॉलिंग एजंट, एंटरप्राइज सोल्यूशन्स आणि सपोर्टची माहिती।'
   },
 ];
@@ -297,25 +296,30 @@ const VoicePillCard: React.FC<{
   isSelected: boolean;
   isPlaying: boolean;
   onClick: () => void;
-}> = ({ voice, isSelected, isPlaying, onClick }) => {
+  isThreeCardRow?: boolean;
+}> = ({ voice, isSelected, isPlaying, onClick, isThreeCardRow = false }) => {
   return (
     <div
       onClick={onClick}
-      className={`flex w-[156px] sm:w-[172px] lg:w-[184px] items-center justify-start gap-x-2.5 sm:gap-x-3 rounded-full border bg-white py-1 pr-3.5 pl-1 shadow-[0_2px_8px_rgba(20,25,18,0.06)] hover:shadow-[0_8px_24px_rgba(20,25,18,0.12)] cursor-pointer transition-all duration-300 group hover:scale-[1.04] hover:-translate-y-0.5 shrink-0 select-none ${
+      className={`flex items-center justify-start rounded-full border bg-white py-1 transition-all duration-300 group hover:scale-[1.03] hover:-translate-y-0.5 shrink-0 select-none cursor-pointer ${
+        isThreeCardRow
+          ? 'w-[104px] xs:w-[114px] sm:w-[172px] lg:w-[184px] pl-1 pr-1.5 sm:pr-3.5 gap-x-1 sm:gap-x-2.5'
+          : 'w-[140px] xs:w-[152px] sm:w-[172px] lg:w-[184px] pl-1 pr-2 sm:pr-3.5 gap-x-1.5 sm:gap-x-3'
+      } shadow-[0_2px_8px_rgba(20,25,18,0.06)] hover:shadow-[0_8px_24px_rgba(20,25,18,0.12)] ${
         isSelected
           ? 'border-[#003D2B] ring-2 ring-[#003D2B]/20 bg-[#EAEFE5]/50 scale-[1.02]'
           : 'border-[#DFD1C5] hover:border-[#003D2B]/50'
       }`}
     >
-      <figure className={`relative z-10 w-11 h-11 sm:w-12 sm:h-12 aspect-square rounded-full shrink-0 shadow-xs bg-gradient-to-br ${voice.avatarBg} flex items-center justify-center`}>
-        <span className="text-white text-sm sm:text-base font-bold leading-none">
+      <figure className={`relative z-10 w-7 h-7 xs:w-8 xs:h-8 sm:w-11 sm:h-11 md:w-12 md:h-12 aspect-square rounded-full shrink-0 shadow-xs bg-gradient-to-br ${voice.avatarBg} flex items-center justify-center`}>
+        <span className="text-white text-[10px] xs:text-xs sm:text-sm md:text-base font-bold leading-none">
           {voice.name.charAt(0)}
         </span>
-        <span className="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-white border border-[#D5E1CE] flex items-center justify-center shadow-xs">
+        <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 sm:w-5 sm:h-5 rounded-full bg-white border border-[#D5E1CE] flex items-center justify-center shadow-xs">
           {isPlaying ? (
-            <span className="w-2 h-2 rounded-full bg-[#003D2B] animate-ping" />
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#003D2B] animate-ping" />
           ) : (
-            <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 text-[#003D2B] fill-current translate-x-px">
+            <svg viewBox="0 0 24 24" className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 text-[#003D2B] fill-current translate-x-px">
               <path d="M8 5v14l11-7z" />
             </svg>
           )}
@@ -323,11 +327,11 @@ const VoicePillCard: React.FC<{
       </figure>
 
       {/* Voice Name & Trait */}
-      <div className="text-left select-none pr-1 min-w-0">
-        <p className="text-sm sm:text-[15px] font-bold text-[#141912] leading-tight group-hover:text-[#003D2B] transition-colors truncate">
+      <div className="text-left select-none pr-1 min-w-0 flex-1">
+        <p className="text-[10px] xs:text-[11px] sm:text-[13px] font-bold text-[#141912] leading-tight group-hover:text-[#003D2B] transition-colors truncate">
           {voice.name}
         </p>
-        <p className="text-[11px] sm:text-xs text-[#616E7C] font-normal whitespace-nowrap mt-0.5 truncate">
+        <p className="text-[8px] xs:text-[9px] sm:text-[11px] text-[#616E7C] font-normal mt-0.5 truncate">
           {voice.role}
         </p>
       </div>
@@ -367,11 +371,13 @@ const CallingAgent: React.FC = () => {
   const row1Ref = useRef<HTMLDivElement>(null);
   const row2Ref = useRef<HTMLDivElement>(null);
   const row3Ref = useRef<HTMLDivElement>(null);
+  const row4Ref = useRef<HTMLDivElement>(null);
 
   const [isVoiceStyleVisible, setIsVoiceStyleVisible] = useState<boolean>(false);
-  const [row1Anim, setRow1Anim] = useState({ x: -72, blur: 8, opacity: 0.45 });
-  const [row2Anim, setRow2Anim] = useState({ x: 72, blur: 8, opacity: 0.45 });
-  const [row3Anim, setRow3Anim] = useState({ x: -72, blur: 8, opacity: 0.45 });
+  const [row1Anim, setRow1Anim] = useState({ x: -40, blur: 6, opacity: 0.5 });
+  const [row2Anim, setRow2Anim] = useState({ x: 40, blur: 6, opacity: 0.5 });
+  const [row3Anim, setRow3Anim] = useState({ x: -40, blur: 6, opacity: 0.5 });
+  const [row4Anim, setRow4Anim] = useState({ x: 40, blur: 6, opacity: 0.5 });
 
   // Each row slides in from the side and is blurred only while it is arriving.
   // The entrance finishes once the row sits in the upper part of the screen.
@@ -387,8 +393,10 @@ const CallingAgent: React.FC = () => {
         const sectionRect = el.getBoundingClientRect();
         setIsVoiceStyleVisible(sectionRect.top < windowHeight * 0.86 && sectionRect.bottom > 0);
 
+        const isMobile = window.innerWidth < 640;
         const calcRow = (rowEl: HTMLDivElement | null, dir: 'left' | 'right', settleAt: number) => {
-          const hidden = { x: dir === 'left' ? -72 : 72, blur: 8, opacity: 0.45 };
+          const baseOffset = isMobile ? (dir === 'left' ? -20 : 20) : (dir === 'left' ? -72 : 72);
+          const hidden = { x: baseOffset, blur: isMobile ? 3 : 8, opacity: 0.45 };
           if (!rowEl) return hidden;
           const top = rowEl.getBoundingClientRect().top;
           const enterStart = windowHeight * 0.98;
@@ -396,15 +404,16 @@ const CallingAgent: React.FC = () => {
           const progress = Math.max(0, Math.min(1, (enterStart - top) / (enterStart - enterFull)));
           const eased = 1 - (1 - progress) * (1 - progress);
           return {
-            x: Number(((dir === 'left' ? -72 : 72) * (1 - eased)).toFixed(1)),
-            blur: Number(((1 - eased) * 8).toFixed(1)),
+            x: Number((baseOffset * (1 - eased)).toFixed(1)),
+            blur: Number(((1 - eased) * (isMobile ? 3 : 8)).toFixed(1)),
             opacity: Number((0.45 + eased * 0.55).toFixed(2)),
           };
         };
 
-        setRow1Anim(calcRow(row1Ref.current, 'left', 0.72));
-        setRow2Anim(calcRow(row2Ref.current, 'right', 0.64));
-        setRow3Anim(calcRow(row3Ref.current, 'left', 0.56));
+        setRow1Anim(calcRow(row1Ref.current, 'left', 0.74));
+        setRow2Anim(calcRow(row2Ref.current, 'right', 0.68));
+        setRow3Anim(calcRow(row3Ref.current, 'left', 0.62));
+        setRow4Anim(calcRow(row4Ref.current, 'right', 0.56));
       });
     };
 
@@ -449,17 +458,22 @@ const CallingAgent: React.FC = () => {
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
-  // Audio playback handler
+  // Audio playback handler & event listeners
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
+
+    // Preload initial audio source
+    audio.src = currentAudioSrc;
 
     const handleTimeUpdate = () => {
       setPlaybackTime(audio.currentTime);
     };
 
     const handleLoadedMetadata = () => {
-      setAudioDuration(audio.duration || 14);
+      if (Number.isFinite(audio.duration) && audio.duration > 0) {
+        setAudioDuration(audio.duration);
+      }
     };
 
     const handleEnded = () => {
@@ -467,32 +481,55 @@ const CallingAgent: React.FC = () => {
       setPlaybackTime(0);
     };
 
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
+    const handleError = () => {
+      console.warn('Audio playback error on element source:', audio.src);
+      setIsPlaying(false);
+    };
+
     audio.addEventListener('timeupdate', handleTimeUpdate);
     audio.addEventListener('loadedmetadata', handleLoadedMetadata);
     audio.addEventListener('ended', handleEnded);
+    audio.addEventListener('play', handlePlay);
+    audio.addEventListener('pause', handlePause);
+    audio.addEventListener('error', handleError);
 
     return () => {
       audio.removeEventListener('timeupdate', handleTimeUpdate);
       audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
       audio.removeEventListener('ended', handleEnded);
+      audio.removeEventListener('play', handlePlay);
+      audio.removeEventListener('pause', handlePause);
+      audio.removeEventListener('error', handleError);
     };
   }, []);
 
-  const playAudioFile = (src: string) => {
+  const playAudioFile = async (src: string) => {
     const audio = audioRef.current;
     if (!audio) return;
-    if (currentAudioSrc !== src) {
+
+    try {
+      const normalizedCurrent = audio.currentSrc || audio.src;
+      const isSameSrc = normalizedCurrent.endsWith(src);
+
+      if (!isSameSrc) {
+        audio.pause();
+        audio.src = src;
+        audio.load();
+      }
+
       setCurrentAudioSrc(src);
-      audio.src = src;
-      audio.load();
-    }
-    audio.playbackRate = playbackRate;
-    audio.play().then(() => {
+      audio.playbackRate = playbackRate;
+      await audio.play();
       setIsPlaying(true);
-    }).catch(err => {
-      console.warn('Audio play restricted by browser policy:', err);
-      setIsPlaying(false);
-    });
+    } catch (err: unknown) {
+      const error = err as Error;
+      if (error.name !== 'AbortError') {
+        console.warn('Audio play restricted or interrupted:', error.message);
+      }
+      setIsPlaying(!audio.paused);
+    }
   };
 
   // Authentic Web Audio API DTMF Dual-Tone Generator for realistic telephone keypad sounds
@@ -575,21 +612,28 @@ const CallingAgent: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const togglePlayAudio = () => {
+  const togglePlayAudio = async () => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    if (isPlaying) {
+    if (!audio.paused && isPlaying) {
       audio.pause();
       setIsPlaying(false);
     } else {
-      audio.playbackRate = playbackRate;
-      audio.play().then(() => {
+      try {
+        const normalizedCurrent = audio.currentSrc || audio.src;
+        if (!normalizedCurrent || normalizedCurrent === '' || normalizedCurrent === window.location.href) {
+          audio.src = currentAudioSrc;
+          audio.load();
+        }
+        audio.playbackRate = playbackRate;
+        await audio.play();
         setIsPlaying(true);
-      }).catch(err => {
-        console.warn('Audio play restricted by browser policy:', err);
-        setIsPlaying(true);
-      });
+      } catch (err: unknown) {
+        const error = err as Error;
+        console.warn('Audio play restricted by browser policy:', error.message);
+        setIsPlaying(false);
+      }
     }
   };
 
@@ -609,6 +653,7 @@ const CallingAgent: React.FC = () => {
   };
 
   const formatTime = (seconds: number) => {
+    if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
@@ -629,7 +674,7 @@ const CallingAgent: React.FC = () => {
       />
 
       {/* Hidden audio element pointing to active voice sample */}
-      <audio ref={audioRef} src={currentAudioSrc} preload="metadata" />
+      <audio ref={audioRef} preload="auto" />
 
       {/* =========================================================================
           1. HERO SECTION WITH HOME ANIMATION & ANVRIKSH PALETTE
@@ -898,10 +943,9 @@ const CallingAgent: React.FC = () => {
               </p>
             </div>
 
-            {/* ————— RIGHT 3-ROW PILL BADGE CLUSTER WITH SMOOTH SCROLL REVEAL & DYNAMIC SIZE ANIMATION ————— */}
-            <div className="w-full max-w-[790px] flex flex-col gap-y-3 sm:gap-y-3.5 py-3 px-1 sm:px-2 overflow-visible mx-auto xl:mx-0">
-              
-              {/* ROW 1: Ava, Liam, Maya (Centered, 3 pills, smooth size & blur scroll reveal) */}
+            {/* ————— 4-ROW ZIGZAG PILL CLUSTER (ZERO HORIZONTAL SCROLLING, RESPONSIVE 3-2-3-2) ————— */}
+            <div className="w-full max-w-[790px] flex flex-col gap-y-2.5 sm:gap-y-3.5 py-3 px-1 sm:px-2 overflow-hidden mx-auto xl:mx-0">
+              {/* ROW 1: Aarohi, Aarav, Maya (3 pills, shifted left) */}
               <div 
                 ref={row1Ref}
                 style={{
@@ -910,7 +954,7 @@ const CallingAgent: React.FC = () => {
                   filter: `blur(${row1Anim.blur}px)`,
                   transition: 'transform 0.12s ease-out, opacity 0.12s ease-out, filter 0.12s ease-out'
                 }}
-                className="flex flex-row items-center justify-center gap-2.5 sm:gap-3 flex-wrap sm:flex-nowrap"
+                className="flex flex-row items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 flex-nowrap shrink-0 -translate-x-1 sm:-translate-x-4 md:translate-x-0"
               >
                 {VOICE_STYLES.slice(0, 3).map(voice => (
                   <VoicePillCard
@@ -918,6 +962,7 @@ const CallingAgent: React.FC = () => {
                     voice={voice}
                     isSelected={activeVoice.id === voice.id}
                     isPlaying={isPlaying && activeVoice.id === voice.id}
+                    isThreeCardRow={true}
                     onClick={() => {
                       if (activeVoice.id === voice.id) {
                         togglePlayAudio();
@@ -929,7 +974,7 @@ const CallingAgent: React.FC = () => {
                 ))}
               </div>
 
-              {/* ROW 2: Ishaan, Zoya, Dhruv, Naveen (Centered, 4 pills, smooth size & blur scroll reveal) */}
+              {/* ROW 2: Ishaan, Zoya (2 pills, shifted right) */}
               <div 
                 ref={row2Ref}
                 style={{
@@ -938,14 +983,15 @@ const CallingAgent: React.FC = () => {
                   filter: `blur(${row2Anim.blur}px)`,
                   transition: 'transform 0.12s ease-out, opacity 0.12s ease-out, filter 0.12s ease-out'
                 }}
-                className="flex flex-row items-center justify-center gap-2.5 sm:gap-3 flex-wrap sm:flex-nowrap"
+                className="flex flex-row items-center justify-center gap-2 sm:gap-3 flex-nowrap shrink-0 translate-x-1 sm:translate-x-4 md:translate-x-0"
               >
-                {VOICE_STYLES.slice(3, 7).map(voice => (
+                {VOICE_STYLES.slice(3, 5).map(voice => (
                   <VoicePillCard
                     key={voice.id}
                     voice={voice}
                     isSelected={activeVoice.id === voice.id}
                     isPlaying={isPlaying && activeVoice.id === voice.id}
+                    isThreeCardRow={false}
                     onClick={() => {
                       if (activeVoice.id === voice.id) {
                         togglePlayAudio();
@@ -957,7 +1003,7 @@ const CallingAgent: React.FC = () => {
                 ))}
               </div>
 
-              {/* ROW 3: Charu, Lavanya, Omkar (Centered, 3 pills, smooth size & blur scroll reveal) */}
+              {/* ROW 3: Dhruv, Naveen, Charu (3 pills, shifted left) */}
               <div 
                 ref={row3Ref}
                 style={{
@@ -966,14 +1012,15 @@ const CallingAgent: React.FC = () => {
                   filter: `blur(${row3Anim.blur}px)`,
                   transition: 'transform 0.12s ease-out, opacity 0.12s ease-out, filter 0.12s ease-out'
                 }}
-                className="flex flex-row items-center justify-center gap-2.5 sm:gap-3 flex-wrap sm:flex-nowrap"
+                className="flex flex-row items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 flex-nowrap shrink-0 -translate-x-1 sm:-translate-x-4 md:translate-x-0"
               >
-                {VOICE_STYLES.slice(7, 10).map(voice => (
+                {VOICE_STYLES.slice(5, 8).map(voice => (
                   <VoicePillCard
                     key={voice.id}
                     voice={voice}
                     isSelected={activeVoice.id === voice.id}
                     isPlaying={isPlaying && activeVoice.id === voice.id}
+                    isThreeCardRow={true}
                     onClick={() => {
                       if (activeVoice.id === voice.id) {
                         togglePlayAudio();
@@ -985,6 +1032,34 @@ const CallingAgent: React.FC = () => {
                 ))}
               </div>
 
+              {/* ROW 4: Lavanya, Omkar (2 pills, shifted right) */}
+              <div 
+                ref={row4Ref}
+                style={{
+                  transform: `translateX(${row4Anim.x}px)`,
+                  opacity: row4Anim.opacity,
+                  filter: `blur(${row4Anim.blur}px)`,
+                  transition: 'transform 0.12s ease-out, opacity 0.12s ease-out, filter 0.12s ease-out'
+                }}
+                className="flex flex-row items-center justify-center gap-2 sm:gap-3 flex-nowrap shrink-0 translate-x-1 sm:translate-x-4 md:translate-x-0"
+              >
+                {VOICE_STYLES.slice(8, 10).map(voice => (
+                  <VoicePillCard
+                    key={voice.id}
+                    voice={voice}
+                    isSelected={activeVoice.id === voice.id}
+                    isPlaying={isPlaying && activeVoice.id === voice.id}
+                    isThreeCardRow={false}
+                    onClick={() => {
+                      if (activeVoice.id === voice.id) {
+                        togglePlayAudio();
+                      } else {
+                        handleSelectVoice(voice);
+                      }
+                    }}
+                  />
+                ))}
+              </div>
             </div>
 
           </div>
@@ -1325,67 +1400,140 @@ const CallingAgent: React.FC = () => {
 
           </Reveal>
 
-          {/* ————— CALL MODE DEFINITIONS ————— */}
-          <Reveal variant="up" duration={700} delay={100}>
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-bold text-[#141912] flex items-center gap-2">
-                <i className="fas fa-book-open text-[#003D2B]" />
-                Call Mode Definitions
+          {/* ————— AI CALLING MODELS COMPARISON MATRIX ————— */}
+          <Reveal variant="up" duration={700} delay={100} className="mt-16 sm:mt-20">
+            <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E3EDE0] border border-[#D5E1CE] shadow-xs mb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#003D2B] animate-pulse" />
+                <span className="text-xs font-bold text-[#003D2B] tracking-tight">Architecture Comparison Matrix</span>
+              </div>
+              <h3 className="text-2xl sm:text-4xl md:text-[40px] font-[800] text-[#141912] tracking-[-0.03em] leading-[1.12]">
+                Compare our AI calling models
               </h3>
-              <span className="text-xs text-[#616E7C] font-medium hidden sm:inline">
-                How each calling pattern works on the line
-              </span>
+              <p className="mt-3 text-[#4E5B49] text-sm sm:text-base max-w-2xl mx-auto">
+                Evaluate the three autonomous calling architectures side-by-side to select the ideal voice flow for your enterprise workflows.
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
-              <article className="p-6 sm:p-7 rounded-[28px] bg-white border border-[#D5E1CE] shadow-[0_8px_30px_rgba(20,25,18,0.05)] flex flex-col">
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#616E7C]">Definition</span>
-                  <span className="w-10 h-10 rounded-2xl bg-[#E3EDE0] border border-[#D5E1CE] flex items-center justify-center text-[#003D2B]">
-                    <i className="fas fa-arrow-right" />
-                  </span>
-                </div>
-                <h4 className="mt-5 text-xl font-bold text-[#141912] leading-tight">One Direction Call</h4>
-                <p className="mt-3 text-sm text-[#4E5B49] leading-relaxed">
-                  A one-direction call is a telephone call in which audio travels only from the agent to the listener. The agent delivers a spoken message — a reminder, alert, or announcement — and the person on the line only hears it. There is no keypad entry and no spoken reply.
-                </p>
-                <p className="mt-auto pt-5 text-xs text-[#616E7C] leading-relaxed">
-                  Used for broadcasts, payment reminders, appointment alerts, and one-way notifications.
-                </p>
-              </article>
+            {(() => {
+              const callingModels = [
+                {
+                  name: 'One Direction Call',
+                  subtitle: 'A fast, automated broadcast agent delivering spoken reminders and notifications with zero latency.',
+                  popular: false,
+                },
+                {
+                  name: 'DTMF Keypad Call',
+                  subtitle: 'An interactive touch-tone IVR agent with instant keypad routing, OTP capture, and structured qualification.',
+                  popular: true,
+                },
+                {
+                  name: 'Bidirectional Voice AI',
+                  subtitle: 'An immersive full-duplex conversational voice agent with natural speech understanding and CRM sync.',
+                  popular: false,
+                },
+              ];
 
-              <article className="p-6 sm:p-7 rounded-[28px] bg-[#0C140E] text-white border border-[#003D2B] shadow-[0_16px_40px_rgba(12,20,14,0.28)] flex flex-col md:-translate-y-2">
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#C6F56F]">Definition</span>
-                  <span className="w-10 h-10 rounded-2xl bg-[#003D2B] border border-[#C6F56F]/30 flex items-center justify-center text-[#C6F56F]">
-                    <i className="fas fa-th" />
-                  </span>
-                </div>
-                <h4 className="mt-5 text-xl font-bold text-white leading-tight">DTMF Input Call</h4>
-                <p className="mt-3 text-sm text-white/75 leading-relaxed">
-                  A DTMF input call is a telephone call in which the agent speaks a prompt and the caller answers by pressing keys on the phone keypad. Each press sends a Dual-Tone Multi-Frequency (DTMF) tone. The system reads that tone to open a menu, confirm a choice, or capture a number such as an OTP or account ID.
-                </p>
-                <p className="mt-auto pt-5 text-xs text-white/50 leading-relaxed">
-                  The keypad above is this mode: press 1–9 and the route follows the key.
-                </p>
-              </article>
+              const modelRows: { label: string; cells: Array<string | boolean> }[] = [
+                { label: 'Audio flow architecture', cells: ['One-way (Agent to user)', 'Two-way (Voice + Keypad)', 'Full Duplex (2-way voice)'] },
+                { label: 'Caller input method', cells: ['Listen only', 'DTMF Phone Keypad (1–9, *, #)', 'Natural Spoken Speech'] },
+                { label: 'Neural Text-to-Speech (TTS)', cells: [true, true, true] },
+                { label: 'Real-time Speech-to-Text (STT)', cells: [false, false, true] },
+                { label: 'Touch-tone (DTMF) decoding', cells: [false, true, true] },
+                { label: 'Sub-second response latency', cells: ['< 120ms', '< 220ms', '< 550ms'] },
+                { label: 'Live conversational interruption', cells: [false, false, true] },
+                { label: 'Multilingual Indian accents', cells: [true, true, true] },
+                { label: 'Structured OTP & ID verification', cells: [false, true, true] },
+                { label: 'CRM & webhook integration', cells: ['Basic webhook', 'Real-time two-way API', 'Autonomous CRM sync'] },
+                { label: 'Automated calendar booking', cells: [false, true, true] },
+                { label: 'Ideal enterprise use case', cells: ['Alerts & reminders', 'IVR, admissions & triage', 'Sales qualification & support'] },
+              ];
 
-              <article className="p-6 sm:p-7 rounded-[28px] bg-white border border-[#D5E1CE] shadow-[0_8px_30px_rgba(20,25,18,0.05)] flex flex-col">
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#616E7C]">Definition</span>
-                  <span className="w-10 h-10 rounded-2xl bg-[#E3EDE0] border border-[#D5E1CE] flex items-center justify-center text-[#003D2B]">
-                    <i className="fas fa-comments" />
-                  </span>
+              const renderModelHeader = (model: typeof callingModels[number]) => (
+                <div
+                  key={model.name}
+                  className={`flex min-h-[200px] sm:min-h-[220px] flex-col rounded-[20px] sm:rounded-[24px] p-4 sm:p-7 ${
+                    model.popular
+                      ? 'bg-[#0C140E] text-white border border-[#003D2B] shadow-[0_16px_40px_rgba(12,20,14,0.28)] md:-translate-y-2'
+                      : 'border border-[#D5E1CE] bg-white text-[#141912] shadow-[0_8px_30px_rgba(20,25,18,0.05)]'
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-1 mb-1">
+                    <h4 className="text-lg sm:text-2xl font-[700] tracking-tight">{model.name}</h4>
+                    {model.popular && (
+                      <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider px-1.5 sm:px-2 py-0.5 rounded-full bg-[#C6F56F]/20 text-[#C6F56F] font-bold border border-[#C6F56F]/30 shrink-0">
+                        Popular
+                      </span>
+                    )}
+                  </div>
+                  <div className={`mt-1 sm:mt-1.5 text-xs sm:text-sm leading-relaxed ${model.popular ? 'text-white/70' : 'text-[#616E7C]'}`}>
+                    {model.subtitle}
+                  </div>
+                  <Link
+                    to="/company/contact-us"
+                    className={`mt-auto pt-3 sm:pt-4 block w-full rounded-full py-2 sm:py-2.5 text-center text-xs sm:text-sm font-bold transition-all ${
+                      model.popular
+                        ? 'bg-[#003D2B] text-white hover:bg-[#022D20] shadow-[0_4px_16px_rgba(0,61,43,0.3)] hover:scale-[1.02] active:scale-95'
+                        : 'border border-[#D5E1CE] bg-white text-[#141912] hover:bg-[#EAEFE5] hover:border-[#003D2B]/40 active:scale-95'
+                    }`}
+                  >
+                    Get started
+                  </Link>
                 </div>
-                <h4 className="mt-5 text-xl font-bold text-[#141912] leading-tight">Bidirectional Communication</h4>
-                <p className="mt-3 text-sm text-[#4E5B49] leading-relaxed">
-                  Bidirectional communication is a live two-way call in which both the caller and the AI agent speak and listen. The agent understands what is said, answers in real time, and can ask a follow-up, so the exchange continues like a normal phone conversation.
-                </p>
-                <p className="mt-auto pt-5 text-xs text-[#616E7C] leading-relaxed">
-                  Used for support, sales qualification, and any call that needs a spoken reply.
-                </p>
-              </article>
-            </div>
+              );
+
+              return (
+                <div className="mt-8">
+                  {/* Unified Side-by-Side Matrix Table for All Screens (Swipeable on Mobile) */}
+                  <div className="overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 pb-4">
+                    {/* Mobile swipe indicator hint */}
+                    <div className="md:hidden flex items-center justify-between gap-2 text-xs text-[#616E7C] mb-3 px-1">
+                      <span className="inline-flex items-center gap-1.5 font-medium">
+                        <i className="fas fa-arrows-left-right text-[#003D2B]" />
+                        <span>Swipe horizontally to compare models side-by-side</span>
+                      </span>
+                      <span className="text-[10px] font-bold text-[#003D2B] bg-[#E3EDE0] px-2 py-0.5 rounded-full">
+                        Side-by-Side
+                      </span>
+                    </div>
+
+                    <div className="min-w-[660px] md:min-w-0 grid grid-cols-[minmax(150px,1.1fr)_repeat(3,minmax(160px,1fr))] gap-x-3 md:gap-x-4">
+                      {/* Top Header Row */}
+                      <div className="flex items-end pb-4 font-bold text-sm text-[#616E7C]">
+                        Models
+                      </div>
+                      {callingModels.map(renderModelHeader)}
+
+                      {/* What's included row */}
+                      <div className="flex items-end border-b border-[#D5E1CE] pb-4 pt-6 text-xs sm:text-base font-bold text-[#141912] sticky left-0 bg-[#F4F7EE]/95 backdrop-blur-xs">
+                        What&apos;s included
+                      </div>
+                      {callingModels.map((model) => (
+                        <div key={`${model.name}-included`} className="border-b border-[#D5E1CE] pb-4 pt-6 text-center text-xs sm:text-sm font-semibold text-[#003D2B]">
+                          Included
+                        </div>
+                      ))}
+
+                      {/* Feature rows */}
+                      {modelRows.map((row) => (
+                        <React.Fragment key={row.label}>
+                          <div className="flex min-h-[52px] sm:min-h-[56px] items-center border-b border-[#D5E1CE] text-xs sm:text-sm font-semibold text-[#141912] pr-2 sticky left-0 bg-[#F4F7EE]/95 backdrop-blur-xs">
+                            {row.label}
+                          </div>
+                          {row.cells.map((cell, index) => (
+                            <div key={`${row.label}-${index}`} className="flex min-h-[52px] sm:min-h-[56px] items-center justify-center border-b border-[#D5E1CE] px-2 text-center text-xs sm:text-sm text-[#4E5B49]">
+                              {cell === true ? <i className="fas fa-check text-[#003D2B] text-sm" aria-label="Included" /> : null}
+                              {cell === false ? <span className="text-[#A3B89F] font-bold" aria-label="Not included">—</span> : null}
+                              {typeof cell === 'string' ? <span className="font-medium text-[#141912]">{cell}</span> : null}
+                            </div>
+                          ))}
+                        </React.Fragment>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
           </Reveal>
 
         </div>
@@ -1538,53 +1686,6 @@ const CallingAgent: React.FC = () => {
 
         </Reveal>
       </section>
-
-
-      {/* =========================================================================
-          7. PROVEN RESULTS & REAL VOICES
-          ========================================================================= */}
-      <section className="py-20 sm:py-28 relative select-none">
-        <Reveal variant="up" duration={750} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E3EDE0] border border-[#D5E1CE] shadow-xs mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#003D2B] animate-pulse" />
-              <span className="text-xs font-bold text-[#003D2B] tracking-tight">Proven Results</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-[44px] font-[800] tracking-[-0.03em] text-[#141912] leading-[1.12]">
-              Real results, real voices
-            </h2>
-            <p className="mt-3 text-[#4E5B49] text-sm sm:text-base">
-              Discover how forward-thinking studios and enterprises scale their voice production by 10x.
-            </p>
-          </div>
-
-          {/* Metric Highlight Card in Signature Emerald */}
-          <div className="p-8 sm:p-12 rounded-[32px] bg-[#003D2B] text-white border border-[#D5E1CE] shadow-[0_20px_50px_rgba(0,61,43,0.25)] mb-12 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div>
-              <span className="text-[#C6F56F] text-5xl sm:text-7xl font-[800] font-mono tracking-tight">
-                50%
-              </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mt-2">
-                less time spent on dubbing and call operations
-              </h3>
-              <p className="text-sm text-white/80 mt-1 max-w-lg">
-                SoundWave Studios boosts video output by 40% using AI-generated voices with zero human talent studio overhead.
-              </p>
-            </div>
-            <Link
-              to="/resources/case-studies"
-              className="px-7 py-3.5 rounded-full text-xs font-bold text-[#003D2B] bg-white hover:bg-[#EAEFE5] transition-all shrink-0 shadow-md hover:scale-105 active:scale-95"
-            >
-              Read Full Case Study
-            </Link>
-          </div>
-
-        </Reveal>
-      </section>
-
-      <Testimonials />
-
 
       {/* =========================================================================
           8. HIGH CONVERTING FINAL CTA (Signature Emerald container)

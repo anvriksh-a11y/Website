@@ -16,12 +16,17 @@
   scroll-behavior: smooth;
 }
 
-html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+html, body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
 body {
   background-color: var(--bg-color);
   color: var(--deep-charcoal);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  overflow-x: hidden;
   line-height: 1.6;
 }
 ::selection { background: rgba(82, 107, 61, 0.22); color: #172C27; }

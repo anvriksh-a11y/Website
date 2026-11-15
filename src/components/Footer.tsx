@@ -63,13 +63,13 @@ const Footer: React.FC = () => {
                 <span className="w-1.5 h-3.5 bg-[#A7E2AF] rounded-full" /> Services
               </h4>
               <ul className="space-y-2.5 text-sm">
+                <li><Link to="/agentic-ai" className="text-[#A7C2B2] hover:text-white transition-colors">Agentic AI Solutions</Link></li>
                 <li><Link to="/calling-agent" className="text-[#A7C2B2] hover:text-white transition-colors">AI Calling Agents</Link></li>
                 <li><Link to="/data-solutions" className="text-[#A7C2B2] hover:text-white transition-colors">Data Solutions</Link></li>
                 <li><Link to="/software-solutions" className="text-[#A7C2B2] hover:text-white transition-colors">Website Development</Link></li>
                 <li><Link to="/digital-marketing" className="text-[#A7C2B2] hover:text-white transition-colors">Digital Marketing</Link></li>
                 <li><Link to="/software-solutions" className="text-[#A7C2B2] hover:text-white transition-colors">Custom Software</Link></li>
-                <li><Link to="/gen-ai" className="text-[#A7C2B2] hover:text-white transition-colors">SEO &amp; AEO Engine</Link></li>
-                <li><Link to="/gen-ai" className="text-[#A7C2B2] hover:text-white transition-colors">AI Model Development</Link></li>
+                <li><Link to="/gen-ai" className="text-[#A7C2B2] hover:text-white transition-colors">Gen AI Solutions</Link></li>
               </ul>
             </div>
 

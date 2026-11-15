@@ -16,7 +16,7 @@ const services: ServiceItem[] = [
         id: 'ai-calling-agents',
         title: 'AI Calling Agents',
         description: 'Automate customer outreach, support and sales with AI voice agents.',
-        link: '/gen-ai',
+        link: '/calling-agent',
         renderIcon: () => (
             <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none">
                 <defs>
@@ -44,7 +44,7 @@ const services: ServiceItem[] = [
     {
         id: 'website-development',
         title: 'Website Development',
-        description: 'High-performance, engaging websites for your brand.',
+        description: 'High-performance, engaging websites engineered with SEO, AEO and GEO built-in.',
         link: '/software-solutions',
         renderIcon: () => (
             <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none">
@@ -70,6 +70,74 @@ const services: ServiceItem[] = [
                 <path d="M29 22H36M29 26H34M29 30H36" stroke="#FFE8D1" strokeWidth="2" strokeLinecap="round" />
                 {/* 3D Pointer Cursor */}
                 <path d="M26 28L34 38L30 39L27 42L26 28Z" fill="#FFF" stroke="#C93B00" strokeWidth="1.5" />
+            </svg>
+        ),
+    },
+    {
+        id: 'agentic-ai',
+        title: 'Agentic AI',
+        description: 'Autonomous multi-agent swarms that reason, plan, call tools, and execute workflows.',
+        link: '/agentic-ai',
+        renderIcon: () => (
+            <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none">
+                <defs>
+                    <linearGradient id="agenticGrad1" x1="10" y1="10" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#FFA043" />
+                        <stop offset="1" stopColor="#E05206" />
+                    </linearGradient>
+                    <linearGradient id="agenticGrad2" x1="16" y1="16" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#FF7A00" />
+                        <stop offset="1" stopColor="#B43700" />
+                    </linearGradient>
+                </defs>
+                {/* 3D Autonomous Agent Hexagon / Brain Mesh */}
+                <polygon points="24,8 38,16 38,32 24,40 10,32 10,16" stroke="url(#agenticGrad1)" strokeWidth="3" strokeLinejoin="round" />
+                <polygon points="24,14 33,19 33,29 24,34 15,29 15,19" fill="url(#agenticGrad2)" />
+                {/* Orbiting Autonomous Tool Nodes */}
+                <circle cx="24" cy="8" r="3" fill="#FFA043" stroke="#FFF" strokeWidth="1.5" />
+                <circle cx="38" cy="16" r="3" fill="#FF851A" stroke="#FFF" strokeWidth="1.5" />
+                <circle cx="38" cy="32" r="3" fill="#E05206" stroke="#FFF" strokeWidth="1.5" />
+                <circle cx="24" cy="40" r="3" fill="#C93B00" stroke="#FFF" strokeWidth="1.5" />
+                <circle cx="10" cy="32" r="3" fill="#E05206" stroke="#FFF" strokeWidth="1.5" />
+                <circle cx="10" cy="16" r="3" fill="#FF851A" stroke="#FFF" strokeWidth="1.5" />
+                {/* Central Autonomous Core Spark */}
+                <circle cx="24" cy="24" r="3" fill="#FFF" />
+            </svg>
+        ),
+    },
+    {
+        id: 'data-solutions',
+        title: 'Data Solutions',
+        description: 'Enterprise lakehouse platforms, ETL medallion pipelines, Fabric & Databricks.',
+        link: '/data-solutions',
+        renderIcon: () => (
+            <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none">
+                <defs>
+                    <linearGradient id="dataGrad1" x1="12" y1="8" x2="36" y2="20" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#FFB366" />
+                        <stop offset="1" stopColor="#FF851A" />
+                    </linearGradient>
+                    <linearGradient id="dataGrad2" x1="12" y1="18" x2="36" y2="30" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#FF7A00" />
+                        <stop offset="1" stopColor="#E05206" />
+                    </linearGradient>
+                    <linearGradient id="dataGrad3" x1="12" y1="28" x2="36" y2="40" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#D9480F" />
+                        <stop offset="1" stopColor="#A63200" />
+                    </linearGradient>
+                </defs>
+                {/* 3D Cylindrical Medallion Lakehouse Database Stack */}
+                {/* Top Cylinder */}
+                <ellipse cx="24" cy="14" rx="14" ry="5" fill="url(#dataGrad1)" />
+                <path d="M10 14V19C10 21.76 16.27 24 24 24C31.73 24 38 21.76 38 19V14" stroke="#E05206" strokeWidth="2.5" fill="url(#dataGrad2)" />
+                {/* Middle Cylinder */}
+                <path d="M10 23V28C10 30.76 16.27 33 24 33C31.73 33 38 30.76 38 28V23" stroke="#D9480F" strokeWidth="2.5" fill="url(#dataGrad3)" />
+                {/* Bottom Cylinder */}
+                <path d="M10 32V37C10 39.76 16.27 42 24 42C31.73 42 38 39.76 38 37V32" stroke="#A63200" strokeWidth="2.5" fill="#8C2500" />
+                {/* Data Pipeline Signal Dots */}
+                <circle cx="24" cy="14" r="2" fill="#FFF" />
+                <circle cx="30" cy="22" r="1.5" fill="#FFF" />
+                <circle cx="18" cy="31" r="1.5" fill="#FFF" />
             </svg>
         ),
     },
@@ -101,7 +169,7 @@ const services: ServiceItem[] = [
     {
         id: 'custom-software-development',
         title: 'Custom Software Development',
-        description: 'Scalable and tailored software for unique business needs.',
+        description: 'Scalable and tailored software, APIs, and cloud infrastructure for unique business needs.',
         link: '/software-solutions',
         renderIcon: () => (
             <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none">
@@ -132,88 +200,9 @@ const services: ServiceItem[] = [
         ),
     },
     {
-        id: 'seo-optimization',
-        title: 'SEO Optimization',
-        description: 'Improve search rankings and drive qualified traffic.',
-        link: '/gen-ai',
-        renderIcon: () => (
-            <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none">
-                <defs>
-                    <linearGradient id="seoGrad" x1="8" y1="36" x2="40" y2="12" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#FFA043" />
-                        <stop offset="1" stopColor="#E05206" />
-                    </linearGradient>
-                </defs>
-                {/* Ascending 3D Bars */}
-                <rect x="9" y="27" width="6" height="12" rx="2" fill="#FFA043" />
-                <rect x="18" y="21" width="6" height="18" rx="2" fill="#FF851A" />
-                <rect x="27" y="15" width="6" height="24" rx="2" fill="#E05206" />
-                <rect x="36" y="9" width="6" height="30" rx="2" fill="#C93B00" />
-                {/* Trend Arrow */}
-                <path d="M10 24L20 18L28 12L38 6M38 6H31M38 6V13" stroke="#FFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-        ),
-    },
-    {
-        id: 'aeo-engine',
-        title: 'AEO Engine',
-        description: 'Get your brand visible in AI answers (ChatGPT, Gemini, etc.).',
-        link: '/gen-ai',
-        renderIcon: () => (
-            <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none">
-                <defs>
-                    <linearGradient id="aeoGrad" x1="10" y1="12" x2="38" y2="36" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#FFA043" />
-                        <stop offset="1" stopColor="#E05206" />
-                    </linearGradient>
-                </defs>
-                {/* Back Bubble */}
-                <rect x="18" y="10" width="22" height="16" rx="4" fill="#FFA043" fillOpacity="0.6" />
-                {/* Front Chat Bubble */}
-                <rect x="8" y="16" width="24" height="18" rx="4" fill="url(#aeoGrad)" />
-                <polygon points="12,34 16,34 12,39" fill="#E05206" />
-                {/* Dialogue Lines / AI Sparks */}
-                <circle cx="16" cy="25" r="2" fill="#FFF" />
-                <circle cx="21" cy="25" r="2" fill="#FFF" />
-                <circle cx="26" cy="25" r="2" fill="#FFF" />
-                {/* AI Star */}
-                <path d="M35 14L36.5 17.5L40 19L36.5 20.5L35 24L33.5 20.5L30 19L33.5 17.5L35 14Z" fill="#FFF" />
-            </svg>
-        ),
-    },
-    {
-        id: 'geo-engine',
-        title: 'GEO Engine',
-        description: 'Expand discoverability across AI, voice and generative platforms.',
-        link: '/gen-ai',
-        renderIcon: () => (
-            <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none">
-                <defs>
-                    <linearGradient id="geoGrad" x1="8" y1="8" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#FFA043" />
-                        <stop offset="1" stopColor="#E05206" />
-                    </linearGradient>
-                </defs>
-                {/* Center Node */}
-                <circle cx="24" cy="24" r="6" fill="url(#geoGrad)" />
-                {/* Outer Satellite Nodes */}
-                <circle cx="12" cy="14" r="3.5" fill="#FF851A" />
-                <circle cx="36" cy="14" r="3.5" fill="#FF851A" />
-                <circle cx="10" cy="34" r="3.5" fill="#E05206" />
-                <circle cx="38" cy="34" r="3.5" fill="#E05206" />
-                {/* Connecting Laser Beams */}
-                <line x1="24" y1="24" x2="12" y2="14" stroke="#FF7A00" strokeWidth="2" strokeDasharray="3 3" />
-                <line x1="24" y1="24" x2="36" y2="14" stroke="#FF7A00" strokeWidth="2" strokeDasharray="3 3" />
-                <line x1="24" y1="24" x2="10" y2="34" stroke="#FF7A00" strokeWidth="2" strokeDasharray="3 3" />
-                <line x1="24" y1="24" x2="38" y2="34" stroke="#FF7A00" strokeWidth="2" strokeDasharray="3 3" />
-                <circle cx="24" cy="24" r="2.5" fill="#FFF" />
-            </svg>
-        ),
-    },
-    {
         id: 'ai-model-development',
         title: 'AI Model Development',
-        description: 'Design, train and deploy custom AI models for your business.',
+        description: 'Design, fine-tune and deploy custom generative AI models and neural systems.',
         link: '/gen-ai',
         renderIcon: () => (
             <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none">
@@ -242,6 +231,31 @@ const services: ServiceItem[] = [
                 <circle cx="24" cy="18" r="2" fill="#FFF" />
                 <circle cx="18" cy="16" r="1.5" fill="#FFF" />
                 <circle cx="30" cy="16" r="1.5" fill="#FFF" />
+            </svg>
+        ),
+    },
+    {
+        id: 'seo-aeo-geo',
+        title: 'SEO, AEO & GEO Engine',
+        description: 'Dominate Google rankings, featured snippets, and generative AI answers across ChatGPT & Gemini.',
+        link: '/software-solutions#seo-aeo-geo',
+        renderIcon: () => (
+            <svg viewBox="0 0 48 48" className="w-10 h-10" fill="none">
+                <defs>
+                    <linearGradient id="searchEngGrad" x1="8" y1="8" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#FFA043" />
+                        <stop offset="1" stopColor="#E05206" />
+                    </linearGradient>
+                </defs>
+                {/* Magnifying Prism Ring */}
+                <circle cx="21" cy="21" r="12" stroke="url(#searchEngGrad)" strokeWidth="4" />
+                <path d="M30 30L40 40" stroke="#C93B00" strokeWidth="4.5" strokeLinecap="round" />
+                {/* Inner AI Spark */}
+                <path d="M21 14L22.5 18.5L27 20L22.5 21.5L21 26L19.5 21.5L15 20L19.5 18.5L21 14Z" fill="#FFA043" />
+                <circle cx="21" cy="20" r="2" fill="#FFF" />
+                {/* Orbiting Satellite Node */}
+                <circle cx="34" cy="14" r="2.5" fill="#E05206" />
+                <line x1="29" y1="17" x2="32" y2="15" stroke="#FFA043" strokeWidth="1.5" strokeDasharray="2 2" />
             </svg>
         ),
     },

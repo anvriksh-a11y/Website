@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from '../components/Hero';
 import GTMPlatformPreview from '../components/GTMPlatformPreview';
 import VoiceAgentShowcase from '../components/VoiceAgentShowcase';
+import VoiceStylesDirectory from '../components/VoiceStylesDirectory';
 import AIInAction from '../components/AIInAction';
 import ClientWorkShowcase from '../components/ClientWorkShowcase';
 import OurServices from '../components/OurServices';
@@ -99,6 +100,7 @@ const Home: React.FC = () => {
             <Hero />
             <GTMPlatformPreview />
             <VoiceAgentShowcase />
+            <VoiceStylesDirectory />
             <AIInAction />
 
             <FeatureSplit
