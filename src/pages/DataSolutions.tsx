@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import Reveal from '../components/Reveal';
 import KeyTakeaways from '../components/KeyTakeaways';
 import ToolIntegrationOrbit from '../components/ToolIntegrationOrbit';
+import { trackCTA } from '../utils/analytics';
 
 // Streamlined Service Interface
 interface DataService {
@@ -233,7 +234,7 @@ const DataSolutions: React.FC = () => {
         keywords="Cloud Data Engineering, Microsoft Fabric, Azure Data Engineering, Databricks, PySpark, Lakehouse Architecture, Medallion Architecture, ETL Pipelines, Data Migration, ANVRiksh Tech Solutions LLP"
         canonicalUrl="https://anvriksh.com/data-solutions"
         structuredData={structuredData}
-        ogImage="/platform_hero.png"
+        ogImage="/og-image.png"
       />
 
       {/* =========================================================================
@@ -275,6 +276,7 @@ const DataSolutions: React.FC = () => {
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
               <Link
                 to="/company/contact-us"
+                onClick={() => trackCTA('Schedule Consultation - Data Hero', '/company/contact-us')}
                 className="group inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-full text-xs sm:text-sm font-bold text-white bg-[#003D2B] hover:bg-[#022D20] shadow-[0_10px_24px_rgba(0,61,43,0.22)] hover:scale-105 active:scale-95 transition-all w-full sm:w-auto"
               >
                 <span>Schedule Consultation</span>
@@ -369,7 +371,7 @@ const DataSolutions: React.FC = () => {
               {/* Main Image Frame with Telemetry Nodes */}
               <div className="relative mt-4 rounded-2xl overflow-hidden bg-[#070D08] border border-white/10 group cursor-pointer" onClick={() => setIsModalOpen(true)}>
                 <img
-                  src="/images/data-solutions/fabric-databricks-architecture.jpg"
+                  src="/images/data-solutions/fabric-databricks-architecture.webp"
                   alt="Modern Analytics with Microsoft Fabric and Azure Databricks DREAM Lab Architecture"
                   className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.01]"
                   loading="lazy"
@@ -412,7 +414,7 @@ const DataSolutions: React.FC = () => {
             </div>
             <div className="mt-4 max-h-[80vh] overflow-auto rounded-xl">
               <img
-                src="/images/data-solutions/fabric-databricks-architecture.jpg"
+                src="/images/data-solutions/fabric-databricks-architecture.webp"
                 alt="Architecture Fullscreen"
                 className="w-full h-auto object-contain"
               />

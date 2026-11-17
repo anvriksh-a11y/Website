@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { trackWhatsAppClick } from '../utils/analytics';
+import { trackWhatsAppClick, trackPhoneClick } from '../utils/analytics';
 import { COMPANY_DETAILS } from '../constants/contact';
 import Reveal from './Reveal';
 
@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
                 </li>
                 <li className="flex items-center gap-2.5">
                   <i className="fas fa-phone-alt text-[#A7E2AF] text-xs" />
-                  <a href={`tel:${COMPANY_DETAILS.primaryPhoneRaw}`} className="hover:text-white transition-colors">{COMPANY_DETAILS.primaryPhone}</a>
+                  <a href={`tel:${COMPANY_DETAILS.primaryPhoneRaw}`} onClick={() => trackPhoneClick('footer')} className="hover:text-white transition-colors">{COMPANY_DETAILS.primaryPhone}</a>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <i className="fas fa-envelope text-[#A7E2AF] text-xs" />

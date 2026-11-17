@@ -1,5 +1,6 @@
 import React from 'react';
 import SEO from '../../components/SEO';
+import { trackDownload, trackLead } from '../../utils/analytics';
 
 const Ebooks: React.FC = () => {
     const pdfUrl = "/Ebook-Agentic-AI.pdf";
@@ -54,9 +55,21 @@ const Ebooks: React.FC = () => {
                         <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-200 to-gray-400 mb-6">
                             Agentic AI: The Future is Autonomous
                         </h1>
-                        <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                        <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed mb-6">
                             Discover why <strong>Agentic AI</strong> is the biggest trend in technology. Master the strategies to build self-governing, intelligent systems for your enterprise.
                         </p>
+                        <a
+                            href={pdfUrl}
+                            download="ANVRiksh-Agentic-AI-Ebook.pdf"
+                            onClick={() => {
+                                trackDownload('ANVRiksh-Agentic-AI-Ebook.pdf', 'pdf');
+                                trackLead('ebook_download', { resource: 'Agentic AI Ebook' });
+                            }}
+                            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-500 transition-all shadow-lg hover:shadow-indigo-500/25 active:scale-95"
+                        >
+                            <i className="fas fa-file-arrow-down" />
+                            <span>Download Free Ebook (PDF)</span>
+                        </a>
                     </div>
 
                     {/* PDF Viewer Container */}

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import SEO from '../../components/SEO';
 import Reveal from '../../components/Reveal';
-import { trackLead } from '../../utils/analytics';
+import { trackLead, trackPhoneClick } from '../../utils/analytics';
 import { COMPANY_DETAILS } from '../../constants/contact';
 
 const ContactUs: React.FC = () => {
@@ -174,6 +174,7 @@ const ContactUs: React.FC = () => {
                                     {/* Primary Phone */}
                                     <a 
                                         href={`tel:${COMPANY_DETAILS.primaryPhoneRaw}`}
+                                        onClick={() => trackPhoneClick('contact_page_primary')}
                                         className="group p-4 rounded-2xl bg-[#F4F7EE] hover:bg-[#E3EDE0] border border-[#D5E1CE] flex items-center gap-4 transition-all duration-300 shadow-2xs hover:shadow-xs hover:-translate-y-0.5"
                                     >
                                         <div className="w-11 h-11 rounded-xl bg-white border border-[#D5E1CE] flex items-center justify-center text-[#003D2B] shadow-2xs group-hover:scale-110 transition-transform">
@@ -190,6 +191,7 @@ const ContactUs: React.FC = () => {
                                     {/* Secondary Phone */}
                                     <a 
                                         href={`tel:${COMPANY_DETAILS.secondaryPhoneRaw}`}
+                                        onClick={() => trackPhoneClick('contact_page_secondary')}
                                         className="group p-4 rounded-2xl bg-[#F4F7EE] hover:bg-[#E3EDE0] border border-[#D5E1CE] flex items-center gap-4 transition-all duration-300 shadow-2xs hover:shadow-xs hover:-translate-y-0.5"
                                     >
                                         <div className="w-11 h-11 rounded-xl bg-white border border-[#D5E1CE] flex items-center justify-center text-[#003D2B] shadow-2xs group-hover:scale-110 transition-transform">

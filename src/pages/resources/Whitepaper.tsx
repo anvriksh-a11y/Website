@@ -154,7 +154,7 @@ const Whitepaper: React.FC = () => {
                             <div className="absolute inset-0 bg-blue-500/20 blur-[100px] rounded-full"></div>
                             <div className="relative border border-white/10 rounded-3xl p-4 bg-slate-900 shadow-[0_0_50px_rgba(59,130,246,0.15)] transform rotate-3 hover:rotate-0 transition-transform duration-500">
                                 <img 
-                                    src="/platform_hero.png" 
+                                    src="/og-image.png" 
                                     alt="Agentic AI Whitepaper Cover" 
                                     className="w-full h-auto rounded-2xl shadow-xl"
                                 />

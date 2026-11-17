@@ -66,7 +66,7 @@ const GenAI: React.FC = () => {
                 keywords="Generative AI India, Enterprise GenAI, Custom RAG Systems, LLM Fine-Tuning, Sovereign AI, Vector Search, AI Agents, NLP, Llama 3, Claude, GPT-4o, ANVRiksh Tech Solutions LLP"
                 canonicalUrl="https://anvriksh.com/gen-ai"
                 structuredData={structuredData}
-                ogImage="/platform_hero.png"
+                ogImage="/og-image.png"
             />
             {/* Hero Section */}
             <section className="relative pt-32 pb-24 md:pt-48 md:pb-32 overflow-hidden">

@@ -19,7 +19,7 @@ const SEO: React.FC<SEOProps> = ({
     keywords,
     canonicalUrl,
     structuredData,
-    ogImage = "/platform_hero.png",
+    ogImage = "/og-image.jpg",
     ogType = "website",
     twitterHandle = "@anvriksh",
     articlePublishedTime,
@@ -56,6 +56,10 @@ const SEO: React.FC<SEOProps> = ({
         setMetaTag('og:description', description, true);
         setMetaTag('og:type', ogType, true);
         setMetaTag('og:image', resolvedImage, true);
+        setMetaTag('og:image:secure_url', resolvedImage, true);
+        setMetaTag('og:image:type', resolvedImage.endsWith('.png') ? 'image/png' : 'image/jpeg', true);
+        setMetaTag('og:image:width', '1200', true);
+        setMetaTag('og:image:height', '628', true);
         setMetaTag('og:site_name', 'ANVRiksh Tech Solutions LLP', true);
         setMetaTag('og:locale', 'en_IN', true);
         if (canonicalUrl) setMetaTag('og:url', canonicalUrl, true);

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Reveal from '../components/Reveal';
+import { trackCTA, trackPhoneClick } from '../utils/analytics';
 import { COMPANY_DETAILS } from '../constants/contact';
 
 const metrics = [
@@ -257,6 +258,7 @@ const AgenticAI: React.FC = () => {
               <div className="flex flex-wrap items-center gap-4 mb-10">
                 <Link
                   to="/company/contact-us"
+                  onClick={() => trackCTA('Deploy Autonomous Agents - Hero', '/company/contact-us')}
                   className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white bg-[#003D2B] hover:bg-[#022D20] shadow-[0_8px_24px_rgba(0,61,43,0.25)] hover:shadow-[0_12px_32px_rgba(0,61,43,0.35)] hover:scale-105 active:scale-100 transition-all"
                 >
                   <span>Deploy Autonomous Agents</span>
@@ -916,12 +918,14 @@ const AgenticAI: React.FC = () => {
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   to="/company/contact-us"
+                  onClick={() => trackCTA('Book Agentic Consultation - Bottom CTA', '/company/contact-us')}
                   className="bg-white text-[#003D2B] px-8 py-4 rounded-full font-bold text-sm hover:bg-[#E8F4E5] transition-all shadow-[0_4px_16px_rgba(0,0,0,0.2)] active:scale-95"
                 >
                   Book Agentic Consultation
                 </Link>
                 <a
                   href={`tel:${COMPANY_DETAILS.primaryPhone}`}
+                  onClick={() => trackPhoneClick('agentic_ai_bottom_cta')}
                   className="bg-white/10 hover:bg-white/20 text-white border border-white/25 px-7 py-4 rounded-full font-bold text-sm transition-all"
                 >
                   Call Direct: {COMPANY_DETAILS.primaryPhone}

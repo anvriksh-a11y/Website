@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { trackVoiceSamplePlay } from '../utils/analytics';
 
 export interface VoiceStyle {
   id: string;
@@ -8,6 +9,8 @@ export interface VoiceStyle {
   category: 'E-learning' | 'Customer Support' | 'Video Narration' | 'Podcasting' | 'Calling Agent';
   gender: 'Female' | 'Male';
   language: string;
+  flag: string;
+  country: string;
   avatarBg: string;
   avatarImg: string;
   sampleText: string;
@@ -15,138 +18,130 @@ export interface VoiceStyle {
 }
 
 export const VOICE_STYLES: VoiceStyle[] = [
-  // ROW 1: Aarohi, Aarav, Maya
+  // ROW 1: Divya (KN), Shreeraj (HI), Skylar (US) — 3 cards
   {
-    id: 'aarohi',
-    name: 'Aarohi',
-    role: 'Soft & natural',
+    id: 'divya',
+    name: 'Divya',
+    role: 'Customer Support',
     tone: 'Conversational, empathetic, soothing',
     category: 'Customer Support',
     gender: 'Female',
     language: 'Kannada',
+    flag: '🇮🇳',
+    country: 'India',
     avatarBg: 'from-[#003D2B] to-[#526B3D]',
     avatarImg: '/images/avatars/ns-avatar-16.png',
     sampleText: 'ನಮಸ್ಕಾರ! ANVRiksh ತಂತ್ರಜ್ಞಾನ ಸೇವೆಗಳಿಗೆ ಸುಸ್ವಾಗತ. ನಿಮ್ಮ ಯೋಜನೆಗೆ ನಾನು ಹೇಗೆ ಸಹಾಯ ಮಾಡಲಿ?',
-    audioSrc: '/audio/anvriksh_kn.wav',
+    audioSrc: '/audio/Anvriksh_KN.aac',
   },
   {
-    id: 'aarav',
-    name: 'Aarav',
-    role: 'Bold & energetic',
-    tone: 'Dynamic, persuasive, high-impact',
+    id: 'shreeraj',
+    name: 'Shreeraj',
+    role: 'Enterprise Calling',
+    tone: 'Professional, assertive, polished',
     category: 'Calling Agent',
     gender: 'Male',
     language: 'Hindi',
+    flag: '🇮🇳',
+    country: 'India',
+    avatarBg: 'from-[#141912] to-[#2D452C]',
+    avatarImg: '/images/avatars/ns-avatar-29.png',
+    sampleText: 'ANVRiksh एंटरप्राइज सपोर्ट में आपका स्वागत है। हमारे AI एजेंट्स 24 घंटे आपकी सेवा में उपलब्ध हैं।',
+    audioSrc: '/audio/Anvrikdh_HI.aac',
+  },
+  {
+    id: 'skylar',
+    name: 'Skylar',
+    role: 'Global Voice Agent',
+    tone: 'Natural, fluent, broadcast-ready',
+    category: 'Calling Agent',
+    gender: 'Female',
+    language: 'English (US)',
+    flag: '🇺🇸',
+    country: 'United States',
+    avatarBg: 'from-[#1D3557] to-[#457B9D]',
+    avatarImg: '/images/avatars/ns-avatar-17.png',
+    sampleText: 'Hello! I am Skylar from ANVRiksh. I can automate your outbound outreach and handle customer calls in real-time.',
+    audioSrc: '/audio/cartesia_2026-11-17T13_43_32Z_Skylar_sonic-3.6_en-US.wav',
+  },
+
+  // ROW 2: Sindhu (MH), Niyati (GU) — 2 cards
+  {
+    id: 'sindhu',
+    name: 'Sindhu',
+    role: 'Business Solutions',
+    tone: 'Warm, consultative, polished',
+    category: 'Customer Support',
+    gender: 'Female',
+    language: 'Marathi',
+    flag: '🇮🇳',
+    country: 'India',
+    avatarBg: 'from-[#8B7355] to-[#526B3D]',
+    avatarImg: '/images/avatars/ns-avatar-31.png',
+    sampleText: 'नमस्कार! ANVRiksh च्या व्यवसाय सोल्यूशन्स टीमकडून आम्ही आपले स्वागत करतो.',
+    audioSrc: '/audio/Anvriksh_Mh.aac',
+  },
+  {
+    id: 'niyati',
+    name: 'Niyati',
+    role: 'Conversational Support',
+    tone: 'Bright, friendly, articulate',
+    category: 'Calling Agent',
+    gender: 'Female',
+    language: 'Gujarati',
+    flag: '🇮🇳',
+    country: 'India',
+    avatarBg: 'from-[#526B3D] to-[#8B7355]',
+    avatarImg: '/images/avatars/ns-avatar-28.png',
+    sampleText: 'નમસ્તે! ANVRiksh બિઝનેસ પ્લેટફોર્મ પર આપનું સ્વાગત છે. હું તમારા પ્રોજેક્ટ માટે શું સહಾಯ કરી શકું?',
+    audioSrc: '/audio/cartesia_2026-11-17T13_45_01Z_Niyati_sonic-3.6_gu-IN.wav',
+  },
+
+  // ROW 3: Aarav (HI), Aarav (KN), Ishaan (EN) — 3 cards
+  {
+    id: 'aarav_hi',
+    name: 'Aarav',
+    role: 'Educational Training',
+    tone: 'Dynamic, persuasive, clear',
+    category: 'E-learning',
+    gender: 'Male',
+    language: 'Hindi',
+    flag: '🇮🇳',
+    country: 'India',
     avatarBg: 'from-[#2D452C] to-[#003D2B]',
     avatarImg: '/images/avatars/ns-avatar-15.png',
     sampleText: 'नमस्ते! क्या आप अपने बिज़नेस के लिए ऑटोनॉमस AI कॉलिंग एजेंट शुरू करने के लिए तैयार हैं?',
     audioSrc: '/audio/bca_internship_hi.wav',
   },
   {
-    id: 'maya',
-    name: 'Maya',
-    role: 'Warm & calm',
-    tone: 'Gentle, mindful, articulate',
-    category: 'E-learning',
-    gender: 'Female',
-    language: 'Indian English',
-    avatarBg: 'from-[#8B7355] to-[#A68A68]',
-    avatarImg: '/images/avatars/ns-avatar-17.png',
-    sampleText: 'Welcome to ANVRiksh academic counseling. Let us explore your prospective curriculum tracks.',
-    audioSrc: '/audio/bca_internship_en.wav',
-  },
-  // ROW 2: Ishaan, Zoya, Dhruv, Naveen
-  {
-    id: 'ishaan',
-    name: 'Ishaan',
-    role: 'Clear & crisp',
-    tone: 'Authoritative, technical, crisp',
-    category: 'Podcasting',
-    gender: 'Male',
-    language: 'Indian English',
-    avatarBg: 'from-[#141912] to-[#2D452C]',
-    avatarImg: '/images/avatars/ns-avatar-29.png',
-    sampleText: 'Welcome to Deep Tech Insights. Today we evaluate autonomous neural routing and sub-second latency.',
-    audioSrc: '/audio/deep_courses_en.wav',
-  },
-  {
-    id: 'zoya',
-    name: 'Zoya',
-    role: 'Bright & Light',
-    tone: 'Friendly, youthful, expressive',
-    category: 'Video Narration',
-    gender: 'Female',
-    language: 'Hindi',
-    avatarBg: 'from-[#526B3D] to-[#8B7355]',
-    avatarImg: '/images/avatars/ns-avatar-28.png',
-    sampleText: 'ANVRiksh एंटरप्राइज सपोर्ट में आपका स्वागत है। हमारे AI एजेंट्स 24 घंटे आपकी सेवा में उपलब्ध हैं।',
-    audioSrc: '/audio/anvriksh_hi.wav',
-  },
-  {
-    id: 'dhruv',
-    name: 'Dhruv',
-    role: 'Confident & Crispy',
-    tone: 'Executive, trustworthy, polished',
-    category: 'Calling Agent',
-    gender: 'Male',
-    language: 'Marathi',
-    avatarBg: 'from-[#003D2B] to-[#141912]',
-    avatarImg: '/images/avatars/ns-avatar-31.png',
-    sampleText: 'नमस्कार! ANVRiksh च्या व्यवसाय सोल्यूशन्स टीमकडून आम्ही आपले स्वागत करतो.',
-    audioSrc: '/audio/anvriksh_mh.wav',
-  },
-  {
-    id: 'naveen',
-    name: 'Naveen',
-    role: 'Warm & consultative',
-    tone: 'Patient, helpful, consultative',
+    id: 'aarav_kn',
+    name: 'Aarav (KN)',
+    role: 'Academic Counselor',
+    tone: 'Consultative, patient, clear',
     category: 'Customer Support',
     gender: 'Male',
     language: 'Kannada',
+    flag: '🇮🇳',
+    country: 'India',
     avatarBg: 'from-[#698F70] to-[#003D2B]',
     avatarImg: '/images/avatars/ns-avatar-32.png',
     sampleText: 'ನಾನು ನಿಮ್ಮ ಸಮಸ್ಯೆಯನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಅರ್ಥಮಾಡಿಕೊಂಡಿದ್ದೇನೆ. ಸೆಟಪ್ ಹಂತಗಳನ್ನು ವಿವರಿಸುತ್ತೇನೆ.',
     audioSrc: '/audio/bca_internship_kn.wav',
   },
-  // ROW 3: Charu, Lavanya, Omkar
   {
-    id: 'charu',
-    name: 'Charu',
-    role: 'Cool & friendly',
-    tone: 'Modern, engaging, lifestyle',
-    category: 'Video Narration',
-    gender: 'Female',
-    language: 'Indian English',
-    avatarBg: 'from-[#8B7355] to-[#526B3D]',
-    avatarImg: '/images/avatars/ns-avatar-35.png',
-    sampleText: 'Check out the ANVRiksh AI Calling Platform built with sub-second multilingual speech synthesis.',
-    audioSrc: '/audio/ai-voice-generator-voice-sample.mp3',
-  },
-  {
-    id: 'lavanya',
-    name: 'Lavanya',
-    role: 'Gentle & dreamy',
-    tone: 'Intimate, literary, immersive',
-    category: 'E-learning',
-    gender: 'Female',
-    language: 'Kannada',
-    avatarBg: 'from-[#526B3D] to-[#141912]',
-    avatarImg: '/images/avatars/ns-avatar-33.png',
-    sampleText: 'ದೂರಶಿಕ್ಷಣ ಕಾರ್ಯಕ್ರಮಗಳ ಮೂಲಕ ನಿಮ್ಮ ವೃತ್ತಿಜೀವನವನ್ನು ಮುಂದುವರಿಸಿ ಮತ್ತು ಹೊಸ ಕೌಶಲ್ಯಗಳನ್ನು ಕಲಿಯಿರಿ.',
-    audioSrc: '/audio/distance_education_kn.wav',
-  },
-  {
-    id: 'omkar',
-    name: 'Omkar',
-    role: 'Clear & dynamic',
-    tone: 'Enthusiastic, rapid, sharp',
+    id: 'ishaan',
+    name: 'Ishaan',
+    role: 'Deep Tech Insights',
+    tone: 'Authoritative, technical, sharp',
     category: 'Podcasting',
     gender: 'Male',
-    language: 'Kannada',
+    language: 'Indian English',
+    flag: '🇮🇳',
+    country: 'India',
     avatarBg: 'from-[#003D2B] to-[#698F70]',
     avatarImg: '/images/avatars/ns-avatar-34.png',
-    sampleText: 'ಆರ್ಟಿಫಿಶಿಯಲ್ ಇಂಟೆಲಿಜೆನ್ಸ್ ಮತ್ತು ಕ್ಲೌಡ್ ತಂತ್ರಜ್ಞಾನದಲ್ಲಿ ಹೊಸ ಕೋರ್ಸ್‌ಗಳು ಈಗ ಲಭ್ಯವಿದೆ.',
-    audioSrc: '/audio/deep_courses_kn.wav',
+    sampleText: 'Welcome to Deep Tech Insights. Today we evaluate autonomous neural routing and sub-second latency.',
+    audioSrc: '/audio/deep_courses_en.wav',
   },
 ];
 
@@ -161,10 +156,10 @@ const VoicePillCard: React.FC<{
   return (
     <div
       onClick={onClick}
-      className={`flex items-center justify-start rounded-full border bg-white py-1 transition-all duration-300 group hover:scale-[1.03] hover:-translate-y-0.5 shrink-0 select-none cursor-pointer ${
+      className={`flex items-center justify-start rounded-full border bg-white py-1.5 sm:py-2 transition-all duration-300 group hover:scale-[1.03] hover:-translate-y-0.5 shrink-0 select-none cursor-pointer ${
         isThreeCardRow
-          ? 'w-[104px] xs:w-[114px] sm:w-[172px] lg:w-[184px] pl-1 pr-1.5 sm:pr-3.5 gap-x-1 sm:gap-x-2.5'
-          : 'w-[140px] xs:w-[152px] sm:w-[172px] lg:w-[184px] pl-1 pr-2 sm:pr-3.5 gap-x-1.5 sm:gap-x-3'
+          ? 'w-[104px] xs:w-[114px] sm:w-[176px] lg:w-[190px] pl-1.5 pr-2 sm:pr-3.5 gap-x-1 sm:gap-x-2.5'
+          : 'w-[140px] xs:w-[152px] sm:w-[176px] lg:w-[190px] pl-1.5 pr-2.5 sm:pr-3.5 gap-x-1.5 sm:gap-x-3'
       } shadow-[0_2px_8px_rgba(20,25,18,0.06)] hover:shadow-[0_8px_24px_rgba(20,25,18,0.12)] ${
         isSelected
           ? 'border-[#003D2B] ring-2 ring-[#003D2B]/20 bg-[#EAEFE5]/50 scale-[1.02]'
@@ -186,12 +181,20 @@ const VoicePillCard: React.FC<{
         </span>
       </figure>
 
-      <div className="flex flex-col min-w-0 flex-1">
-        <h4 className="text-[10px] xs:text-[11px] sm:text-[13px] font-bold text-[#141912] leading-tight truncate">
+      <div className="flex flex-col min-w-0 flex-1 text-left">
+        <div className="flex items-center gap-1 leading-none mb-0.5">
+          <span className="text-[10px] sm:text-xs leading-none" role="img" aria-label={voice.country}>
+            {voice.flag}
+          </span>
+          <span className="text-[7.5px] xs:text-[8px] sm:text-[9.5px] font-semibold text-[#003D2B] uppercase tracking-wider truncate">
+            {voice.language.includes('English') ? 'ENGLISH' : voice.language.toUpperCase()}
+          </span>
+        </div>
+        <h4 className="text-[9.5px] xs:text-[10.5px] sm:text-[12.5px] font-bold text-[#141912] leading-tight truncate">
           {voice.name}
         </h4>
-        <span className="text-[8px] xs:text-[9px] sm:text-[11px] text-[#616E7C] font-medium leading-tight truncate mt-0.5">
-          {voice.role}
+        <span className="text-[7.5px] xs:text-[8px] sm:text-[10px] text-[#616E7C] font-medium leading-tight truncate mt-0.5">
+          {voice.gender} &bull; {voice.role}
         </span>
       </div>
     </div>
@@ -211,13 +214,11 @@ export const VoiceStylesDirectory: React.FC<{
   const row1Ref = useRef<HTMLDivElement>(null);
   const row2Ref = useRef<HTMLDivElement>(null);
   const row3Ref = useRef<HTMLDivElement>(null);
-  const row4Ref = useRef<HTMLDivElement>(null);
 
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [row1Anim, setRow1Anim] = useState({ x: -40, blur: 6, opacity: 0.5 });
   const [row2Anim, setRow2Anim] = useState({ x: 40, blur: 6, opacity: 0.5 });
   const [row3Anim, setRow3Anim] = useState({ x: -40, blur: 6, opacity: 0.5 });
-  const [row4Anim, setRow4Anim] = useState({ x: 40, blur: 6, opacity: 0.5 });
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -251,7 +252,6 @@ export const VoiceStylesDirectory: React.FC<{
         setRow1Anim(calcRow(row1Ref.current, 'left', 0.74));
         setRow2Anim(calcRow(row2Ref.current, 'right', 0.68));
         setRow3Anim(calcRow(row3Ref.current, 'left', 0.62));
-        setRow4Anim(calcRow(row4Ref.current, 'right', 0.56));
       });
     };
 
@@ -304,6 +304,11 @@ export const VoiceStylesDirectory: React.FC<{
       setCustomPrompt(voice.sampleText);
       await audio.play();
       setIsPlaying(true);
+      trackVoiceSamplePlay(voice.name, {
+        language: voice.language,
+        category: voice.category,
+        page: 'home_directory',
+      });
     } catch (err: unknown) {
       const error = err as Error;
       if (error.name !== 'AbortError') {
@@ -371,9 +376,9 @@ export const VoiceStylesDirectory: React.FC<{
             </p>
           </div>
 
-          {/* ————— 4-ROW ZIGZAG PILL CLUSTER (ZERO HORIZONTAL SCROLLING, RESPONSIVE 3-2-3-2) ————— */}
+          {/* ————— 3-ROW ZIGZAG PILL CLUSTER (3 - 2 - 3 ZIGZAG) ————— */}
           <div className="w-full max-w-[790px] flex flex-col gap-y-2.5 sm:gap-y-3.5 py-3 px-1 sm:px-2 overflow-hidden mx-auto xl:mx-0">
-            {/* ROW 1: Aarohi, Aarav, Maya (3 pills, shifted left) */}
+            {/* ROW 1: Divya, Shreeraj, Skylar (3 cards, shifted left for zigzag) */}
             <div 
               ref={row1Ref}
               style={{
@@ -382,7 +387,7 @@ export const VoiceStylesDirectory: React.FC<{
                 filter: `blur(${row1Anim.blur}px)`,
                 transition: 'transform 0.12s ease-out, opacity 0.12s ease-out, filter 0.12s ease-out'
               }}
-              className="flex flex-row items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 flex-nowrap shrink-0 -translate-x-1 sm:-translate-x-4 md:translate-x-0"
+              className="flex flex-row items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 flex-nowrap shrink-0 -translate-x-2 sm:-translate-x-6 md:-translate-x-8"
             >
               {VOICE_STYLES.slice(0, 3).map(voice => (
                 <VoicePillCard
@@ -402,7 +407,7 @@ export const VoiceStylesDirectory: React.FC<{
               ))}
             </div>
 
-            {/* ROW 2: Ishaan, Zoya (2 pills, shifted right) */}
+            {/* ROW 2: Sindhu, Niyati (2 cards, shifted right for zigzag) */}
             <div 
               ref={row2Ref}
               style={{
@@ -411,7 +416,7 @@ export const VoiceStylesDirectory: React.FC<{
                 filter: `blur(${row2Anim.blur}px)`,
                 transition: 'transform 0.12s ease-out, opacity 0.12s ease-out, filter 0.12s ease-out'
               }}
-              className="flex flex-row items-center justify-center gap-2 sm:gap-3 flex-nowrap shrink-0 translate-x-1 sm:translate-x-4 md:translate-x-0"
+              className="flex flex-row items-center justify-center gap-2 sm:gap-3 flex-nowrap shrink-0 translate-x-3 sm:translate-x-8 md:translate-x-10"
             >
               {VOICE_STYLES.slice(3, 5).map(voice => (
                 <VoicePillCard
@@ -431,7 +436,7 @@ export const VoiceStylesDirectory: React.FC<{
               ))}
             </div>
 
-            {/* ROW 3: Dhruv, Naveen, Charu (3 pills, shifted left) */}
+            {/* ROW 3: Aarav, Aarav (KN), Ishaan (3 cards, shifted left for zigzag) */}
             <div 
               ref={row3Ref}
               style={{
@@ -440,7 +445,7 @@ export const VoiceStylesDirectory: React.FC<{
                 filter: `blur(${row3Anim.blur}px)`,
                 transition: 'transform 0.12s ease-out, opacity 0.12s ease-out, filter 0.12s ease-out'
               }}
-              className="flex flex-row items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 flex-nowrap shrink-0 -translate-x-1 sm:-translate-x-4 md:translate-x-0"
+              className="flex flex-row items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 flex-nowrap shrink-0 -translate-x-1 sm:-translate-x-4 md:-translate-x-6"
             >
               {VOICE_STYLES.slice(5, 8).map(voice => (
                 <VoicePillCard
@@ -449,35 +454,6 @@ export const VoiceStylesDirectory: React.FC<{
                   isSelected={activeVoice.id === voice.id}
                   isPlaying={isPlaying && activeVoice.id === voice.id}
                   isThreeCardRow={true}
-                  onClick={() => {
-                    if (activeVoice.id === voice.id) {
-                      toggleVoiceAudio();
-                    } else {
-                      playVoiceAudio(voice);
-                    }
-                  }}
-                />
-              ))}
-            </div>
-
-            {/* ROW 4: Lavanya, Omkar (2 pills, shifted right) */}
-            <div 
-              ref={row4Ref}
-              style={{
-                transform: `translateX(${row4Anim.x}px)`,
-                opacity: row4Anim.opacity,
-                filter: `blur(${row4Anim.blur}px)`,
-                transition: 'transform 0.12s ease-out, opacity 0.12s ease-out, filter 0.12s ease-out'
-              }}
-              className="flex flex-row items-center justify-center gap-2 sm:gap-3 flex-nowrap shrink-0 translate-x-1 sm:translate-x-4 md:translate-x-0"
-            >
-              {VOICE_STYLES.slice(8, 10).map(voice => (
-                <VoicePillCard
-                  key={voice.id}
-                  voice={voice}
-                  isSelected={activeVoice.id === voice.id}
-                  isPlaying={isPlaying && activeVoice.id === voice.id}
-                  isThreeCardRow={false}
                   onClick={() => {
                     if (activeVoice.id === voice.id) {
                       toggleVoiceAudio();
@@ -501,10 +477,11 @@ export const VoiceStylesDirectory: React.FC<{
                 <span className="text-white text-lg font-bold leading-none">{activeVoice.name.charAt(0)}</span>
               </div>
               <div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-xl leading-none" role="img" aria-label={activeVoice.country}>{activeVoice.flag}</span>
                   <h4 className="text-xl font-bold text-[#141912]">{activeVoice.name}</h4>
                   <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#E3EDE0] text-[#003D2B] font-bold border border-[#D3E2CF]">
-                    {activeVoice.role}
+                    {activeVoice.gender} &bull; {activeVoice.role}
                   </span>
                   <span className="text-[11px] px-2 py-0.5 rounded-full bg-[#F4F7EE] text-[#4E5B49] font-medium border border-[#CCD8C3]">
                     {activeVoice.language}

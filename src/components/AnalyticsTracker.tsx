@@ -6,7 +6,12 @@ const AnalyticsTracker: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
-    trackPageView(location.pathname + location.search);
+    // 100ms timeout allows child page's <SEO /> component to update document.title
+    const timer = setTimeout(() => {
+      trackPageView(location.pathname + location.search, document.title);
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [location]);
 
   return null;

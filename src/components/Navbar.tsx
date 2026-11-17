@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { trackCTA } from '../utils/analytics';
 
 interface ServiceDropdownItem {
   label: string;
@@ -58,24 +59,24 @@ const Navbar: React.FC = () => {
             ? 'rounded-[28px] p-4 sm:p-5 shadow-[0_16px_40px_rgba(20,25,18,0.14)]'
             : `rounded-full ${
                 scrolled
-                  ? 'py-2 px-4 sm:px-6 shadow-[0_12px_36px_rgba(20,25,18,0.10),0_2px_4px_rgba(20,25,18,0.05)]'
-                  : 'py-2 sm:py-2.5 px-4 sm:px-6'
+                  ? 'py-2.5 sm:py-2 px-4 sm:px-6 shadow-[0_12px_36px_rgba(20,25,18,0.10),0_2px_4px_rgba(20,25,18,0.05)]'
+                  : 'py-2.5 sm:py-2.5 px-4 sm:px-6'
               }`
         }`}
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
-        <div className="flex items-center justify-between pl-1 sm:pl-0 pr-1.5 sm:pr-0">
+        <div className="flex items-center justify-between pl-1 sm:pl-0 pr-1 sm:pr-0">
           
           {/* ————————————————— LEFT: PROMINENT ANVRIKSH LOGO ————————————————— */}
           <Link 
             to="/" 
-            className="flex items-center gap-2 group shrink-0 max-h-8 sm:max-h-9 md:max-h-10 transition-transform duration-200 active:scale-95 py-0.5" 
+            className="flex items-center gap-2 group shrink-0 transition-transform duration-200 active:scale-95 py-0.5" 
             aria-label="ANVRiksh home"
           >
             <img
-              src="/anvriksh_logo_clean.png"
+              src="/anvriksh_navbar_logo.webp"
               alt="ANVRiksh"
-              className="h-8 max-h-8 sm:h-9 sm:max-h-9 md:h-10 md:max-h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-xs"
+              className="h-10 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-xs"
             />
           </Link>
 
@@ -179,6 +180,7 @@ const Navbar: React.FC = () => {
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <Link
               to="/company/contact-us"
+              onClick={() => trackCTA('Get in touch - Navbar Desktop', '/company/contact-us')}
               className="hidden sm:inline-flex group relative items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full text-xs sm:text-[13px] font-bold text-white bg-[#003D2B] hover:bg-[#022D20] shadow-[0_4px_14px_rgba(0,61,43,0.22)] hover:shadow-[0_6px_20px_rgba(0,61,43,0.32)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
             >
               <span>Get in touch</span>
@@ -198,7 +200,7 @@ const Navbar: React.FC = () => {
             {/* Mobile Menu Hamburger / Close Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden w-8 h-8 mr-0.5 sm:mr-0 rounded-full bg-[#EAEFE5] hover:bg-[#D5E1CE] border border-[#CCD8C3] flex items-center justify-center text-[#141912] transition-all active:scale-90 shrink-0"
+              className="md:hidden w-9 h-9 mr-0.5 sm:mr-0 rounded-full bg-[#EAEFE5] hover:bg-[#D5E1CE] border border-[#CCD8C3] flex items-center justify-center text-[#141912] transition-all active:scale-90 shrink-0"
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
             >
@@ -317,7 +319,10 @@ const Navbar: React.FC = () => {
             <div className="pt-1 flex items-center justify-between px-2">
               <Link
                 to="/company/contact-us"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  trackCTA('Get in touch - Navbar Mobile', '/company/contact-us');
+                }}
                 className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold text-white bg-[#003D2B]"
               >
                 <span>Get in touch</span>

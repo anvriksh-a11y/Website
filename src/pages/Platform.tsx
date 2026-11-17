@@ -90,7 +90,7 @@ const Platform: React.FC = () => {
                 keywords="Yugma Platform, Agentic AI Orchestration, AI Workflow Builder, India AI Platform, Sovereign AI Infrastructure"
                 canonicalUrl="https://anvriksh.com/platform"
                 structuredData={structuredData}
-                ogImage="/platform_hero.png"
+                ogImage="/og-image.png"
             />
 
             {/* Platform Hero Section */}
@@ -122,7 +122,7 @@ const Platform: React.FC = () => {
                             <div className="absolute -inset-2 bg-gradient-to-r from-sky-400/20 via-indigo-500/20 to-purple-500/20 blur-3xl opacity-40 group-hover:opacity-80 transition duration-1000"></div>
 
                             <div className="relative rounded-[2.5rem] border border-white/10 bg-[#030712] p-2 shadow-[0_0_50px_rgba(14,165,233,0.15)] overflow-hidden">
-                                <img src="/platform_hero.png" alt="Yugma Core" className="w-full object-cover scale-100 group-hover:scale-[1.03] transition-transform duration-[2000ms]" />
+                                <img src="/og-image.png" alt="Yugma Core" className="w-full object-cover scale-100 group-hover:scale-[1.03] transition-transform duration-[2000ms]" />
                                 <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#030712] to-transparent"></div>
                             </div>
                         </div>

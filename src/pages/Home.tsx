@@ -105,7 +105,7 @@ const Home: React.FC = () => {
                 keywords="ANVRiksh Tech Solutions LLP, ANVRiksh, ADA-3944, Agentic AI India, Autonomous Calling Agents, Voice AI, Genquantaa GTM OS, Software Solutions, Website Building, SEO Optimization, AEO Engine, GEO Engine, Cloud Data Engineering, Microsoft Fabric, Enterprise AI Solutions, Business Process Automation, AI Company India, AI Company Karnataka"
                 canonicalUrl="https://anvriksh.com/"
                 structuredData={structuredData}
-                ogImage="/platform_hero.png"
+                ogImage="/og-image.png"
             />
             <Hero />
             <GTMPlatformPreview />

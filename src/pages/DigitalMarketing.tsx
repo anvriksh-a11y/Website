@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Reveal from '../components/Reveal';
+import { trackCTA } from '../utils/analytics';
 import { COMPANY_DETAILS } from '../constants/contact';
 
 const metrics = [
@@ -73,7 +74,7 @@ const DigitalMarketing: React.FC = () => {
                 keywords="Digital Marketing Services, Performance Marketing India, Google Ads Agency, Meta Ads Specialist, SEO Services Belgaum, B2B Lead Generation, ANVRiksh Tech Solutions LLP"
                 canonicalUrl="https://anvriksh.com/digital-marketing"
                 structuredData={structuredData}
-                ogImage="/platform_hero.png"
+                ogImage="/og-image.png"
             />
 
             {/* Vibrant Atmospheric Mesh Gradient Background */}
@@ -115,6 +116,7 @@ const DigitalMarketing: React.FC = () => {
                             <div className="flex flex-wrap items-center gap-4 mb-10">
                                 <Link
                                     to="/company/contact-us"
+                                    onClick={() => trackCTA('Schedule a Growth Consultation - Hero', '/company/contact-us')}
                                     className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white bg-[#003D2B] hover:bg-[#022D20] shadow-[0_8px_24px_rgba(0,61,43,0.25)] hover:shadow-[0_12px_32px_rgba(0,61,43,0.35)] hover:scale-105 active:scale-100 transition-all"
                                 >
                                     <span>Schedule a Growth Consultation</span>

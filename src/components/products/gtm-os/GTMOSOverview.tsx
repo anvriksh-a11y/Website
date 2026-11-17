@@ -101,9 +101,9 @@ export const GTMOSOverview: React.FC = () => {
                 onClick={() => setIsLightboxOpen(true)}
               >
                 <img
-                  src="/gtm_24_ai_agents_engine.jpg"
+                  src="/gtm_24_ai_agents_engine.webp"
                   alt="The 24 AI Agents Powering Your Go-To-Market Engine - Genquantaa GTM OS"
-                  className="w-full h-auto rounded-2xl border border-[#D5E1CE]/80 shadow-xs object-cover transition-transform duration-300 group-hover:scale-[1.003]"
+                  className="w-full h-auto rounded-2xl border border-[#D5E1CE]/80 shadow-xs object-contain transition-transform duration-300 group-hover:scale-[1.003]"
                   loading="eager"
                 />
 
@@ -203,7 +203,7 @@ export const GTMOSOverview: React.FC = () => {
             {/* Modal Image Display */}
             <div className="p-3 sm:p-6 overflow-auto max-h-[calc(94vh-60px)] flex items-center justify-center bg-[#F4F7EE]/60">
               <img
-                src="/gtm_24_ai_agents_engine.jpg"
+                src="/gtm_24_ai_agents_engine.webp"
                 alt="The 24 AI Agents Powering Your Go-To-Market Engine"
                 className="w-full h-auto max-w-full rounded-xl border border-[#D5E1CE] shadow-sm object-contain"
               />

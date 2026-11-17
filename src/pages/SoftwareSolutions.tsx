@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Reveal from '../components/Reveal';
 import Counter from '../components/Counter';
+import { trackCTA } from '../utils/analytics';
 
 const softwareHeroSphereDots = Array.from({ length: 41 }, (_, row) => {
     const y = (row - 20) / 20;
@@ -157,7 +158,7 @@ const SoftwareSolutions: React.FC = () => {
                 keywords="custom software development, website development, SEO optimization, AEO engine, answer engine optimization, GEO engine, generative engine optimization, enterprise web applications, react development, node.js, cloud devops, anvriksh"
                 canonicalUrl="https://anvriksh.com/software-solutions"
                 structuredData={structuredData}
-                ogImage="/platform_hero.png"
+                ogImage="/og-image.png"
             />
 
             <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -500,6 +501,7 @@ const SoftwareSolutions: React.FC = () => {
                                 </div>
                                 <Link
                                     to="/company/contact-us"
+                                    onClick={() => trackCTA(`Choose Plan - ${plan.name}`, '/company/contact-us')}
                                     className={`mt-auto block w-full rounded-full py-2.5 text-center text-sm font-bold transition-colors ${
                                         plan.popular
                                             ? 'bg-[#003D2B] text-white hover:bg-[#07523C]'
@@ -835,6 +837,7 @@ const SoftwareSolutions: React.FC = () => {
                                 <div className="flex flex-col sm:flex-row justify-center gap-3.5">
                                     <Link
                                         to="/company/contact-us"
+                                        onClick={() => trackCTA('Start Your Project Today - Bottom CTA', '/company/contact-us')}
                                         className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full font-bold text-[#003D2B] bg-white hover:bg-[#F4F7EE] shadow-[0_12px_28px_rgba(0,0,0,0.25)] hover:scale-105 active:scale-100 transition-all"
                                     >
                                         <span>Start Your Project Today</span>
@@ -931,7 +934,10 @@ const SoftwareSolutions: React.FC = () => {
                                 </button>
                                 <Link
                                     to="/company/contact-us"
-                                    onClick={() => setShowFullStack(false)}
+                                    onClick={() => {
+                                        setShowFullStack(false);
+                                        trackCTA('Get Scoping Call - Tech Stack Modal', '/company/contact-us');
+                                    }}
                                     className="px-5 py-2.5 rounded-full text-xs font-bold text-white bg-[#003D2B] hover:bg-[#022D20] transition-colors"
                                 >
                                     Get Scoping Call

@@ -123,7 +123,7 @@ const GenquantaaGTMOS: React.FC = () => {
         keywords="AI Go-To-Market Platform, AI Sales Automation Software, AI Lead Generation Platform, Customer Acquisition Automation, AI Marketing Automation Platform, AI Prospect Discovery, B2B Lead Generation Software, Multichannel Campaign Automation, AI Sales Engagement, AI-Powered CRM, GTM Automation Software"
         canonicalUrl="https://anvriksh.com/platform"
         structuredData={structuredData}
-        ogImage="/platform_hero.png"
+        ogImage="/og-image.png"
       />
 
       {/* ————————————————— BREADCRUMB STRIP ————————————————— */}
